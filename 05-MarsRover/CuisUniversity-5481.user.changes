@@ -1,0 +1,5761 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (3 October 2022 20:31:51) as /home/gonzalo/Desktop/MarsRover/linux64/CuisUniversity-5481.image!
+
+
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverTest category: 'MarsRover' stamp: 'GM 10/3/2022 20:32:58'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'GM 10/3/2022 20:35:34'!
+Object subclass: #MarsRover
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRoverTest methodsFor: 'no messages' stamp: 'GM 10/3/2022 20:36:01'!
+test01
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:36:06'!
+ERROR!
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/3/2022 20:37:38'!
+at: aPoint heading: aSymbol 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeAt: aPoint heading: aSymbol ! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/3/2022 20:39:11' prior: 50552300!
+at: aPosition heading: anOrientation 
+	
+	^self new initializeAt: aPosition heading: anOrientation.! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:39:14'!
+ERROR!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'GM 10/3/2022 20:39:25'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'GM 10/3/2022 20:39:26'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position orientation'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/3/2022 20:39:26'!
+initializeAt: aPosition heading: anOrientation 
+	self shouldBeImplemented.
+	position := aPosition.
+	orientation := anOrientation.! !
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/3/2022 20:39:34' prior: 50552331!
+initializeAt: aPosition heading: anOrientation 
+
+	position := aPosition.
+	orientation := anOrientation.! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:39:35'!
+ERROR!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 20:39:45'!
+process: aString 
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 20:39:54' prior: 50552346!
+process: aStringOfCommands
+	! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:39:55'!
+ERROR!
+!MarsRover methodsFor: 'testing' stamp: 'GM 10/3/2022 20:40:19'!
+isAt: aPoint heading: aSymbol 
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'testing' stamp: 'GM 10/3/2022 20:40:25' prior: 50552357!
+isAt: aPoint heading: aSymbol 
+	
+	^true! !
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:40:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:40:27'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:41:09'!
+test02
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'f'.
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:41:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:41:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:41:10'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:43:57' prior: 50552371!
+test02
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:43:58'!
+FAILURE!
+!MarsRover methodsFor: 'testing' stamp: 'GM 10/3/2022 20:45:25' prior: 50552362!
+isAt: aPosition heading: anOrientation 
+	
+	^ aPosition = position! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:45:27'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:45:40'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 20:46:04' prior: 50552351!
+process: aStringOfCommands
+	
+	position := 0@1.! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:46:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:46:08'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:46:08'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:46:08'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 20:46:51' prior: 50552408!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:46:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:46:54'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:46:54'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:47:21' prior: 50552386!
+test02
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:47:26' prior: 50552435!
+test02
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:47:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:47:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:47:29'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:47:36'!
+test03
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 20:47:37'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 20:48:25' prior: 50552422!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:50:33'!
+test01EmptyCommandsDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test01 stamp: 'GM 10/3/2022 20:50:33'!
+test01
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:50:44' prior: 50552480!
+test01EmptyCommandsDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:50:48'!
+test01EmptyCommandDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test01EmptyCommandsDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 20:50:48'!
+test01EmptyCommandsDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:52:17'!
+test02CommandFMovesForwardOnePosition
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test02 stamp: 'GM 10/3/2022 20:52:17'!
+test02
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:52:36'!
+test03CommandBMovesBackwardsOnePosition
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test03 stamp: 'GM 10/3/2022 20:52:36'!
+test03
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:53:03' prior: 50552542!
+test03CommandBMovesBackwardsOnePosition
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:53:37'!
+marsRoverAt00HeadingNorth
+
+	^ MarsRover at: 0@0 heading: #North! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:53:37' prior: 50552561!
+test03CommandBMovesBackwardsOnePosition
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:53:37' prior: 50552523!
+test02CommandFMovesForwardOnePosition
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 20:53:37' prior: 50552505!
+test01EmptyCommandDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:04:40'!
+test02
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test02CommandFMovesForwardOnePosition stamp: 'GM 10/3/2022 21:04:40'!
+test02CommandFMovesForwardOnePosition
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@1 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:04:50'!
+test03
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).! !
+
+!methodRemoval: MarsRoverTest #test03CommandBMovesBackwardsOnePosition stamp: 'GM 10/3/2022 21:04:50'!
+test03CommandBMovesBackwardsOnePosition
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@-1 heading: #North).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:06:17'!
+test04
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #West).! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:06:19'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:07:29' prior: 50552473!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation := #West]! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:07:30' prior: 50552660!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation := #West].! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:07:36'!
+FAILURE!
+!MarsRover methodsFor: 'testing' stamp: 'GM 10/3/2022 21:08:08' prior: 50552398!
+isAt: aPosition heading: anOrientation 
+	
+	^ aPosition = position and: anOrientation = orientation! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:08:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:08:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:08:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:08:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:08:12'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:08:52' prior: 50552648!
+test04
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #East).! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:08:54'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:09:16' prior: 50552700!
+test04
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #West).! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:09:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:09:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:09:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:09:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:09:17'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:09:28'!
+test5
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #East).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:09:35'!
+test05
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #East).! !
+
+!methodRemoval: MarsRoverTest #test5 stamp: 'GM 10/3/2022 21:09:35'!
+test5
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #East).!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:09:37'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:09:56' prior: 50552669!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation := #West].
+	aStringOfCommands = 'r' ifTrue: [orientation := #East].! !
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:10:00'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:11:53'!
+marsRoverAt00HeadingEast
+
+	^ MarsRover at: 0@0 heading: #East! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:13:30'!
+test06
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 1@0 heading: #East).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:13:41' prior: 50552794!
+test06
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 1@0 heading: #East).! !
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:13:43'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:15:12' prior: 50552763!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation := #West].
+	aStringOfCommands = 'r' ifTrue: [orientation := #East].! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:17:02' prior: 50552804!
+test06
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:17:04'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:18:13' prior: 50552816!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation = #East ifTrue: [orientation := #North] ifFalse: [orientation := #West]].
+	aStringOfCommands = 'r' ifTrue: [orientation := #East].! !
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:18:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:18:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:18:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:18:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:18:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:18:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:18:20'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:18:32' prior: 50552827!
+test06
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 0@0 heading: #South).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:18:37' prior: 50552870!
+test06
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:18:46'!
+test07
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 0@0 heading: #South).! !
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:18:47'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:19:23' prior: 50552839!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [orientation = #East ifTrue: [orientation := #North] ifFalse: [orientation := #West]].
+	aStringOfCommands = 'r' ifTrue: [orientation = #East ifTrue: [orientation := #South] ifFalse: [orientation := #East]].! !
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:19:28'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:19:43' prior: 50552889!
+test07
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@0 heading: #East).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:19:55'!
+marsRoverAt00HeadingSouth
+
+	^ MarsRover at: 0@0 heading: #South! !
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:20:00'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:23:54' prior: 50552901!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [orientation = #North ifTrue: [orientation := #East]]
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [orientation = #East ifTrue: [orientation := #South] ifFalse: [orientation := #East]].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:23:55'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:23:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:23:55'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:24:15' prior: 50552953!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East]]
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [orientation = #East ifTrue: [orientation := #South] ifFalse: [orientation := #East]].! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:24:33' prior: 50552991!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East]].
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [orientation = #East ifTrue: [orientation := #South] ifFalse: [orientation := #East]].! !
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:24:38'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:24:38'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:24:38'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:25:23' prior: 50553009!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #West]].
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [orientation = #East ifTrue: [orientation := #South] ifFalse: [orientation := #East]].! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:25:26'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:26:20'!
+test08
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@0 heading: #East).! !
+
+!methodRemoval: MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:26:20'!
+test07
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@0 heading: #East).!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:26:43'!
+test07
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 0@0 heading: #South).! !
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:26:45'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:27:11'!
+test09
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@0 heading: #West).! !
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:27:12'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:28:50' prior: 50553049!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #West]].
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [
+		orientation = #East ifTrue: [orientation := #South] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East] ifFalse:[
+		orientation = #South ifTrue: [orientation := #West]]
+		]
+	].! !
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:29:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:42:56'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:43:42'!
+test10
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'l'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: 0@0 heading: #South).! !
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:43:44'!
+ERROR!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:43:56'!
+marsRoverAt00HeadingWest
+	self shouldBeImplemented.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:44:12' prior: 50553227!
+marsRoverAt00HeadingWest
+	
+	^MarsRover at: 0@0 heading: #East! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:44:17' prior: 50553232!
+marsRoverAt00HeadingWest
+	
+	^MarsRover at: 0@0 heading: #West! !
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:44:27'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:45:06' prior: 50553146!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #West] ifFalse:[
+		orientation = #West ifTrue: [orientation := #South]]].
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [
+		orientation = #East ifTrue: [orientation := #South] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East] ifFalse:[
+		orientation = #South ifTrue: [orientation := #West]]
+		]
+	].! !
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:45:11'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/3/2022 21:45:27'!
+test11
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/3/2022 21:45:29'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:45:57' prior: 50553245!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [
+		orientation = #South ifTrue: [orientation := #East] ifFalse: [
+		orientation = #East ifTrue: [orientation := #North] ifFalse: [
+		orientation = #North ifTrue: [orientation := #West] ifFalse:[
+		orientation = #West ifTrue: [orientation := #South]]].
+		]
+	].
+	aStringOfCommands = 'r' ifTrue: [
+		orientation = #East ifTrue: [orientation := #South] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East] ifFalse:[
+		orientation = #South ifTrue: [orientation := #West] ifFalse:[
+		orientation = #West ifTrue: [orientation := #North]]]
+		]
+	].! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/3/2022 21:46:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/3/2022 21:47:43'!
+PASSED!
+
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverHeading category: 'MarsRover' stamp: 'GM 10/3/2022 21:48:42'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverHeadingNorth category: 'MarsRover' stamp: 'GM 10/3/2022 21:49:01'!
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverHeadingSouth category: 'MarsRover' stamp: 'GM 10/3/2022 21:49:04'!
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverHeadingEast category: 'MarsRover' stamp: 'GM 10/3/2022 21:49:07'!
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRoverHeadingWest category: 'MarsRover' stamp: 'GM 10/3/2022 21:49:14'!
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'GM 10/3/2022 21:53:33'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position orientation heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/3/2022 21:53:29' prior: 50553307!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft: self	].
+	aStringOfCommands = 'r' ifTrue: [
+		orientation = #East ifTrue: [orientation := #South] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East] ifFalse:[
+		orientation = #South ifTrue: [orientation := #West] ifFalse:[
+		orientation = #West ifTrue: [orientation := #North]]]
+		]
+	].! !
+
+Object subclass: #MarsRover
+	instanceVariableNames: 'position heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+
+!classDefinition: #MarsRover category: 'MarsRover' stamp: 'GM 10/3/2022 21:53:49'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/3/2022 21:56:02' prior: 50552309!
+at: aPosition heading: anOrientation 
+	
+	^self new initializeAt: aPosition heading: (MarsRoverHeading for: anOrientation).! !
+!MarsRoverHeadingEast class methodsFor: 'no messages' stamp: 'GM 10/3/2022 21:57:31'!
+isHeading: anOrientation
+
+	^ anOrientation = #East! !
+!MarsRoverHeadingNorth class methodsFor: 'no messages' stamp: 'GM 10/3/2022 21:58:02'!
+isHeading: anOrientation
+
+	^anOrientation = #North	! !
+
+----SNAPSHOT----(3 October 2022 22:01:31) CuisUniversity-5481.image priorSource: 7059698!
+
+----SNAPSHOT----(3 October 2022 22:02:10) CuisUniversity-5481.image priorSource: 7099318!
+
+----QUIT----(3 October 2022 23:55:43) CuisUniversity-5481.image priorSource: 7099409!
+
+----STARTUP---- (5 October 2022 20:50:30) as /home/gonzalo/Desktop/MarsRover/linux64/CuisUniversity-5481.image!
+
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 20:52:26' prior: 50553458!
+process: aStringOfCommands
+	|orientation|
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft: self	].
+	aStringOfCommands = 'r' ifTrue: [
+		orientation = #East ifTrue: [orientation := #South] ifFalse: [
+		orientation = #North ifTrue: [orientation := #East] ifFalse:[
+		orientation = #South ifTrue: [orientation := #West] ifFalse:[
+		orientation = #West ifTrue: [orientation := #North]]]
+		]
+	].! !
+!MarsRoverHeadingSouth class methodsFor: 'no messages' stamp: 'GM 10/5/2022 20:53:16'!
+isHeading: anOrientation
+
+	^ anOrientation = #South! !
+!MarsRoverHeadingWest class methodsFor: 'no messages' stamp: 'GM 10/5/2022 20:53:25'!
+isHeading: anOrientation
+
+	^ anOrientation = #West! !
+!MarsRoverHeading class methodsFor: 'no messages' stamp: 'GM 10/5/2022 20:55:06'!
+for: aMarsRover heading: anOrientation
+	
+	^ (self subclasses detect: [ :class | class isHeading: anOrientation]) initializeFor: aMarsRover.! !
+
+!classDefinition: #MarsRoverHeading category: 'MarsRover' stamp: 'GM 10/5/2022 20:55:39'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover'!
+!MarsRoverHeading methodsFor: 'no messages' stamp: 'GM 10/5/2022 20:55:37'!
+initializeFor: aMarsRover
+
+	marsRover := aMarsRover! !
+!MarsRoverHeadingEast methodsFor: 'no messages' stamp: 'GM 10/5/2022 20:56:41'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingEast! !
+!MarsRoverHeadingEast methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:56:52'!
+turnRight
+
+	marsRover turnRightWhenHeadingEast! !
+!MarsRoverHeadingNorth methodsFor: 'nil' stamp: 'GM 10/5/2022 20:57:04'!
+turnRight
+
+	marsRover turnRightWhenHeadingNorth! !
+!MarsRoverHeadingNorth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:57:11'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingNorth! !
+!MarsRoverHeadingSouth methodsFor: 'nil' stamp: 'GM 10/5/2022 20:57:20'!
+turnRight
+
+	marsRover turnRightWhenHeadingSouth! !
+!MarsRoverHeadingSouth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:57:30'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingSouth! !
+!MarsRoverHeadingWest methodsFor: 'nil' stamp: 'GM 10/5/2022 20:57:40'!
+turnRight
+
+	marsRover turnRightWhenHeadingWest! !
+!MarsRoverHeadingWest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:57:47'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingWest! !
+!MarsRoverHeading methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:58:08'!
+turnLeft
+
+	self subclassResponsibility.! !
+!MarsRoverHeading methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:58:09' prior: 50553603!
+turnLeft
+
+	self subclassResponsibility! !
+!MarsRoverHeading methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 20:58:12'!
+turnRight
+
+	self subclassResponsibility! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 20:59:37'!
+turnRightWhenHeadingEast
+
+	heading := MarsRoverHeadingSouth for: self.! !
+!MarsRoverHeading class methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:02:55'!
+for: aMarsRover
+
+	^ self initializeFor: aMarsRover.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:03:27'!
+turnLeftWhenHeadingEast
+
+	heading := MarsRoverHeadingNorth for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:03:51'!
+turnRightWhenHeadingNorth
+
+	heading := MarsRoverHeadingEast for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:03:58'!
+turnLeftWhenHeadingNorth
+
+	heading := MarsRoverHeadingWest for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:04:08'!
+turnRightWhenHeadingWest
+
+	heading := MarsRoverHeadingNorth for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:04:16'!
+turnLeftWhenHeadingWest
+
+	heading := MarsRoverHeadingSouth for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:04:41'!
+turnRightWhenHeadingSouth
+
+	heading := MarsRoverHeadingEast for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:04:58'!
+turnLeftWhenHeadingSouth
+
+	heading := MarsRoverHeadingEast for: self.! !
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 21:05:06' prior: 50553651!
+turnRightWhenHeadingSouth
+
+	heading := MarsRoverHeadingWest for: self.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:05:46' prior: 50553517!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:05:52'!
+ERROR!
+!MarsRoverHeading class methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:06:04' prior: 50553622!
+for: aMarsRover
+
+	^ self new initializeFor: aMarsRover.! !
+!MarsRoverHeading class methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:06:09' prior: 50553546!
+for: aMarsRover heading: anOrientation
+	
+	^ (self subclasses detect: [ :class | class isHeading: anOrientation]) new initializeFor: aMarsRover.! !
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:06:14'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:06:51'!
+ERROR!
+
+MarsRoverHeading for: anOrientation!
+
+anOrientation a MarsRoverHeading!
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/5/2022 21:09:16' prior: 50553488!
+at: aPosition heading: anOrientation 
+	
+	^self new initializeAt: aPosition heading: anOrientation.! !
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/5/2022 21:09:39' prior: 50552338!
+initializeAt: aPosition heading: anOrientation 
+
+	position := aPosition.
+	heading := MarsRoverHeading for: self heading: anOrientation.! !
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:09:41'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:09:46'!
+FAILURE!
+!MarsRover methodsFor: 'testing' stamp: 'GM 10/5/2022 21:10:51' prior: 50552680!
+isAt: aPosition heading: anOrientation 
+	
+	^ aPosition = position and: (heading class isHeading: anOrientation)! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:11:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:11:16'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:12:40'!
+test12
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:13:16' prior: 50553784!
+test12
+
+	|marsRover|
+	marsRover := MarsRover at: 1@0 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 2@0 heading: #North).! !
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:13:17'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:14:16' prior: 50553666!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := position + 0@1].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:14:20'!
+ERROR!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:14:35' prior: 50553806!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := position + (0@1)].
+	aStringOfCommands = 'b' ifTrue: [position := 0@-1].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:14:39'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:15:21' prior: 50553794!
+test12
+
+	|marsRover|
+	marsRover := MarsRover at: 0@1 heading: #North.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@1 heading: #North).
+	self assert: (marsRover isAt: 0@2 heading: #North).! !
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:15:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:15:58'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:16:36'!
+test13
+
+	|marsRover|
+	marsRover := MarsRover at: 0@-1 heading: #North.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@-1 heading: #North).
+	self assert: (marsRover isAt: 0@-2 heading: #North).! !
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:16:37'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:17:00' prior: 50553820!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [position := position + (0@1)].
+	aStringOfCommands = 'b' ifTrue: [position := position + (0@-1)].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:17:01'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:17:03'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:19:00'!
+test14
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: 1@0 heading: #East).! !
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:19:20'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:21:10' prior: 50553918!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [ heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [position := position + (0@-1)].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:21:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:21:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:21:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:21:17'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:21:21'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:21:25'!
+ERROR!
+!MarsRoverHeadingNorth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:21:53'!
+moveForward
+	
+	marsRover moveForwardHeadingNorth! !
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:21:57'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:22:05'!
+ERROR!
+!MarsRoverHeadingEast methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:22:23'!
+moveForward
+
+	marsRover moveForwardHeadingEast! !
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:22:27'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:22:38'!
+moveForwardHeadingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:23:10' prior: 50554076!
+moveForwardHeadingEast
+	
+	position := position + (1@0)! !
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:23:11'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:23:11'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:23:11'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:23:13'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:23:19'!
+moveForwardHeadingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:23:37' prior: 50554124!
+moveForwardHeadingNorth
+	
+	position := position + 0@1! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:23:39'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:23:46' prior: 50554129!
+moveForwardHeadingNorth
+	
+	position := position + (0@1)! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:23:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:23:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:23:53'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:25:02'!
+test15
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingEast.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #East).
+	self assert: (marsRover isAt: -1@0 heading: #East).! !
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:25:04'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:25:34' prior: 50554009!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [ heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [ heading moveBackward].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 21:25:45' prior: 50554193!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [ heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [ heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [		heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ heading turnRight].
+! !
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:25:52'!
+ERROR!
+!MarsRoverHeadingEast methodsFor: 'movement' stamp: 'GM 10/5/2022 21:26:17'!
+moveBackwards
+	self shouldBeImplemented.! !
+!MarsRoverHeadingEast methodsFor: 'movement' stamp: 'GM 10/5/2022 21:26:28' prior: 50554217!
+moveBackwards
+	
+	marsRover moveBackwardsHeadingEast! !
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:26:34'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:26:39'!
+moveBackwardsHeadingEast
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:27:08' prior: 50554229!
+moveBackwardsHeadingEast
+	
+	position := position + (-1@0)! !
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:27:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:27:10'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:27:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:27:12'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:27:16'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:27:18'!
+ERROR!
+!MarsRoverHeadingNorth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:27:30'!
+moveBackwards
+	self shouldBeImplemented.! !
+!MarsRoverHeadingNorth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:27:40' prior: 50554284!
+moveBackwards
+	
+	marsRover moveBackwardsHeadingNorth! !
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:27:42'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:27:49'!
+moveBackwardsHeadingNorth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:28:11' prior: 50554296!
+moveBackwardsHeadingNorth
+	
+	position := position + (0@-1)! !
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:28:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:28:15'!
+PASSED!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:29'!
+moveWest
+
+	^ position := position + (-1@0)! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:29' prior: 50554234!
+moveBackwardsHeadingEast
+	
+	self moveWest! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:43'!
+moveSouth
+
+	^ position := position + (0@-1)! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:43' prior: 50554301!
+moveBackwardsHeadingNorth
+	
+	self moveSouth! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:56'!
+moveEast
+
+	^ position := position + (1@0)! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:29:56' prior: 50554081!
+moveForwardHeadingEast
+	
+	self moveEast! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:30:03'!
+moveNorth
+
+	^ position := position + (0@1)! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:30:03' prior: 50554136!
+moveForwardHeadingNorth
+	
+	self moveNorth! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:31:10'!
+test16
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@-1 heading: #South).! !
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:31:46'!
+ERROR!
+!MarsRoverHeadingSouth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:31:56'!
+moveForward
+	self shouldBeImplemented.! !
+!MarsRoverHeadingSouth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:32:13' prior: 50554354!
+moveForward
+	
+	marsRover moveForwardHeadingSouth! !
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:32:15'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:32:20'!
+moveForwardHeadingSouth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:32:24' prior: 50554365!
+moveForwardHeadingSouth
+	
+	self moveSouth! !
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:32:25'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:32:55'!
+test17
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingSouth.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #South).
+	self assert: (marsRover isAt: 0@1 heading: #South).! !
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:32:56'!
+ERROR!
+!MarsRoverHeadingSouth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:33:04'!
+moveBackwards
+	self shouldBeImplemented.! !
+!MarsRoverHeadingSouth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:33:14' prior: 50554426!
+moveBackwards
+	
+	marsRover moveBackwardsHeadingSouth! !
+!MarsRoverHeadingSouth methodsFor: 'movement' stamp: 'GM 10/5/2022 21:33:18' prior: 50554431!
+moveBackwards
+	
+	marsRover moveBackwardsHeadingSouth.! !
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:33:19'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:33:45'!
+moveBackwardsHeadingSouth
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:33:53' prior: 50554443!
+moveBackwardsHeadingSouth
+	
+	self moveNorth! !
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:33:55'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:34:36'!
+test18
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'f'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: -1@0 heading: #West).! !
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:34:43'!
+ERROR!
+!MarsRoverHeadingWest methodsFor: 'movement' stamp: 'GM 10/5/2022 21:34:49'!
+moveForward
+	self shouldBeImplemented.! !
+!MarsRoverHeadingWest methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:01' prior: 50554506!
+moveForward
+	
+	marsRover moveForwardHeadingWest! !
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:35:03'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:09'!
+moveForwardHeadingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:16' prior: 50554517!
+moveForwardHeadingWest
+	
+	self moveWest.! !
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:35:17'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:35:26'!
+test19
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'b'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: 1@0 heading: #West).! !
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:35:28'!
+ERROR!
+!MarsRoverHeadingWest methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:34'!
+moveBackwards
+	self shouldBeImplemented.! !
+!MarsRoverHeadingWest methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:46' prior: 50554583!
+moveBackwards
+	
+	marsRover moveBackwardsHeadingWest! !
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:35:48'!
+ERROR!
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:52'!
+moveBackwardsHeadingWest
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'movement' stamp: 'GM 10/5/2022 21:35:56' prior: 50554595!
+moveBackwardsHeadingWest
+	
+	self moveEast! !
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:35:59'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:42:29'!
+assertThatMarsRoverStartingAt: aStartingPosition heading: aStartingOrientation afterProcessing: aStringOfCommands endsAt: aFinishPosition heading: aFinishOrientation
+
+	|marsRover|
+	marsRover := MarsRover at: aStartingPosition heading: aStartingOrientation .
+	marsRover process: aStringOfCommands.
+	self deny: (marsRover isAt: aStartingPosition heading: aStartingOrientation).
+	self assert: (marsRover isAt: aFinishPosition heading: aFinishOrientation).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:43:29' prior: 50552599!
+test01EmptyCommandDoesntChangePositionOrHeading
+
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	marsRover process: ''.
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:46:28' prior: 50552608!
+test02
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:46:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:46:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:46:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:46:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:46:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:46:29'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:46:51' prior: 50552628!
+test03
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'b' endsAt: 0@-1 heading: #North.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:47:20' prior: 50552712!
+test04
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'l' endsAt: 0@0 heading: #West.
+! !
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:47:21'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:47:45' prior: 50552880!
+test06
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'l' endsAt: 0@0 heading: #North.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:48:02' prior: 50552743!
+test05
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingNorth.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #North).
+	self assert: (marsRover isAt: 0@0 heading: #East).
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:48:04' prior: 50554803!
+test05
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+! !
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:48:05'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:48:44' prior: 50553103!
+test07
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:49:06' prior: 50553085!
+test08
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+! !
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:49:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:49:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:49:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:49:06'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:49:07'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:49:27' prior: 50553134!
+test09
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'r' endsAt: 0@0 heading: #West.
+! !
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:49:31'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:49:55' prior: 50553216!
+test10
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'l' endsAt: 0@0 heading: #South.
+! !
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:49:56'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:50:02' prior: 50553295!
+test11
+
+	|marsRover|
+	marsRover := self marsRoverAt00HeadingWest.
+	marsRover process: 'r'.
+	self deny: (marsRover isAt: 0@0 heading: #West).
+	self assert: (marsRover isAt: 0@0 heading: #North).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:50:18' prior: 50555043!
+test11
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:50:19'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:50:23' prior: 50555053!
+test11
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #South.! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:50:24'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:50:28' prior: 50555108!
+test11
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.! !
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:50:28'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:51:41' prior: 50553834!
+test12
+
+	self assertThatMarsRoverStartingAt: 0@1 heading: #North afterProcessing: 'f' endsAt: 0@2 heading: #North.! !
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:51:42'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:51:57' prior: 50553906!
+test13
+
+	self assertThatMarsRoverStartingAt: 0@-1 heading: #North afterProcessing: 'b' endsAt: 0@-2 heading: #North.! !
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:51:57'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:52:31' prior: 50553997!
+test14
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'f' endsAt: 1@0 heading: #East.! !
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:52:32'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:52:52' prior: 50554181!
+test15
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'b' endsAt: -1@0 heading: #East.! !
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:52:52'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:53:25' prior: 50554343!
+test16
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.! !
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:53:27'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:53:40' prior: 50554415!
+test17
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'b' endsAt: 0@1 heading: #South.! !
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:53:41'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:54:13' prior: 50554495!
+test18
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'f' endsAt: -1@0 heading: #West.! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 21:54:28' prior: 50554572!
+test19
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.! !
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 21:54:29'!
+PASSED!
+
+!methodRemoval: MarsRoverTest #marsRoverAt00HeadingEast stamp: 'GM 10/5/2022 21:54:43'!
+marsRoverAt00HeadingEast
+
+	^ MarsRover at: 0@0 heading: #East!
+
+!methodRemoval: MarsRoverTest #marsRoverAt00HeadingSouth stamp: 'GM 10/5/2022 21:54:45'!
+marsRoverAt00HeadingSouth
+
+	^ MarsRover at: 0@0 heading: #South!
+
+!methodRemoval: MarsRoverTest #marsRoverAt00HeadingNorth stamp: 'GM 10/5/2022 21:54:46'!
+marsRoverAt00HeadingNorth
+
+	^ MarsRover at: 0@0 heading: #North!
+
+!methodRemoval: MarsRoverTest #marsRoverAt00HeadingWest stamp: 'GM 10/5/2022 21:54:46'!
+marsRoverAt00HeadingWest
+	
+	^MarsRover at: 0@0 heading: #West!
+
+----SNAPSHOT----(5 October 2022 22:02:10) CuisUniversity-5481.image priorSource: 7099500!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:04:36' prior: 50554670!
+test01EmptyCommandDoesntChangePositionOrHeading
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: '' endsAt: 0@0 heading: #North.
+! !
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:04:37'!
+FAILURE!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:04:44' prior: 50554652!
+assertThatMarsRoverStartingAt: aStartingPosition heading: aStartingOrientation afterProcessing: aStringOfCommands endsAt: aFinishPosition heading: aFinishOrientation
+
+	|marsRover|
+	marsRover := MarsRover at: aStartingPosition heading: aStartingOrientation .
+	marsRover process: aStringOfCommands.
+	self assert: (marsRover isAt: aFinishPosition heading: aFinishOrientation).! !
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:04:48'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:05:42' prior: 50554679!
+test02
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:12:37' prior: 50555599!
+assertThatMarsRoverStartingAt: aStartingPosition heading: aStartingOrientation afterProcessing: aStringOfCommands endsAt: aFinalPosition heading: aFinishOrientation
+
+	|marsRover|
+	marsRover := MarsRover at: aStartingPosition heading: aStartingOrientation .
+	marsRover process: aStringOfCommands.
+	self assert: (marsRover isAt: aFinalPosition heading: aFinishOrientation).! !
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:12:54' prior: 50555669!
+assertThatMarsRoverStartingAt: aStartingPosition heading: aStartingOrientation afterProcessing: aStringOfCommands endsAt: aFinalPosition heading: aFinalOrientation
+
+	|marsRover|
+	marsRover := MarsRover at: aStartingPosition heading: aStartingOrientation .
+	marsRover process: aStringOfCommands.
+	self assert: (marsRover isAt: aFinalPosition heading: aFinalOrientation).! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:16:26' prior: 50554204!
+process: aStringOfCommands
+	
+	aStringOfCommands = 'f' ifTrue: [ ^heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [ ^heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [	^	heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ ^heading turnRight].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:16:45'!
+invalidCommandError
+
+	^ 'Please enter a valid command'! !
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:16:49'!
+ERROR!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:16:49'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:16:49'!
+ERROR!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:18:18' prior: 50555699!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [].
+	aStringOfCommands = 'f' ifTrue: [ ^heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [ ^heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [	^	heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [ ^heading turnRight].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:18:38' prior: 50555767!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [^heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [^heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [	^	heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [^heading turnRight].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:19:19' prior: 50555781!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^heading].
+	aStringOfCommands = 'f' ifTrue: [^heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [^heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [	^	heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [^heading turnRight].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:19:56' prior: 50555795!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [^heading moveForward].
+	aStringOfCommands = 'b' ifTrue: [^heading moveBackwards].
+	aStringOfCommands = 'l' ifTrue: [	^	heading turnLeft	].
+	aStringOfCommands = 'r' ifTrue: [^heading turnRight].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:21:03' prior: 50555809!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [heading moveForward. ^self].
+	aStringOfCommands = 'b' ifTrue: [heading moveBackwards. ^self].
+	aStringOfCommands = 'l' ifTrue: [	heading turnLeft	. ^self].
+	aStringOfCommands = 'r' ifTrue: [heading turnRight. ^self].
+	
+	self error: self invalidCommandError.! !
+
+self return!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:21:56' prior: 50555823!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [heading moveForward. ^self].
+	aStringOfCommands = 'b' ifTrue: [heading moveBackwards. ^self].
+	aStringOfCommands = 'l' ifTrue: [	heading turnLeft	. ^self].
+	aStringOfCommands = 'r' ifTrue: [heading turnRight. ^self].
+	
+	self error: self invalidCommandError.! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/5/2022 22:22:39' prior: 50555838!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [heading moveForward. ^self].
+	aStringOfCommands = 'b' ifTrue: [heading moveBackwards. ^self].
+	aStringOfCommands = 'l' ifTrue: [	heading turnLeft	. ^self].
+	aStringOfCommands = 'r' ifTrue: [heading turnRight. ^self].
+! !
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:22:43'!
+PASSED!
+!MarsRoverTest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:23:22'!
+test20
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ff' endsAt: 0@2 heading: #North.! !
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/5/2022 22:23:23'!
+FAILURE!
+!MarsRoverHeading methodsFor: 'movement' stamp: 'GM 10/5/2022 22:29:13'!
+moveForward
+
+	self subclassResponsibility ! !
+!MarsRoverHeading methodsFor: 'movement' stamp: 'GM 10/5/2022 22:29:20'!
+moveBackwards
+
+	self subclassResponsibility ! !
+!MarsRoverHeading methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:27'!
+rotateLeft
+
+	self subclassResponsibility! !
+!MarsRoverHeadingEast methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:27' overrides: 50555931!
+rotateLeft
+
+	marsRover turnLeftWhenHeadingEast! !
+!MarsRoverHeadingNorth methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:27' overrides: 50555931!
+rotateLeft
+
+	marsRover turnLeftWhenHeadingNorth! !
+!MarsRoverHeadingSouth methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:27' overrides: 50555931!
+rotateLeft
+
+	marsRover turnLeftWhenHeadingSouth! !
+!MarsRoverHeadingWest methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:27' overrides: 50555931!
+rotateLeft
+
+	marsRover turnLeftWhenHeadingWest! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:31:27' prior: 50555853!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [heading moveForward. ^self].
+	aStringOfCommands = 'b' ifTrue: [heading moveBackwards. ^self].
+	aStringOfCommands = 'l' ifTrue: [	heading rotateLeft	. ^self].
+	aStringOfCommands = 'r' ifTrue: [heading turnRight. ^self].
+! !
+
+!methodRemoval: MarsRoverHeading #turnLeft stamp: 'GM 10/5/2022 22:31:27'!
+turnLeft
+
+	self subclassResponsibility!
+
+!methodRemoval: MarsRoverHeadingEast #turnLeft stamp: 'GM 10/5/2022 22:31:27'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingEast!
+
+!methodRemoval: MarsRoverHeadingNorth #turnLeft stamp: 'GM 10/5/2022 22:31:27'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingNorth!
+
+!methodRemoval: MarsRoverHeadingSouth #turnLeft stamp: 'GM 10/5/2022 22:31:27'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingSouth!
+
+!methodRemoval: MarsRoverHeadingWest #turnLeft stamp: 'GM 10/5/2022 22:31:27'!
+turnLeft
+
+	marsRover turnLeftWhenHeadingWest!
+!MarsRoverHeading methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:39'!
+rotateRight
+
+	self subclassResponsibility! !
+!MarsRoverHeadingEast methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:39' overrides: 50555988!
+rotateRight
+
+	marsRover turnRightWhenHeadingEast! !
+!MarsRoverHeadingNorth methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:39' overrides: 50555988!
+rotateRight
+
+	marsRover turnRightWhenHeadingNorth! !
+!MarsRoverHeadingSouth methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:39' overrides: 50555988!
+rotateRight
+
+	marsRover turnRightWhenHeadingSouth! !
+!MarsRoverHeadingWest methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:31:39' overrides: 50555988!
+rotateRight
+
+	marsRover turnRightWhenHeadingWest! !
+!MarsRover methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:31:39' prior: 50555956!
+process: aStringOfCommands
+	
+	aStringOfCommands = '' ifTrue: [^self].
+	aStringOfCommands = 'f' ifTrue: [heading moveForward. ^self].
+	aStringOfCommands = 'b' ifTrue: [heading moveBackwards. ^self].
+	aStringOfCommands = 'l' ifTrue: [	heading rotateLeft	. ^self].
+	aStringOfCommands = 'r' ifTrue: [heading rotateRight. ^self].
+! !
+
+!methodRemoval: MarsRoverHeading #turnRight stamp: 'GM 10/5/2022 22:31:39'!
+turnRight
+
+	self subclassResponsibility!
+
+!methodRemoval: MarsRoverHeadingEast #turnRight stamp: 'GM 10/5/2022 22:31:39'!
+turnRight
+
+	marsRover turnRightWhenHeadingEast!
+
+!methodRemoval: MarsRoverHeadingNorth #turnRight stamp: 'GM 10/5/2022 22:31:39'!
+turnRight
+
+	marsRover turnRightWhenHeadingNorth!
+
+!methodRemoval: MarsRoverHeadingSouth #turnRight stamp: 'GM 10/5/2022 22:31:39'!
+turnRight
+
+	marsRover turnRightWhenHeadingSouth!
+
+!methodRemoval: MarsRoverHeadingWest #turnRight stamp: 'GM 10/5/2022 22:31:39'!
+turnRight
+
+	marsRover turnRightWhenHeadingWest!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:32:29'!
+rotateLeftWhenHeadingEast
+
+	heading := MarsRoverHeadingNorth for: self.! !
+!MarsRoverHeadingEast methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:32:29' prior: 50555936 overrides: 50555931!
+rotateLeft
+
+	marsRover rotateLeftWhenHeadingEast! !
+
+!methodRemoval: MarsRover #turnLeftWhenHeadingEast stamp: 'GM 10/5/2022 22:32:29'!
+turnLeftWhenHeadingEast
+
+	heading := MarsRoverHeadingNorth for: self.!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:32:51'!
+rotateLeftWhenHeadingNorth
+
+	heading := MarsRoverHeadingWest for: self.! !
+!MarsRoverHeadingNorth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:32:51' prior: 50555941 overrides: 50555931!
+rotateLeft
+
+	marsRover rotateLeftWhenHeadingNorth! !
+
+!methodRemoval: MarsRover #turnLeftWhenHeadingNorth stamp: 'GM 10/5/2022 22:32:51'!
+turnLeftWhenHeadingNorth
+
+	heading := MarsRoverHeadingWest for: self.!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:33:05'!
+rotateLeftWhenHeadingSouth
+
+	heading := MarsRoverHeadingEast for: self.! !
+!MarsRoverHeadingSouth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:33:05' prior: 50555946 overrides: 50555931!
+rotateLeft
+
+	marsRover rotateLeftWhenHeadingSouth! !
+
+!methodRemoval: MarsRover #turnLeftWhenHeadingSouth stamp: 'GM 10/5/2022 22:33:05'!
+turnLeftWhenHeadingSouth
+
+	heading := MarsRoverHeadingEast for: self.!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:33:20'!
+rotateLeftWhenHeadingWest
+
+	heading := MarsRoverHeadingSouth for: self.! !
+!MarsRoverHeadingWest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:33:20' prior: 50555951 overrides: 50555931!
+rotateLeft
+
+	marsRover rotateLeftWhenHeadingWest! !
+
+!methodRemoval: MarsRover #turnLeftWhenHeadingWest stamp: 'GM 10/5/2022 22:33:20'!
+turnLeftWhenHeadingWest
+
+	heading := MarsRoverHeadingSouth for: self.!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:33:31'!
+rotateRightWhenHeadingEast
+
+	heading := MarsRoverHeadingSouth for: self.! !
+!MarsRoverHeadingEast methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:33:31' prior: 50555993 overrides: 50555988!
+rotateRight
+
+	marsRover rotateRightWhenHeadingEast! !
+
+!methodRemoval: MarsRover #turnRightWhenHeadingEast stamp: 'GM 10/5/2022 22:33:31'!
+turnRightWhenHeadingEast
+
+	heading := MarsRoverHeadingSouth for: self.!
+!MarsRover methodsFor: 'rotation - private' stamp: 'GM 10/5/2022 22:33:45'!
+rotateRightWhenHeadingNorth
+
+	heading := MarsRoverHeadingEast for: self.! !
+!MarsRoverHeadingNorth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:33:45' prior: 50555998 overrides: 50555988!
+rotateRight
+
+	marsRover rotateRightWhenHeadingNorth! !
+
+!methodRemoval: MarsRover #turnRightWhenHeadingNorth stamp: 'GM 10/5/2022 22:33:45'!
+turnRightWhenHeadingNorth
+
+	heading := MarsRoverHeadingEast for: self.!
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:34:31'!
+rotateRightWhenHeadingSouth
+
+	heading := MarsRoverHeadingWest for: self.! !
+!MarsRoverHeadingSouth methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:34:31' prior: 50556003 overrides: 50555988!
+rotateRight
+
+	marsRover rotateRightWhenHeadingSouth! !
+
+!methodRemoval: MarsRover #turnRightWhenHeadingSouth stamp: 'GM 10/5/2022 22:34:31'!
+turnRightWhenHeadingSouth
+
+	heading := MarsRoverHeadingWest for: self.!
+!MarsRover methodsFor: 'rotation' stamp: 'GM 10/5/2022 22:34:42'!
+rotateRightWhenHeadingWest
+
+	heading := MarsRoverHeadingNorth for: self.! !
+!MarsRoverHeadingWest methodsFor: 'as yet unclassified' stamp: 'GM 10/5/2022 22:34:42' prior: 50556008 overrides: 50555988!
+rotateRight
+
+	marsRover rotateRightWhenHeadingWest! !
+
+!methodRemoval: MarsRover #turnRightWhenHeadingWest stamp: 'GM 10/5/2022 22:34:42'!
+turnRightWhenHeadingWest
+
+	heading := MarsRoverHeadingNorth for: self.!
+!MarsRoverHeading class methodsFor: 'instance creation - private' stamp: 'GM 10/5/2022 22:37:18'!
+isHeading
+
+	self subclassResponsibility ! !
+!MarsRoverHeading class methodsFor: 'instance creation - private' stamp: 'GM 10/5/2022 22:37:19' prior: 50556175!
+isHeading
+
+	self subclassResponsibility! !
+!MarsRoverHeading class methodsFor: 'instance creation - private' stamp: 'GM 10/5/2022 22:38:23'!
+isHeading: anOrientation
+
+	self subclassResponsibility! !
+
+!methodRemoval: MarsRoverHeading class #isHeading stamp: 'GM 10/5/2022 22:38:25'!
+isHeading
+
+	self subclassResponsibility!
+
+----SNAPSHOT----(5 October 2022 22:40:28) CuisUniversity-5481.image priorSource: 7165834!
+
+----SNAPSHOT----(5 October 2022 22:42:53) CuisUniversity-5481.image priorSource: 7185365!
+
+!methodRemoval: MarsRoverTest #test20 stamp: 'GM 10/5/2022 22:44:42'!
+test20
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ff' endsAt: 0@2 heading: #North.!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:44:45'!
+PASSED!
+
+----SNAPSHOT----(5 October 2022 22:44:50) CuisUniversity-5481.image priorSource: 7185456!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:45:28'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/5/2022 22:46:20'!
+PASSED!
+
+----SNAPSHOT----(5 October 2022 22:46:56) CuisUniversity-5481.image priorSource: 7187256!
+
+----QUIT----(6 October 2022 01:10:10) CuisUniversity-5481.image priorSource: 7190389!
+
+----STARTUP---- (6 October 2022 10:55:27) as /home/gonzalo/Desktop/MarsRover/linux64/CuisUniversity-5481.image!
+
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 10:57:38'!
+test20
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ffr' endsAt: 0@2 heading: #East.! !
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 10:57:39'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 10:59:51' prior: 50556013!
+process: aStringOfCommands
+	
+	aStringOfCommands do: [ :command |
+	command = $f ifTrue: [heading moveForward. ^self].
+	command = $b ifTrue: [heading moveBackwards. ^self].
+	command = $l ifTrue: [	heading rotateLeft	. ^self].
+	command = $r ifTrue: [heading rotateRight. ^self].
+].
+	! !
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 10:59:57'!
+FAILURE!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:00:01'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 11:01:09' prior: 50556368!
+process: aStringOfCommands
+	
+	aStringOfCommands do: [ :command |
+	command = $f ifTrue: [heading moveForward.].
+	command = $b ifTrue: [heading moveBackwards.].
+	command = $l ifTrue: [	heading rotateLeft	. ].
+	command = $r ifTrue: [heading rotateRight.].
+].
+	! !
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:01:10'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:01:13'!
+PASSED!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 11:01:50' prior: 50556385!
+process: aStringOfCommands
+	
+	aStringOfCommands do: [ :command | self processCommand: command].
+	! !
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 11:02:17'!
+processCommand: aCommand
+
+	aCommand = $f ifTrue: [heading moveForward.].
+	aCommand = $b ifTrue: [heading moveBackwards.].
+	aCommand = $l ifTrue: [	heading rotateLeft	. ].
+	aCommand = $r ifTrue: [heading rotateRight.].! !
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:02:22'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:06:24'!
+test21
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: (marsRover process: 'x') raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:06:28'!
+FAILURE!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 11:07:09' prior: 50556502!
+processCommand: aCommand
+
+	aCommand = $f ifTrue: [heading moveForward.].
+	aCommand = $b ifTrue: [heading moveBackwards.].
+	aCommand = $l ifTrue: [	heading rotateLeft	. ].
+	aCommand = $r ifTrue: [heading rotateRight.].
+	
+	self error: self class invalidCommandErrorMessage.! !
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/6/2022 11:07:49'!
+invalidCommandErrorMessage
+
+	^ 'Send a valid command'! !
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:07:58'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:08:53'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:08:58'!
+ERROR!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:09:24' prior: 50556561!
+test21
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:09:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:09:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:09:25'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:09:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:09:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:09:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:09:34'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:09:34'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:09:36'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:09:59'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:10:03'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:10:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:10:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:10:09'!
+ERROR!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:10:09'!
+PASSED!
+!MarsRover methodsFor: 'processing' stamp: 'GM 10/6/2022 11:11:06' prior: 50556574!
+processCommand: aCommand
+
+	aCommand = $f ifTrue: [^heading moveForward.].
+	aCommand = $b ifTrue: [^heading moveBackwards.].
+	aCommand = $l ifTrue: [	^heading rotateLeft	. ].
+	aCommand = $r ifTrue: [^heading rotateRight.].
+	
+	self error: self class invalidCommandErrorMessage.! !
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:11:13'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:11:18'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:16:42' prior: 50555662!
+test02
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:16:51'!
+test02marsRoverStartingAt00HeadingNorthAfterProcessingFEndsAt01HeadingNorth
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+
+!methodRemoval: MarsRoverTest #test02 stamp: 'GM 10/6/2022 11:16:51'!
+test02
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:21:35'!
+test04MarsRoverHeadingNorthHeadsWestAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'l' endsAt: 0@0 heading: #West.
+! !
+
+!methodRemoval: MarsRoverTest #test04 stamp: 'GM 10/6/2022 11:21:38'!
+test04
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'l' endsAt: 0@0 heading: #West.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:22:37'!
+test05MarsRoverHeadingNorthHeadsEastAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+! !
+
+!methodRemoval: MarsRoverTest #test05 stamp: 'GM 10/6/2022 11:22:37'!
+test05
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:24:01' prior: 50556892!
+test02marsRoverStartingAt00HeadingNorthAfterProcessingFEndsAt01HeadingNorth
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:24:05'!
+test02MarsRoverStartingAt00HeadingNorthMovesNorthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+! !
+
+!methodRemoval: MarsRoverTest #test02marsRoverStartingAt00HeadingNorthAfterProcessingFEndsAt01HeadingNorth stamp: 'GM 10/6/2022 11:24:05'!
+test02marsRoverStartingAt00HeadingNorthAfterProcessingFEndsAt01HeadingNorth
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:25:16'!
+test06MarsRoverHeadingEastHeadsNorthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'l' endsAt: 0@0 heading: #North.
+! !
+
+!methodRemoval: MarsRoverTest #test06 stamp: 'GM 10/6/2022 11:25:16'!
+test06
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'l' endsAt: 0@0 heading: #North.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:25:45'!
+test07MarsRoverHeadingEastHeadsNorthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+! !
+
+!methodRemoval: MarsRoverTest #test07 stamp: 'GM 10/6/2022 11:25:45'!
+test07
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:25:58'!
+test07MarsRoverHeadingEastHeadsSouthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+! !
+
+!methodRemoval: MarsRoverTest #test07MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 11:25:58'!
+test07MarsRoverHeadingEastHeadsNorthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:26:35'!
+test08MarsRoverHeadingSouthHeadsEastAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+! !
+
+!methodRemoval: MarsRoverTest #test08 stamp: 'GM 10/6/2022 11:26:35'!
+test08
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:26:52'!
+test09MarsRoverHeadingSouthHeadsWestAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'r' endsAt: 0@0 heading: #West.
+! !
+
+!methodRemoval: MarsRoverTest #test09 stamp: 'GM 10/6/2022 11:26:52'!
+test09
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'r' endsAt: 0@0 heading: #West.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:27:19'!
+test10MarsRoverHeadingWestHeadsSouthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'l' endsAt: 0@0 heading: #South.
+! !
+
+!methodRemoval: MarsRoverTest #test10 stamp: 'GM 10/6/2022 11:27:19'!
+test10
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'l' endsAt: 0@0 heading: #South.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:27:30'!
+test11MarsRoverHeadingWestHeadsSouthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test11 stamp: 'GM 10/6/2022 11:27:30'!
+test11
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:27:38'!
+test11MarsRoverHeadingWestHeadsNorthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test11MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 11:27:38'!
+test11MarsRoverHeadingWestHeadsSouthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:30:02'!
+test12MarsRoverHeadingNorthMovesNorthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@1 heading: #North afterProcessing: 'f' endsAt: 0@2 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test12 stamp: 'GM 10/6/2022 11:30:02'!
+test12
+
+	self assertThatMarsRoverStartingAt: 0@1 heading: #North afterProcessing: 'f' endsAt: 0@2 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:31:07'!
+test13MarsRoverHeadingNorthMovesSouthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@-1 heading: #North afterProcessing: 'b' endsAt: 0@-2 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test13 stamp: 'GM 10/6/2022 11:31:07'!
+test13
+
+	self assertThatMarsRoverStartingAt: 0@-1 heading: #North afterProcessing: 'b' endsAt: 0@-2 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:31:36'!
+test14MarsRoverHeadingEastMovesEastAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'f' endsAt: 1@0 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test14 stamp: 'GM 10/6/2022 11:31:36'!
+test14
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'f' endsAt: 1@0 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:31:54'!
+test15MarsRoverHeadingEastMovesWestAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'b' endsAt: -1@0 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test15 stamp: 'GM 10/6/2022 11:31:54'!
+test15
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'b' endsAt: -1@0 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:32:12'!
+test16MarsRoverHeadingSouthMovesSouthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.! !
+
+!methodRemoval: MarsRoverTest #test16 stamp: 'GM 10/6/2022 11:32:12'!
+test16
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:32:32'!
+test17MarsRoverHeadingSouthMovesNorthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'b' endsAt: 0@1 heading: #South.! !
+
+!methodRemoval: MarsRoverTest #test17 stamp: 'GM 10/6/2022 11:32:32'!
+test17
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'b' endsAt: 0@1 heading: #South.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:33:04'!
+test18MarsRoverHeadingWestMovesWestAfterProcessingF
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'f' endsAt: -1@0 heading: #West.! !
+
+!methodRemoval: MarsRoverTest #test18 stamp: 'GM 10/6/2022 11:33:04'!
+test18
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'f' endsAt: -1@0 heading: #West.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:33:17' prior: 50555510!
+test19
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.! !
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:33:36'!
+test19MarsRoverHeadingWestMovesWestAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.! !
+
+!methodRemoval: MarsRoverTest #test19 stamp: 'GM 10/6/2022 11:33:36'!
+test19
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:34:10'!
+test20MarsRoverCanProcessMultipleCommands
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ffr' endsAt: 0@2 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test20 stamp: 'GM 10/6/2022 11:34:10'!
+test20
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ffr' endsAt: 0@2 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:34:29'!
+test21MarsRoverCantProcessInvalidCommand
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!methodRemoval: MarsRoverTest #test21 stamp: 'GM 10/6/2022 11:34:29'!
+test21
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:35:10'!
+test21MarsRoverCantProcessInvalidCommands
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!methodRemoval: MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 11:35:10'!
+test21MarsRoverCantProcessInvalidCommand
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]!
+
+!methodRemoval: MarsRoverTest #test02MarsRoverStartingAt00HeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 11:35:45'!
+test02MarsRoverStartingAt00HeadingNorthMovesNorthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'f' endsAt: 0@1 heading: #North.
+!
+
+!methodRemoval: MarsRoverTest #test03 stamp: 'GM 10/6/2022 11:36:04'!
+test03
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'b' endsAt: 0@-1 heading: #North.
+!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommands stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommands stamp: 'GM 10/6/2022 11:36:09'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommands stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommands stamp: 'GM 10/6/2022 11:37:33'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:40:39'!
+test19MarsRoverHeadingWestMovesEastAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.! !
+
+!methodRemoval: MarsRoverTest #test19MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:40:39'!
+test19MarsRoverHeadingWestMovesWestAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 11:40:57'!
+test21MarsRoverCantProcessInvalidCommand
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!methodRemoval: MarsRoverTest #test21MarsRoverCantProcessInvalidCommands stamp: 'GM 10/6/2022 11:40:57'!
+test21MarsRoverCantProcessInvalidCommands
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]!
+!MarsRover class methodsFor: 'instance creation' stamp: 'GM 10/6/2022 11:42:09' prior: 50556586!
+invalidCommandErrorMessage
+
+	^ 'Please input a valid command'! !
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 11:42:23'!
+PASSED!
+
+----SNAPSHOT----(6 October 2022 13:11:47) CuisUniversity-5481.image priorSource: 7190480!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 13:11:52'!
+PASSED!
+
+----QUIT----(6 October 2022 13:12:53) CuisUniversity-5481.image priorSource: 7228088!
+
+----STARTUP---- (6 October 2022 16:12:56) as /home/gonzalo/Desktop/MarsRover/linux64/CuisUniversity-5481.image!
+
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+
+!testRun: #MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:12:58'!
+PASSED!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:23'!
+test02MarsRoverHeadingNorthHeadsWestAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'l' endsAt: 0@0 heading: #West.
+! !
+
+!methodRemoval: MarsRoverTest #test04MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:13:23'!
+test04MarsRoverHeadingNorthHeadsWestAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'l' endsAt: 0@0 heading: #West.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:30'!
+test03MarsRoverHeadingNorthHeadsEastAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+! !
+
+!methodRemoval: MarsRoverTest #test05MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 16:13:30'!
+test05MarsRoverHeadingNorthHeadsEastAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'r' endsAt: 0@0 heading: #East.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:34'!
+test04MarsRoverHeadingEastHeadsNorthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'l' endsAt: 0@0 heading: #North.
+! !
+
+!methodRemoval: MarsRoverTest #test06MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 16:13:34'!
+test06MarsRoverHeadingEastHeadsNorthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'l' endsAt: 0@0 heading: #North.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:39'!
+test05MarsRoverHeadingEastHeadsSouthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+! !
+
+!methodRemoval: MarsRoverTest #test07MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 16:13:39'!
+test07MarsRoverHeadingEastHeadsSouthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'r' endsAt: 0@0 heading: #South.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:44'!
+test07MarsRoverHeadingSouthHeadsEastAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+! !
+
+!methodRemoval: MarsRoverTest #test08MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:13:44'!
+test08MarsRoverHeadingSouthHeadsEastAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:49'!
+test06MarsRoverHeadingSouthHeadsEastAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+! !
+
+!methodRemoval: MarsRoverTest #test07MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:13:49'!
+test07MarsRoverHeadingSouthHeadsEastAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'l' endsAt: 0@0 heading: #East.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:13:54'!
+test07MarsRoverHeadingSouthHeadsWestAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'r' endsAt: 0@0 heading: #West.
+! !
+
+!methodRemoval: MarsRoverTest #test09MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 16:13:54'!
+test09MarsRoverHeadingSouthHeadsWestAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'r' endsAt: 0@0 heading: #West.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:01'!
+test08MarsRoverHeadingWestHeadsSouthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'l' endsAt: 0@0 heading: #South.
+! !
+
+!methodRemoval: MarsRoverTest #test10MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 16:14:01'!
+test10MarsRoverHeadingWestHeadsSouthAfterProcessingL
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'l' endsAt: 0@0 heading: #South.
+!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:06'!
+test09MarsRoverHeadingWestHeadsNorthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test11MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 16:14:06'!
+test11MarsRoverHeadingWestHeadsNorthAfterProcessingR
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'r' endsAt: 0@0 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:12'!
+test10MarsRoverHeadingNorthMovesNorthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@1 heading: #North afterProcessing: 'f' endsAt: 0@2 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test12MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 16:14:12'!
+test12MarsRoverHeadingNorthMovesNorthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@1 heading: #North afterProcessing: 'f' endsAt: 0@2 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:19'!
+test11MarsRoverHeadingNorthMovesSouthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@-1 heading: #North afterProcessing: 'b' endsAt: 0@-2 heading: #North.! !
+
+!methodRemoval: MarsRoverTest #test13MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 16:14:19'!
+test13MarsRoverHeadingNorthMovesSouthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@-1 heading: #North afterProcessing: 'b' endsAt: 0@-2 heading: #North.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:23'!
+test12MarsRoverHeadingEastMovesEastAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'f' endsAt: 1@0 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test14MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 16:14:23'!
+test14MarsRoverHeadingEastMovesEastAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'f' endsAt: 1@0 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:27'!
+test13MarsRoverHeadingEastMovesWestAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'b' endsAt: -1@0 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test15MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 16:14:27'!
+test15MarsRoverHeadingEastMovesWestAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #East afterProcessing: 'b' endsAt: -1@0 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:33'!
+test17MarsRoverHeadingSouthMovesSouthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.! !
+
+!methodRemoval: MarsRoverTest #test16MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:14:33'!
+test16MarsRoverHeadingSouthMovesSouthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:14:53'!
+test14MarsRoverHeadingSouthMovesSouthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.! !
+
+!methodRemoval: MarsRoverTest #test17MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:14:53'!
+test17MarsRoverHeadingSouthMovesSouthAfterProcessingF
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'f' endsAt: 0@-1 heading: #South.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:15:02'!
+test15MarsRoverHeadingSouthMovesNorthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'b' endsAt: 0@1 heading: #South.! !
+
+!methodRemoval: MarsRoverTest #test17MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 16:15:02'!
+test17MarsRoverHeadingSouthMovesNorthAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #South afterProcessing: 'b' endsAt: 0@1 heading: #South.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:15:06'!
+test16MarsRoverHeadingWestMovesWestAfterProcessingF
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'f' endsAt: -1@0 heading: #West.! !
+
+!methodRemoval: MarsRoverTest #test18MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 16:15:06'!
+test18MarsRoverHeadingWestMovesWestAfterProcessingF
+	
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'f' endsAt: -1@0 heading: #West.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:15:12'!
+test17MarsRoverHeadingWestMovesEastAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.! !
+
+!methodRemoval: MarsRoverTest #test19MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 16:15:12'!
+test19MarsRoverHeadingWestMovesEastAfterProcessingB
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #West afterProcessing: 'b' endsAt: 1@0 heading: #West.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:15:17'!
+test18MarsRoverCanProcessMultipleCommands
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ffr' endsAt: 0@2 heading: #East.! !
+
+!methodRemoval: MarsRoverTest #test20MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 16:15:17'!
+test20MarsRoverCanProcessMultipleCommands
+
+	self assertThatMarsRoverStartingAt: 0@0 heading: #North afterProcessing: 'ffr' endsAt: 0@2 heading: #East.!
+!MarsRoverTest methodsFor: 'tests' stamp: 'GM 10/6/2022 16:15:22'!
+test19MarsRoverCantProcessInvalidCommand
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]! !
+
+!methodRemoval: MarsRoverTest #test21MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:15:22'!
+test21MarsRoverCantProcessInvalidCommand
+	
+	|marsRover|
+	marsRover := MarsRover at: 0@0 heading: #North.
+	self should: [marsRover process: 'x'] raise: Error withExceptionDo: 
+	[ :anError |		self assert: anError messageText equals: MarsRover invalidCommandErrorMessage]!
+
+!testRun: #MarsRoverTest #test19MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:15:25'!
+PASSED!
+
+MarsRover at: 0@0 heading: #North!
+
+MarsRover at: 0@0 heading: #Northa!
+
+MarsRover at: 00 heading: #Northa!
+
+MarsRover at: 00 heading: #North!
+
+MarsRover at: 'hola' heading: #Northa!
+
+MarsRover at: 'hola' heading: #North!
+
+!testRun: #MarsRoverTest #test19MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:18:12'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test01EmptyCommandDoesntChangePositionOrHeading stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test02MarsRoverHeadingNorthHeadsWestAfterProcessingL stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test03MarsRoverHeadingNorthHeadsEastAfterProcessingR stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test04MarsRoverHeadingEastHeadsNorthAfterProcessingL stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test05MarsRoverHeadingEastHeadsSouthAfterProcessingR stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test06MarsRoverHeadingSouthHeadsEastAfterProcessingL stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test07MarsRoverHeadingSouthHeadsWestAfterProcessingR stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test08MarsRoverHeadingWestHeadsSouthAfterProcessingL stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test09MarsRoverHeadingWestHeadsNorthAfterProcessingR stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test10MarsRoverHeadingNorthMovesNorthAfterProcessingF stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test11MarsRoverHeadingNorthMovesSouthAfterProcessingB stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test12MarsRoverHeadingEastMovesEastAfterProcessingF stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test13MarsRoverHeadingEastMovesWestAfterProcessingB stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test14MarsRoverHeadingSouthMovesSouthAfterProcessingF stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test15MarsRoverHeadingSouthMovesNorthAfterProcessingB stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test16MarsRoverHeadingWestMovesWestAfterProcessingF stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test17MarsRoverHeadingWestMovesEastAfterProcessingB stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test18MarsRoverCanProcessMultipleCommands stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+!testRun: #MarsRoverTest #test19MarsRoverCantProcessInvalidCommand stamp: 'GM 10/6/2022 16:18:33'!
+PASSED!
+
+----QUIT----(6 October 2022 16:18:48) CuisUniversity-5481.image priorSource: 7230539!
