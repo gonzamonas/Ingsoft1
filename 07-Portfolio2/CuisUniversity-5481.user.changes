@@ -4314,3 +4314,1035 @@ Object subclass: #Account
 accept: aVisitor
 
 	self subclassResponsibility ! !
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 17:06:33'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 17:07:19) CuisUniversity-5481.image priorSource: 7515894!
+!Portfolio methodsFor: 'accounts management' stamp: 'GM 10/24/2022 17:07:50'!
+acceptReportVisitor: aVisitor
+
+	accounts do: [:account | account accept: aVisitor]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:07:50' prior: 50567128 overrides: 50567298!
+accept: aVisitor
+
+	accounts do: [:account | account acceptReportVisitor: aVisitor]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:07:50' prior: 50567309!
+acceptReportVisitor: aVisitor
+
+	accounts do: [:account | account acceptReportVisitor: aVisitor]! !
+
+!methodRemoval: Portfolio #accept: stamp: 'GM 10/24/2022 17:07:50'!
+accept: aVisitor
+
+	accounts do: [:account | account acceptReportVisitor: aVisitor]!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:08:02'!
+acceptReportVisitor: aVisitor
+
+	transactions do: [:transaction | transaction accept: aVisitor]! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:08:02' prior: 50565815 overrides: 50567298!
+accept: aVisitor
+
+	transactions do: [:transaction | transaction acceptReportVisitor: aVisitor]! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:08:02' prior: 50567333!
+acceptReportVisitor: aVisitor
+
+	transactions do: [:transaction | transaction acceptReportVisitor: aVisitor]! !
+
+!methodRemoval: ReceptiveAccount #accept: stamp: 'GM 10/24/2022 17:08:03'!
+accept: aVisitor
+
+	transactions do: [:transaction | transaction acceptReportVisitor: aVisitor]!
+!Account methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:08:23'!
+acceptReportVisitor: aVisitor
+
+	self subclassResponsibility ! !
+
+!methodRemoval: Account #accept: stamp: 'GM 10/24/2022 17:08:23'!
+accept: aVisitor
+
+	self subclassResponsibility !
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 17:08:37'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 17:08:37'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 17:08:37'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 17:08:37'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:08:47'!
+ERROR!
+!Account methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:09:55'!
+acceptTransactionsReportVisitor: aVisitor
+
+	self subclassResponsibility ! !
+
+!methodRemoval: Account #acceptReportVisitor: stamp: 'GM 10/24/2022 17:09:55'!
+acceptReportVisitor: aVisitor
+
+	self subclassResponsibility !
+
+----STARTUP---- (24 October 2022 17:11:49) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 17:12:20' prior: 50567114 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	portfolio acceptPortfolioVisitor: self.	
+	^value! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:12:46'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:12:46'!
+ERROR!
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:12:56'!
+acceptPortfolioVisitor: aPortfolioTreeStructure 
+	self shouldBeImplemented.! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:12:59' prior: 50567328!
+acceptPortfolioVisitor: aPortfolioTreeStructure 
+	! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:13:21' prior: 50567334!
+acceptPortfolioVisitor: aPortfolioTreeStructure 
+	
+	accounts do: [:account | account accept: aPortfolioTreeStructure ]! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:13:54' prior: 50567339!
+acceptPortfolioVisitor: aPortfolioVisitor 
+	
+	accounts do: [:account | account accept: aPortfolioVisitor ]! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:14:23' prior: 50567346!
+acceptPortfolioVisitor: aPortfolioVisitor 
+	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor ]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:14:31' prior: 50565815 overrides: 50567298!
+accept: aVisitor
+
+	transactions do: [:transaction | transaction acceptPortfolioVisitor: aVisitor]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:14:39' prior: 50567361 overrides: 50567298!
+accept: aVisitor
+
+	transactions do: [:transaction | transaction accept: aVisitor]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:17:03'!
+acceptPortfolioVisitor: aVisitor
+
+	aVisitor visitReceptiveAccount: self! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:17:23'!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor ]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:17:30'!
+acceptPortfolioVisitor: aVisitor atLevel: aLevel
+
+	aVisitor visitReceptiveAccount: self! !
+
+!methodRemoval: ReceptiveAccount #acceptPortfolioVisitor: stamp: 'GM 10/24/2022 17:17:38'!
+acceptPortfolioVisitor: aVisitor
+
+	aVisitor visitReceptiveAccount: self!
+
+!methodRemoval: Portfolio #acceptPortfolioVisitor: stamp: 'GM 10/24/2022 17:17:45'!
+acceptPortfolioVisitor: aPortfolioVisitor 
+	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor ]!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:18:41' prior: 50567386!
+acceptPortfolioVisitor: aVisitor atLevel: aLevel
+
+	aVisitor visitReceptiveAccount: self atLevel: aLevel.! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:20:19' prior: 50567379!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visitPortfolio: self.	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel + 1]! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:21:37'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:21:37'!
+ERROR!
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:21:48'!
+acceptPortfolioVisitor: aPortfolioTreeStructure 
+	self shouldBeImplemented.! !
+
+!methodRemoval: Portfolio #acceptPortfolioVisitor: stamp: 'GM 10/24/2022 17:21:54'!
+acceptPortfolioVisitor: aPortfolioTreeStructure 
+	self shouldBeImplemented.!
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 17:22:12' prior: 50567314 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	portfolio acceptPortfolioVisitor: self atLevel: 0.	
+	^value! !
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 17:22:19' prior: 50567440 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	portfolio acceptPortfolioVisitor: self atLevel: 1.	
+	^value! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:22:40'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:22:40'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'visitig' stamp: 'GM 10/24/2022 17:22:51'!
+visitPortfolio: aPortfolio 
+	self shouldBeImplemented.! !
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:23:20' prior: 50567463!
+visitPortfolio: aPortfolio 
+	self shouldBeImplemented.! !
+!Account methodsFor: 'testing' stamp: 'GM 10/24/2022 17:23:45' overrides: 16903442!
+name
+
+	^name! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:23:57'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:24:17' prior: 50567468!
+visitPortfolio: aPortfolio 
+	
+	value add: aPortfolio name! !
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:24:34' prior: 50567410!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visitPortfolio: self atLevel: aLevel.	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel + 1]! !
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:25:27'!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	value add: aPortfolio name! !
+
+!methodRemoval: PortfolioTreeStructure #visitPortfolio: stamp: 'GM 10/24/2022 17:25:29'!
+visitPortfolio: aPortfolio 
+	
+	value add: aPortfolio name!
+
+a * 4!
+
+'a' * 4!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:27:44' prior: 50567496!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''
+	value add: aPortfolio name! !
+
+4 do: 'ja'!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:31:01' prior: 50567507!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd level|
+	sentenceToAdd := ''.
+	level := aLevel.
+	(level > 0) whileTrue: [sentenceToAdd := sentenceToAdd , '	'. level := level - 1].
+	sentenceToAdd := sentenceToAdd , aPortfolio name.
+	value add: sentenceToAdd.! !
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:31:13' prior: 50567515!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd level|
+	sentenceToAdd := ''.
+	level := aLevel.
+	(level > 0) whileTrue: [sentenceToAdd := sentenceToAdd , '	'. level := level - 1].
+	value add: sentenceToAdd , aPortfolio name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:31:23'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:31:23'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:31:31' prior: 50567527!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd level|
+	sentenceToAdd := ''.
+	level := aLevel.
+	[level > 0] whileTrue: [sentenceToAdd := sentenceToAdd , '	'. level := level - 1].
+	value add: sentenceToAdd , aPortfolio name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:31:33'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:31:58'!
+visitReceptiveAccount: aReceptiveAccount atLevel: aSmallInteger 
+	self shouldBeImplemented.! !
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Packages/TerseGuide.pck.st----!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:34:49' prior: 50567546!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , aPortfolio name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:35:04'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:35:27'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:36:42' prior: 50567561!
+visitReceptiveAccount: aReceptiveAccount atLevel: aLevel
+
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: []
+	
+	! !
+
+'a' timesRepeat: 3!
+
+3 timesRepeat: 'timesRepeat'!
+
+3 timesRepeat: 'timesRepeat'!
+
+3 timesRepeat: 't'!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:38:32' prior: 50570488!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , aPortfolio name.! !
+
+!methodRemoval: PortfolioTreeStructure #visitReceptiveAccount:atLevel: stamp: 'GM 10/24/2022 17:39:15'!
+visitReceptiveAccount: aReceptiveAccount atLevel: aLevel
+
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: []
+	
+	!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:39:26'!
+visit: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , aPortfolio name.! !
+
+!methodRemoval: PortfolioTreeStructure #visitPortfolio:atLevel: stamp: 'GM 10/24/2022 17:39:26'!
+visitPortfolio: aPortfolio atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , aPortfolio name.!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:39:39' prior: 50570533!
+visit: anAccount atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , anAccount name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:39:54'!
+ERROR!
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:40:10' prior: 50567486!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel + 1]! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:40:11'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:40:19' prior: 50567404!
+acceptPortfolioVisitor: aVisitor atLevel: aLevel
+
+	aVisitor visit: self atLevel: aLevel.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:40:20'!
+FAILURE!
+
+ (PortfolioTreeStructure for: portfolio) value!
+
+expectedTreeStructure!
+
+ (PortfolioTreeStructure for: portfolio) value!
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:42:20'!
+accept: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel + 1]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:42:20' prior: 50570564!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account accept: aPortfolioVisitor atLevel: aLevel + 1]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 17:42:20' prior: 50570592!
+accept: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account accept: aPortfolioVisitor atLevel: aLevel + 1]! !
+
+!methodRemoval: Portfolio #acceptPortfolioVisitor:atLevel: stamp: 'GM 10/24/2022 17:42:20'!
+acceptPortfolioVisitor: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account accept: aPortfolioVisitor atLevel: aLevel + 1]!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:42:42'!
+accept: aVisitor atLevel: aLevel
+
+	aVisitor visit: self atLevel: aLevel.! !
+
+!methodRemoval: ReceptiveAccount #acceptPortfolioVisitor:atLevel: stamp: 'GM 10/24/2022 17:42:42'!
+acceptPortfolioVisitor: aVisitor atLevel: aLevel
+
+	aVisitor visit: self atLevel: aLevel.!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:42:51'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:42:51'!
+ERROR!
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 17:43:28' prior: 50567448 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	portfolio accept: self atLevel: 0.	
+	^value! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:43:36'!
+FAILURE!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:43:36'!
+FAILURE!
+
+ (PortfolioTreeStructure for: portfolio) value!
+
+account!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:48:49'!
+FAILURE!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:51:51'!
+FAILURE!
+
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	']. sentenceToAdd!
+
+sentenceToAdd , anAccount name.!
+
+anAccount name!
+
+sentenceToAdd!
+
+sentenceToAdd , anAccount name.!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:56:01'!
+FAILURE!
+
+|portfolio|
+
+portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+ (PortfolioTreeStructure for: portfolio) value
+!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:58:37' prior: 50570551!
+visit: anAccount atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , 'a'].
+	value add: sentenceToAdd , anAccount name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 17:59:00'!
+FAILURE!
+
+(PortfolioTreeStructure for: portfolio) value!
+
+'a' , 'b'!
+
+'a' , 'b' , 'c'!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:00:55'!
+FAILURE!
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:01:06' prior: 50567063!
+test02PortfolioTreeStructureOnPortfolioWithManyLevels
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: 'Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:01:07'!
+FAILURE!
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 18:01:40' prior: 50570694!
+visit: anAccount atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , anAccount name.! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:01:49'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01EmptyPortfolioStructureIsNewOrderedCollection stamp: 'GM 10/24/2022 18:01:49'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:01:49'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01EmptyPortfolioStructureIsNewOrderedCollection stamp: 'GM 10/24/2022 18:01:49'!
+ERROR!
+
+anAccount name!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:03:41'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01EmptyPortfolioStructureIsNewOrderedCollection stamp: 'GM 10/24/2022 18:03:41'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:03:41'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01EmptyPortfolioStructureIsNewOrderedCollection stamp: 'GM 10/24/2022 18:03:41'!
+ERROR!
+
+!methodRemoval: PortfolioTreeStructureTest #test01EmptyPortfolioStructureIsNewOrderedCollection stamp: 'GM 10/24/2022 18:05:59'!
+test01EmptyPortfolioStructureIsNewOrderedCollection
+
+	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value!
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:06:03'!
+test01PortfolioTreeStructureOnPortfolioWithManyLevels
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: 'Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!methodRemoval: PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:06:03'!
+test02PortfolioTreeStructureOnPortfolioWithManyLevels
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: 'Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:06:04'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:06:04'!
+PASSED!
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:07:52'!
+test02PortfolioTreeStructureOnAccountRaisesError
+	
+	self should: (PortfolioTreeStructure for: ReceptiveAccount new) value
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: ''.	! !
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:08:37' prior: 50570856!
+test02PortfolioTreeStructureOnAccountRaisesError
+	
+	self should: (PortfolioTreeStructure for: ReceptiveAccount new) value
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: 'Debe ingresar un Portfolio'.	! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnAccountRaisesError stamp: 'GM 10/24/2022 18:08:38'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnAccountRaisesError stamp: 'GM 10/24/2022 18:09:21'!
+ERROR!
+
+!methodRemoval: PortfolioTreeStructureTest #test02PortfolioTreeStructureOnAccountRaisesError stamp: 'GM 10/24/2022 18:09:30'!
+test02PortfolioTreeStructureOnAccountRaisesError
+	
+	self should: (PortfolioTreeStructure for: ReceptiveAccount new) value
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: 'Debe ingresar un Portfolio'.	!
+
+!classRenamed: #ReportGenerator as: #TransactionVisitor stamp: 'GM 10/24/2022 18:10:40'!
+Smalltalk renameClassNamed: #ReportGenerator as: #TransactionVisitor!
+
+!classDefinition: #PortfolioVisitor category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 18:11:09'!
+Object subclass: #PortfolioVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+PortfolioVisitor subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 18:11:09'!
+PortfolioVisitor subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Visitor category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 18:11:34'!
+Object subclass: #Visitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Visitor subclass: #PortfolioVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioVisitor category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 18:11:34'!
+Visitor subclass: #PortfolioVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Visitor subclass: #TransactionVisitor
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransactionVisitor category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 18:11:46'!
+Visitor subclass: #TransactionVisitor
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Visitor methodsFor: 'no messages' stamp: 'GM 10/24/2022 18:12:30'!
+initializeFor: anAccount! !
+
+!methodRemoval: TransactionVisitor #value stamp: 'GM 10/24/2022 18:13:03'!
+value
+
+	self subclassResponsibility!
+!Visitor methodsFor: 'evaluating' stamp: 'GM 10/24/2022 18:13:37' overrides: 16902254!
+value
+
+	self subclassResponsibility ! !
+!Visitor methodsFor: 'evaluating' stamp: 'GM 10/24/2022 18:13:38' prior: 50570961 overrides: 16902254!
+value
+
+	self subclassResponsibility! !
+!PortfolioVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 18:14:35'!
+visit: anAccount atLevel: aLevel
+	
+	self subclassResponsibility ! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:16:43'!
+test04CannotTransferNegativeAmount
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	self should: (Transfer register: -100 from: accountToExtract to: accountToDeposit) raise: Error - MessageNotUnderstood withMessageText: 'No se puede transferir un monto negativo'.! !
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:16:53'!
+FAILURE!
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 18:17:40' prior: 50566306!
+register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
+	
+	anAmount < 0 ifTrue: [self error: 'No se puede transferir un monto negativo' ].
+	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:17:41'!
+ERROR!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:18:10' prior: 50570975!
+test04CannotTransferNegativeAmount
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	self should: [Transfer register: -100 from: accountToExtract to: accountToDeposit] 
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: 'No se puede transferir un monto negativo'.! !
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:18:11'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:18:11'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:18:11'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:18:11'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:18:11'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:19:15'!
+test05CannotTransferToSameAccount
+
+	| account |
+	
+	account:= ReceptiveAccount new.
+	self should: [Transfer register: -100 from: account to: account ] 
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: Transfer cantTransferToSameAccountErrorMessage.! !
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:19:20'!
+ERROR!
+!Transfer class methodsFor: 'error messages' stamp: 'GM 10/24/2022 18:19:30'!
+cantTransferToSameAccountErrorMessage
+	self shouldBeImplemented.! !
+!Transfer class methodsFor: 'error messages' stamp: 'GM 10/24/2022 18:19:47' prior: 50571052!
+cantTransferToSameAccountErrorMessage
+	
+	'Cannot transfer to same account'! !
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:19:48'!
+FAILURE!
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 18:20:34' prior: 50570993!
+register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
+	
+	anAmount < 0 ifTrue: [self error: self class transferAmountMustCannotBeNegative].
+	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 18:20:52' prior: 50571067!
+register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
+	
+	anAmount < 0 ifTrue: [self error: self class negativeAmountErrorMessage].
+	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+!Transfer class methodsFor: 'error messages' stamp: 'GM 10/24/2022 18:21:17'!
+negativeAmountErrorMessage
+	
+	'Cannot transfer a negative amount'! !
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 18:21:27' prior: 50571079!
+register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
+	
+	anAmount < 0 ifTrue: [self error: self negativeAmountErrorMessage].
+	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:21:35'!
+PASSED!
+
+!testRun: #TransferNetTest #test01EmptyAccountTransferNetIsZero stamp: 'GM 10/24/2022 18:21:35'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:21:35'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:22:27'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:22:27'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:22:33'!
+FAILURE!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:22:33'!
+FAILURE!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:22:49'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:22:51'!
+FAILURE!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:22:51'!
+FAILURE!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:23:25'!
+FAILURE!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:23:51' prior: 50571008!
+test04CannotTransferNegativeAmount
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	self should: [Transfer register: -100 from: accountToExtract to: accountToDeposit] 
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: Transfer negativeAmountErrorMessage.! !
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:23:55'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:24:02'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:24:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:24:47'!
+PASSED!
+
+!testRun: #TransferNetTest #test01EmptyAccountTransferNetIsZero stamp: 'GM 10/24/2022 18:24:47'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:24:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 18:24:55'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:25:00'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:25:00'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 18:25:03'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryOnNewAccountReturnsBalanceEqualsZero stamp: 'GM 10/24/2022 18:25:03'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryOnReceptiveAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:25:03'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 18:25:03'!
+PASSED!
+!Visitor methodsFor: 'initialization' stamp: 'GM 10/24/2022 18:25:53' prior: 50570953!
+initializeFor: anAccount
+
+	self subclassResponsibility ! !
+
+!methodRemoval: TransactionVisitor #initializeFor: stamp: 'GM 10/24/2022 18:25:57'!
+initializeFor: anAccount
+
+	self subclassResponsibility!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 18:26:59'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryOnNewAccountReturnsBalanceEqualsZero stamp: 'GM 10/24/2022 18:26:59'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryOnReceptiveAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:26:59'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 18:26:59'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:27:02'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test01PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 18:27:02'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 18:27:08'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 18:27:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 18:27:15'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:27:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test01EmptyAccountTransferNetIsZero stamp: 'GM 10/24/2022 18:27:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 18:27:23'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+!testRun: #TransferTest #test04CannotTransferNegativeAmount stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+!testRun: #TransferTest #test05CannotTransferToSameAccount stamp: 'GM 10/24/2022 18:27:26'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 18:27:45) CuisUniversity-5481.image priorSource: 7540959!

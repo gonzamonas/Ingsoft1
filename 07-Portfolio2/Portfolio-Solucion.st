@@ -272,13 +272,8 @@ TestCase subclass: #PortfolioTreeStructureTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:50:53'!
-test01EmptyPortfolioStructureIsNewOrderedCollection
-
-	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value! !
-
-!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:51:23'!
-test02PortfolioTreeStructureOnPortfolioWithManyLevels
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:06:03'!
+test01PortfolioTreeStructureOnPortfolioWithManyLevels
 	
 	| expectedTreeStructure portfolio |
 	expectedTreeStructure := OrderedCollection 
@@ -291,7 +286,7 @@ test02PortfolioTreeStructureOnPortfolioWithManyLevels
 			
 	portfolio := Portfolio named: 'Portfolio de la familia' 
 					   with: (ReceptiveAccount named: 'Cuenta Mia') 
-					   with: (Portfolio named: '	Portfolio de hijos' 
+					   with: (Portfolio named: 'Portfolio de hijos' 
 								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
 								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
 								
@@ -455,6 +450,27 @@ test03CanMoveBetweenLegs
 	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
 	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg! !
 
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:23:51'!
+test04CannotTransferNegativeAmount
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	self should: [Transfer register: -100 from: accountToExtract to: accountToDeposit] 
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: Transfer negativeAmountErrorMessage.! !
+
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 18:19:15'!
+test05CannotTransferToSameAccount
+
+	| account |
+	
+	account:= ReceptiveAccount new.
+	self should: [Transfer register: -100 from: account to: account ] 
+	      raise: Error - MessageNotUnderstood 
+	      withMessageText: Transfer cantTransferToSameAccountErrorMessage.! !
+
 
 !classDefinition: #Account category: 'Portfolio-Solucion'!
 Object subclass: #Account
@@ -472,6 +488,11 @@ hasRegistered: aTransaction
 isComposedBy: anAccount
 
 	self subclassResponsibility ! !
+
+!Account methodsFor: 'testing' stamp: 'GM 10/24/2022 17:23:45'!
+name
+
+	^name! !
 
 
 !Account methodsFor: 'balance' stamp: 'HAW 5/25/2019 12:23:40'!
@@ -509,10 +530,11 @@ Account subclass: #Portfolio
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Portfolio methodsFor: 'accounts management' stamp: 'GM 10/24/2022 16:54:54'!
+!Portfolio methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:54:54'!
 accept: aVisitor
 
 	accounts do: [:account | account accept: aVisitor]! !
+
 
 !Portfolio methodsFor: 'accounts management' stamp: 'HAW 5/25/2019 11:49:20'!
 accountsIncludes: anAccount
@@ -625,6 +647,13 @@ signalCanNotAddAccount
 	
 	self error: self class canNotAddAccountErrorMessage! !
 
+
+!Portfolio methodsFor: 'visiting' stamp: 'GM 10/24/2022 17:42:20'!
+accept: aPortfolioVisitor atLevel: aLevel
+
+	aPortfolioVisitor visit: self atLevel: aLevel.	
+	accounts do: [:account | account accept: aPortfolioVisitor atLevel: aLevel + 1]! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Portfolio class' category: 'Portfolio-Solucion'!
@@ -677,10 +706,15 @@ initializeNamed: aName
 	name := aName.! !
 
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 12:14:43'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:14:39'!
 accept: aVisitor
 
 	transactions do: [:transaction | transaction accept: aVisitor]! !
+
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 17:42:42'!
+accept: aVisitor atLevel: aLevel
+
+	aVisitor visit: self atLevel: aLevel.! !
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:38:52'!
 addTransactionsTo: aCollectionOfTransactions
@@ -734,174 +768,6 @@ ReceptiveAccount class
 named: aName
 	
 	^self new initializeNamed: aName.! !
-
-
-!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion'!
-Object subclass: #PortfolioTreeStructure
-	instanceVariableNames: 'portfolio value'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:44:34'!
-initializeFor: aPortfolio 
-	
-	portfolio := aPortfolio.
-	value := OrderedCollection new.! !
-
-!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 16:52:37'!
-value
-
-	value := OrderedCollection new.
-	portfolio accept: self.	
-	^value! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'PortfolioTreeStructure class' category: 'Portfolio-Solucion'!
-PortfolioTreeStructure class
-	instanceVariableNames: ''!
-
-!PortfolioTreeStructure class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:43:25'!
-for: aPortfolio 
-
-	^self new initializeFor: aPortfolio! !
-
-
-!classDefinition: #ReportGenerator category: 'Portfolio-Solucion'!
-Object subclass: #ReportGenerator
-	instanceVariableNames: 'account value'
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!ReportGenerator methodsFor: 'evaluating' stamp: 'GM 10/24/2022 16:32:27'!
-value
-
-	self subclassResponsibility! !
-
-
-!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:31'!
-visitDeposit: aDeposit
-
-	self subclassResponsibility.! !
-
-!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:53'!
-visitTransferDeposit: aTransferDeposit
-
-	self subclassResponsibility.! !
-
-!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:45'!
-visitTransferWithdraw: aTransferWithdraw
-
-	self subclassResponsibility.! !
-
-!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:37'!
-visitWithdraw: aWithdraw
-
-	self subclassResponsibility.! !
-
-
-!ReportGenerator methodsFor: 'initialization' stamp: 'GM 10/24/2022 16:30:44'!
-initializeFor: anAccount
-
-	self subclassResponsibility! !
-
-"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
-
-!classDefinition: 'ReportGenerator class' category: 'Portfolio-Solucion'!
-ReportGenerator class
-	instanceVariableNames: ''!
-
-!ReportGenerator class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 16:29:52'!
-for: anAccount
-
-	^self new initializeFor: anAccount ! !
-
-
-!classDefinition: #AccountSummary category: 'Portfolio-Solucion'!
-ReportGenerator subclass: #AccountSummary
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:14:50'!
-initializeFor: anAccount
-
-	account := anAccount.
-	value := OrderedCollection new.! !
-
-
-!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:50'!
-visitDeposit: aDeposit
-
-	value add: 'Depósito por ' , aDeposit value asString , '.'! !
-
-!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:20:23'!
-visitTransferDeposit: aTransferDeposit
-
-	value add: 'Entrada por transferencia de ' , aTransferDeposit value asString , '.'! !
-
-!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:17:22'!
-visitTransferWithdraw: aTransferWithdraw
-
-	value add: 'Salida por transferencia de ' , aTransferWithdraw value asString , '.'! !
-
-!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:58'!
-visitWithdraw: aWithdraw
-
-	value add: 'Extracción por ' , aWithdraw value asString , '.'! !
-
-
-!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:22:20'!
-value
-
-	value := OrderedCollection new.
-	account accept: self.
-	value add: 'Balance = ' , account balance asString.
-	^value! !
-
-
-!classDefinition: #TransferNet category: 'Portfolio-Solucion'!
-ReportGenerator subclass: #TransferNet
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'Portfolio-Solucion'!
-
-!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:30:36'!
-initializeFor: anAccount 
-
-	account := anAccount.
-	value := 0.! !
-
-
-!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:17'!
-visitDeposit: aDeposit 
-	! !
-
-!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:36:19'!
-visitTransferDeposit: aTransferDeposit 
-	
-	value := value + aTransferDeposit value! !
-
-!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:53'!
-visitTransferWithdraw: aTransferWithdraw 
-	
-	value := value - aTransferWithdraw value! !
-
-!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:24'!
-visitWithdraw: aWithdraw 
-	! !
-
-
-!TransferNet methodsFor: 'evaluating' stamp: 'GM 10/24/2022 13:34:29'!
-value
-
-	value := 0.
-	account accept: self.
-	^value! !
 
 
 !classDefinition: #Transaction category: 'Portfolio-Solucion'!
@@ -1144,7 +1010,217 @@ withdrawLeg
 Transfer class
 	instanceVariableNames: ''!
 
-!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/17/2022 21:52:17'!
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 18:21:27'!
 register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
-
+	
+	anAmount < 0 ifTrue: [self error: self negativeAmountErrorMessage].
 	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+
+
+!Transfer class methodsFor: 'error messages' stamp: 'GM 10/24/2022 18:19:47'!
+cantTransferToSameAccountErrorMessage
+	
+	'Cannot transfer to same account'! !
+
+!Transfer class methodsFor: 'error messages' stamp: 'GM 10/24/2022 18:21:17'!
+negativeAmountErrorMessage
+	
+	'Cannot transfer a negative amount'! !
+
+
+!classDefinition: #Visitor category: 'Portfolio-Solucion'!
+Object subclass: #Visitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!Visitor methodsFor: 'initialization' stamp: 'GM 10/24/2022 18:25:53'!
+initializeFor: anAccount
+
+	self subclassResponsibility ! !
+
+
+!Visitor methodsFor: 'evaluating' stamp: 'GM 10/24/2022 18:13:38'!
+value
+
+	self subclassResponsibility! !
+
+
+!classDefinition: #PortfolioVisitor category: 'Portfolio-Solucion'!
+Visitor subclass: #PortfolioVisitor
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 18:14:35'!
+visit: anAccount atLevel: aLevel
+	
+	self subclassResponsibility ! !
+
+
+!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion'!
+PortfolioVisitor subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:44:34'!
+initializeFor: aPortfolio 
+	
+	portfolio := aPortfolio.
+	value := OrderedCollection new.! !
+
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 17:43:28'!
+value
+
+	value := OrderedCollection new.
+	portfolio accept: self atLevel: 0.	
+	^value! !
+
+
+!PortfolioTreeStructure methodsFor: 'visiting' stamp: 'GM 10/24/2022 18:01:40'!
+visit: anAccount atLevel: aLevel
+	
+	| sentenceToAdd |
+	sentenceToAdd := ''.
+	aLevel timesRepeat: [sentenceToAdd := sentenceToAdd , '	'].
+	value add: sentenceToAdd , anAccount name.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'PortfolioTreeStructure class' category: 'Portfolio-Solucion'!
+PortfolioTreeStructure class
+	instanceVariableNames: ''!
+
+!PortfolioTreeStructure class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:43:25'!
+for: aPortfolio 
+
+	^self new initializeFor: aPortfolio! !
+
+
+!classDefinition: #TransactionVisitor category: 'Portfolio-Solucion'!
+Visitor subclass: #TransactionVisitor
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+
+!TransactionVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:31'!
+visitDeposit: aDeposit
+
+	self subclassResponsibility.! !
+
+!TransactionVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:53'!
+visitTransferDeposit: aTransferDeposit
+
+	self subclassResponsibility.! !
+
+!TransactionVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:45'!
+visitTransferWithdraw: aTransferWithdraw
+
+	self subclassResponsibility.! !
+
+!TransactionVisitor methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:37'!
+visitWithdraw: aWithdraw
+
+	self subclassResponsibility.! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'TransactionVisitor class' category: 'Portfolio-Solucion'!
+TransactionVisitor class
+	instanceVariableNames: ''!
+
+!TransactionVisitor class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 16:29:52'!
+for: anAccount
+
+	^self new initializeFor: anAccount ! !
+
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion'!
+TransactionVisitor subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:14:50'!
+initializeFor: anAccount
+
+	account := anAccount.
+	value := OrderedCollection new.! !
+
+
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:50'!
+visitDeposit: aDeposit
+
+	value add: 'Depósito por ' , aDeposit value asString , '.'! !
+
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:20:23'!
+visitTransferDeposit: aTransferDeposit
+
+	value add: 'Entrada por transferencia de ' , aTransferDeposit value asString , '.'! !
+
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:17:22'!
+visitTransferWithdraw: aTransferWithdraw
+
+	value add: 'Salida por transferencia de ' , aTransferWithdraw value asString , '.'! !
+
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:58'!
+visitWithdraw: aWithdraw
+
+	value add: 'Extracción por ' , aWithdraw value asString , '.'! !
+
+
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:22:20'!
+value
+
+	value := OrderedCollection new.
+	account accept: self.
+	value add: 'Balance = ' , account balance asString.
+	^value! !
+
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion'!
+TransactionVisitor subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:30:36'!
+initializeFor: anAccount 
+
+	account := anAccount.
+	value := 0.! !
+
+
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:17'!
+visitDeposit: aDeposit 
+	! !
+
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:36:19'!
+visitTransferDeposit: aTransferDeposit 
+	
+	value := value + aTransferDeposit value! !
+
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:53'!
+visitTransferWithdraw: aTransferWithdraw 
+	
+	value := value - aTransferWithdraw value! !
+
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:24'!
+visitWithdraw: aWithdraw 
+	! !
+
+
+!TransferNet methodsFor: 'evaluating' stamp: 'GM 10/24/2022 13:34:29'!
+value
+
+	value := 0.
+	account accept: self.
+	^value! !
