@@ -1,0 +1,4316 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (17 October 2022 21:31:18) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GM 10/17/2022 21:47:43'!
+test08TransferBetweenAccountsModifiesBalance
+
+	| account1 account2 deposit1 |
+	
+	account1 := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	deposit1 := Deposit register: 100 on: account1.
+		
+	self assert: 1 equals: account1 transactions size .
+	self assert: (account1 transactions includes: deposit1).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GM 10/17/2022 21:48:00' prior: 50552992!
+test08TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract account2 deposit1 |
+	
+	accountToExtract := ReceptiveAccount new.
+	account2 := ReceptiveAccount new.
+	deposit1 := Deposit register: 100 on: accountToExtract.
+		
+	self assert: 1 equals: accountToExtract transactions size .
+	self assert: (accountToExtract transactions includes: deposit1).
+! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GM 10/17/2022 21:48:10' prior: 50553005!
+test08TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit deposit1 |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	deposit1 := Deposit register: 100 on: accountToExtract.
+		
+	self assert: 1 equals: accountToExtract transactions size .
+	self assert: (accountToExtract transactions includes: deposit1).
+! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/17/2022 21:50:53'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GM 10/17/2022 21:50:40' prior: 50553019!
+test08TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit deposit1 |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	deposit1 := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GM 10/17/2022 21:51:12' prior: 50553041!
+test08TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+
+!testRun: #ReceptiveAccountTest #test08TransferBetweenAccountsModifiesBalance stamp: 'GM 10/17/2022 21:51:13'!
+ERROR!
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/17/2022 21:51:22'!
+register: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger from: aReceptiveAccount to: aReceptiveAccount3 ! !
+!Transfer class methodsFor: 'instance creation' stamp: 'GM 10/17/2022 21:52:17' prior: 50553074!
+register: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit
+
+	^self new initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit! !
+
+!testRun: #ReceptiveAccountTest #test08TransferBetweenAccountsModifiesBalance stamp: 'GM 10/17/2022 21:52:19'!
+ERROR!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/17/2022 21:52:32'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/17/2022 21:52:32'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/17/2022 21:52:32'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/17/2022 21:52:32'!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	self shouldBeImplemented.
+	amount := anAmount.
+	receptiveAccountToExtract := aReceptiveAccountToExtract.
+	receptiveAccountToDeposit := aReceptiveAccountToDeposit.! !
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/17/2022 21:54:04' prior: 50553123!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	amount := anAmount.
+	Withdraw register.
+	receptiveAccountToDeposit.! !
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/17/2022 21:54:54' prior: 50553134!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	Withdraw register: 100 on: aReceptiveAccountToExtract.
+	Deposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #ReceptiveAccountTest #test08TransferBetweenAccountsModifiesBalance stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferBetweenAccountsModifiesBalance stamp: 'GM 10/17/2022 21:55:05'!
+PASSED!
+
+----QUIT----(17 October 2022 21:57:09) CuisUniversity-5481.image priorSource: 7059698!
+
+----STARTUP---- (20 October 2022 19:46:26) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 19:48:09'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:49:22'!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/20/2022 19:49:24'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/20/2022 19:49:24'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:50:38' prior: 50553203!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtractFrom accountToDeposit |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtractFrom balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:50:43' prior: 50553224!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtractFrom accountToDepositTo |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDepositTo := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtractFrom to: accountToDepositTo.
+	self assert: 100 equals: accountToDepositTo balance.
+	self assert: -100 equals: accountToExtractFrom balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:50:55' prior: 50553239!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtractFrom accountToDeposit |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtractFrom balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:52:32'!
+test02
+
+	| accountToExtractFrom accountToDeposit |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtractFrom balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:53:01' prior: 50553268!
+test02
+
+	| accountToExtractFrom accountToDeposit transfer |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtractFrom balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 19:54:20' prior: 50553281!
+test02
+
+	| accountToExtractFrom accountToDeposit transfer |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: (accountToExtractFrom hasRegistered: transfer).
+	self assert: (accountToDeposit hasRegistered: transfer).! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 19:54:21'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 19:56:27'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:23:17'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'testing' stamp: 'GM 10/20/2022 20:25:33' prior: 50552861 overrides: 50552651!
+hasRegistered: aTransaction
+
+	^ transactions includes: aTransaction 
+! !
+!ReceptiveAccount methodsFor: 'testing' stamp: 'GM 10/20/2022 20:37:50' prior: 50553317 overrides: 50552651!
+hasRegistered: aTransaction
+
+	(aTransaction isKindOf: Transfer) ifTrue: [^ self hasRegisteredTransfer: aTransaction].
+	^ transactions includes: aTransaction 
+! !
+!ReceptiveAccount methodsFor: 'testing' stamp: 'GM 10/20/2022 20:38:36' prior: 50553323 overrides: 50552651!
+hasRegistered: aTransaction
+
+	(aTransaction isKindOf: Transfer) ifTrue: [^ self hasRegisteredTransfer: aTransaction].
+	^ transactions includes: aTransaction 
+! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:38:37'!
+ERROR!
+!ReceptiveAccount methodsFor: 'testing' stamp: 'GM 10/20/2022 20:38:52'!
+hasRegisteredTransfer: aTransfer 
+	self shouldBeImplemented.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 20:43:54' prior: 50553295!
+test02
+
+	| accountToExtractFrom accountToDeposit transfer |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
+	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/20/2022 20:44:01' prior: 50553347!
+test02
+
+	| accountToExtractFrom accountToDeposit transfer |
+	
+	accountToExtractFrom := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtractFrom to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
+	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:44:02'!
+ERROR!
+!Transfer methodsFor: 'lrgs' stamp: 'GM 10/20/2022 20:44:31'!
+withdrawLeg
+	self shouldBeImplemented.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:44:39'!
+ERROR!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/20/2022 20:45:02' prior: 50553379!
+withdrawLeg
+! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:45:07'!
+ERROR!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'amount withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 20:46:30'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/20/2022 20:46:37' prior: 50553386!
+withdrawLeg
+
+	^ withdrawLeg! !
+!Transfer methodsFor: 'legs' stamp: 'GM 10/20/2022 20:46:48'!
+depositLeg
+
+	^ depositLeg! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:46:57'!
+ERROR!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/20/2022 20:48:15' prior: 50553142!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := Withdraw register: 100 on: aReceptiveAccountToExtract.
+	depositLeg := Deposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:48:25'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:49:30'!
+ERROR!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 20:50:15'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 20:50:18'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/20/2022 20:50:10' prior: 50553414!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: 100 on: aReceptiveAccountToExtract.
+	depositLeg := TransferDeposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:50:21'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:50:27'!
+ERROR!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 20:50:49'!
+register: aSmallInteger on: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger on: aReceptiveAccount ! !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 20:51:04' prior: 50553460!
+register: anAmount on: aReceptiveAccount 
+
+	^self new initializeRegister: anAmount on: aReceptiveAccount ! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:51:05'!
+ERROR!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 20:51:44'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 20:51:44'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/20/2022 20:51:44'!
+initializeRegister: anAmount on: aReceptiveAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	receptiveAccount := aReceptiveAccount.! !
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/20/2022 20:51:54' prior: 50553495!
+initializeRegister: anAmount on: aReceptiveAccount 
+! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 20:51:56'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 21:02:08'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 21:02:18'!
+register: aSmallInteger on: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger on: aReceptiveAccount ! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 21:02:39' prior: 50553513!
+register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount ! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 21:02:40'!
+ERROR!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:02:47'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:02:48'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:02:48'!
+initializeRegister: anAmount on: aReceptiveAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	receptiveAccount := aReceptiveAccount.! !
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:02:53' prior: 50553548!
+initializeRegister: anAmount on: aReceptiveAccount 
+	
+	amount := anAmount.
+	receptiveAccount := aReceptiveAccount.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 21:02:55'!
+ERROR!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/20/2022 21:03:31'!
+anotherLeg
+	self shouldBeImplemented.! !
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/20/2022 21:03:38' prior: 50553565!
+anotherLeg
+! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 21:03:44'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/20/2022 21:03:51'!
+FAILURE!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:06:09'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/20/2022 21:05:40' prior: 50553569!
+anotherLeg
+
+	transaction DepositLeg! !
+
+Object subclass: #TransferLeg
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferLeg category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:06:39'!
+Object subclass: #TransferLeg
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:06:49'!
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:07:13'!
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/20/2022 21:07:34' prior: 50553586!
+anotherLeg
+
+	transaction depositLeg! !
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/20/2022 21:07:43' prior: 50553630!
+anotherLeg
+
+	^transaction depositLeg! !
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:08:27'!
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferDeposit methodsFor: 'legs' stamp: 'GM 10/20/2022 21:08:26'!
+anotherLeg
+
+	^transfer withdrawLeg! !
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:08:37'!
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'as yet unclassified' stamp: 'GM 10/20/2022 21:08:37' prior: 50553634!
+anotherLeg
+
+	^transfer depositLeg! !
+
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:08:40'!
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:08:42'!
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:09:04'!
+TransferLeg subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:09:11'!
+TransferLeg subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #TransferLeg
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferLeg category: 'Portfolio-Solucion' stamp: 'GM 10/20/2022 21:09:18'!
+Object subclass: #TransferLeg
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:09:29' prior: 50553556!
+initializeRegister: anAmount on: aReceptiveAccount! !
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:11:06' prior: 50553444!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: anAmount on: aReceptiveAccountToExtract.
+	depositLeg := TransferDeposit register: anAmount on: 	aReceptiveAccountToDeposit.! !
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:17:18' prior: 50553735!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw of: self register: anAmount on: aReceptiveAccountToExtract.
+	depositLeg := TransferDeposit of: self register: anAmount on: 	aReceptiveAccountToDeposit.! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 21:17:55'!
+of: aTransfer register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeOf: aTransfer register: anAmount on: aReceptiveAccount ! !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/20/2022 21:19:08'!
+of: aTransfer register: anAmount on: aReceptiveAccount 
+
+	^self new initializeOf: aTransfer register: anAmount on: aReceptiveAccount ! !
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:19:24'!
+initializeOf: aTransfer register: anAmount on: aReceptiveAccount 
+! !
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/20/2022 21:19:43'!
+initializeOf: aTransfer register: anAmount on: aReceptiveAccount! !
+
+!methodRemoval: TransferDeposit #initializeRegister:on: stamp: 'GM 10/20/2022 21:19:47'!
+initializeRegister: anAmount on: aReceptiveAccount!
+
+!methodRemoval: TransferWithdraw #initializeRegister:on: stamp: 'GM 10/20/2022 21:19:52'!
+initializeRegister: anAmount on: aReceptiveAccount 
+!
+
+----STARTUP---- (24 October 2022 09:20:30) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:22:03'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!methodRemoval: ReceptiveAccountTest #test08TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:22:09'!
+test08TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.!
+!TransferTest methodsFor: 'no messages' stamp: 'GM 10/24/2022 09:22:19'!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:22:33'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:22:33'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:26:15' prior: 50553218!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: accountToExtract! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:26:21' prior: 50553239!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:26:28'!
+test02
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:26:38' prior: 50553265!
+test02
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: 100 equals: accountToDeposit balance.
+	self assert: -100 equals: accountToExtract balance.! !
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:27:48' prior: 50553278!
+test02
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: (accountToExtract hasRegistered: transfer withdrawLeg).
+	self assert: (accountToDeposit hasRegistered: transfer depositLeg).! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:27:49'!
+ERROR!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:27:59'!
+withdrawLeg
+	self shouldBeImplemented.! !
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:28:03' prior: 50553307!
+withdrawLeg
+	! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:28:05'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:28:11'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:28:17'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:28:24'!
+FAILURE!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:29:09'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit withdrawLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:29:06' prior: 50553311!
+withdrawLeg
+	
+	^withdrawLeg! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:29:15'!
+FAILURE!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:30:34' prior: 50553142!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := Withdraw register: 100 on: aReceptiveAccountToExtract.
+	Deposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:30:37'!
+ERROR!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:30:43'!
+depositLeg
+	self shouldBeImplemented.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:30:50'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit withdrawLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:30:48' prior: 50553352!
+depositLeg
+	
+	^depositLeg! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:30:53'!
+FAILURE!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:31:03' prior: 50553340!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := Withdraw register: 100 on: aReceptiveAccountToExtract.
+	depositLeg := Deposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:31:07'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:31:07'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:31:07'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:32:44'!
+test03
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:32:47'!
+ERROR!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:34:05'!
+ERROR!
+!Withdraw methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 09:34:34'!
+anotherLeg
+	self shouldBeImplemented.! !
+
+!methodRemoval: Withdraw #anotherLeg stamp: 'GM 10/24/2022 09:34:55'!
+anotherLeg
+	self shouldBeImplemented.!
+
+Object subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:35:36'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:35:50'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:36:33' prior: 50553372!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: 100 on: aReceptiveAccountToExtract.
+	depositLeg := TransferDeposit register: 100 on: 	aReceptiveAccountToDeposit.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:36:38'!
+ERROR!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:36:47'!
+register: aSmallInteger on: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger on: aReceptiveAccount ! !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:37:00' prior: 50553453!
+register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount ! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:37:01'!
+ERROR!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:37:12'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:37:12'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:37:12'!
+initializeRegister: anAmount on: aReceptiveAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	receptiveAccount := aReceptiveAccount.! !
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:37:28' prior: 50553488!
+initializeRegister: anAmount on: aReceptiveAccount 
+! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:37:30'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:37:39'!
+register: aSmallInteger on: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeRegister: aSmallInteger on: aReceptiveAccount ! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:37:47' prior: 50553503!
+register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount ! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:37:48'!
+ERROR!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:37:56'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'amount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:37:57'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:37:57'!
+initializeRegister: anAmount on: aReceptiveAccount 
+	self shouldBeImplemented.
+	amount := anAmount.
+	receptiveAccount := aReceptiveAccount.! !
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:38:02' prior: 50553538!
+initializeRegister: anAmount on: aReceptiveAccount ! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:38:03'!
+ERROR!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:39:55' prior: 50553439!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: 100 on: aReceptiveAccountToExtract ofTransfer: self.
+	depositLeg := TransferDeposit register: 100 on: 	aReceptiveAccountToDeposit ofTransfer: self.! !
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:40:09' prior: 50553553!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: 100 on: aReceptiveAccountToExtract forTransfer: self.
+	depositLeg := TransferDeposit register: 100 on: 	aReceptiveAccountToDeposit forTransfer: self.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:40:15'!
+ERROR!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:40:50'!
+Object subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:40:46'!
+initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer
+
+	transfer := aTransfer! !
+
+!methodRemoval: TransferDeposit #initializeRegister:on: stamp: 'GM 10/24/2022 09:40:58'!
+initializeRegister: anAmount on: aReceptiveAccount !
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:41:05'!
+Object subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:41:02'!
+initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer
+
+	transfer := aTransfer! !
+
+!methodRemoval: TransferWithdraw #initializeRegister:on: stamp: 'GM 10/24/2022 09:41:07'!
+initializeRegister: anAmount on: aReceptiveAccount 
+!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:41:11'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:41:54'!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer! !
+
+!methodRemoval: TransferDeposit class #register:on: stamp: 'GM 10/24/2022 09:41:57'!
+register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:42:02'!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer! !
+
+!methodRemoval: TransferWithdraw class #register:on: stamp: 'GM 10/24/2022 09:42:04'!
+register: anAmount on: aReceptiveAccount 
+	
+	^self new initializeRegister: anAmount on: aReceptiveAccount !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:09'!
+ERROR!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/24/2022 09:42:18'!
+anotherLeg
+	self shouldBeImplemented.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:30'!
+ERROR!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/24/2022 09:42:49' prior: 50553650!
+anotherLeg
+	
+	^transfer depositLeg! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:51'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:42:51'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:42:51'!
+FAILURE!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:51'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:57'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:42:57'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:42:57'!
+FAILURE!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:42:57'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:42:59'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:43:13'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:43:13'!
+FAILURE!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:50:51' prior: 50553634!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self for: anAmount forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:51:00'!
+ERROR!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:51:07'!
+for: aSmallInteger forTransfer: aTransfer 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aSmallInteger forTransfer: aTransfer ! !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:51:45' prior: 50553702!
+for: anAmount forTransfer: aTransfer 
+	
+	^self new initializeFor: anAmount forTransfer: aTransfer ! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:51:46'!
+ERROR!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:51:53'!
+initializeFor: anAmount forTransfer: aTransfer 
+	self shouldBeImplemented.
+	amount := anAmount.
+	transfer := aTransfer.! !
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:52:00' prior: 50553720!
+initializeFor: anAmount forTransfer: aTransfer 
+	
+	transfer := aTransfer.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:52:04'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:52:04'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:52:04'!
+FAILURE!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:52:04'!
+PASSED!
+
+!methodRemoval: TransferWithdraw #initializeRegister:on:forTransfer: stamp: 'GM 10/24/2022 09:52:41'!
+initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer
+
+	transfer := aTransfer!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:53:00'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:53:00'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:53:00'!
+FAILURE!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:53:00'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:53:02'!
+FAILURE!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:54:02'!
+FAILURE!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:54:02'!
+FAILURE!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 09:54:48' prior: 50553251!
+test01TransferBetweenAccountsModifiesBalance
+
+	| accountToExtract accountToDeposit |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: -100 equals: accountToExtract balance.
+	self assert: 100 equals: accountToDeposit balance.! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:54:53'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:54:53'!
+ERROR!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:55:01'!
+ERROR!
+!TransferWithdraw methodsFor: 'balance' stamp: 'GM 10/24/2022 09:55:12'!
+affectBalance: aSmallInteger 
+	self shouldBeImplemented.! !
+!TransferWithdraw methodsFor: 'balance' stamp: 'GM 10/24/2022 09:55:58' prior: 50553794!
+affectBalance: aBalance
+
+	^ aBalance - transfer value
+ 
+	! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:56:00'!
+ERROR!
+!TransferWithdraw methodsFor: 'balance' stamp: 'GM 10/24/2022 09:56:32' prior: 50553799!
+affectBalance: aBalance
+
+	^ aBalance - transfer value
+ 
+	! !
+
+transfer value!
+!TransferWithdraw methodsFor: 'balance' stamp: 'GM 10/24/2022 09:56:41' prior: 50553808!
+affectBalance: aBalance
+
+	^ aBalance - transfer value
+ 
+	! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 09:57:20'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:57:18' prior: 50553565!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	withdrawLeg := TransferWithdraw register: 100 on: aReceptiveAccountToExtract forTransfer: self.
+	depositLeg := TransferDeposit register: 100 on: 	aReceptiveAccountToDeposit forTransfer: self.
+	value := anAmount.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:57:27'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:57:27'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 09:57:27'!
+FAILURE!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:57:27'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:57:30'!
+ERROR!
+!Transfer methodsFor: 'legs' stamp: 'GM 10/24/2022 09:57:52' overrides: 16902254!
+value
+
+	^value! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:57:56'!
+FAILURE!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:58:09'!
+FAILURE!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 09:58:09'!
+FAILURE!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:58:47' prior: 50553620!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self for: anAmount forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:58:57'!
+ERROR!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:59:03'!
+for: aSmallInteger forTransfer: aTransfer 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aSmallInteger forTransfer: aTransfer ! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 09:59:19' prior: 50553883!
+for: anAmount forTransfer: aTransfer 
+
+	^self new initializeFor: anAmount forTransfer: aTransfer ! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 09:59:20'!
+ERROR!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:59:24'!
+initializeFor: anAmount forTransfer: aTransfer 
+	self shouldBeImplemented.
+	amount := anAmount.
+	transfer := aTransfer.! !
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 09:59:32' prior: 50553901!
+initializeFor: anAmount forTransfer: aTransfer 
+	
+	transfer := aTransfer.! !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:00:08'!
+forTransfer: aTransfer 
+
+	^self new initializeForTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #for:forTransfer: stamp: 'GM 10/24/2022 10:00:14'!
+for: anAmount forTransfer: aTransfer 
+
+	^self new initializeFor: anAmount forTransfer: aTransfer !
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:00:20' prior: 50553871!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:00:41'!
+forTransfer: aTransfer 
+	
+	^self new initializeForTransfer: aTransfer ! !
+
+!methodRemoval: TransferWithdraw class #for:forTransfer: stamp: 'GM 10/24/2022 10:00:44'!
+for: anAmount forTransfer: aTransfer 
+	
+	^self new initializeFor: anAmount forTransfer: aTransfer !
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:00:56' prior: 50553690!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+
+!methodRemoval: TransferDeposit #initializeRegister:on:forTransfer: stamp: 'GM 10/24/2022 10:01:30'!
+initializeRegister: anAmount on: aReceptiveAccount forTransfer: aTransfer
+
+	transfer := aTransfer!
+!TransferDeposit methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:01:37'!
+initializeForTransfer: aTransfer 
+	
+	transfer := aTransfer.! !
+
+!methodRemoval: TransferDeposit #initializeFor:forTransfer: stamp: 'GM 10/24/2022 10:01:39'!
+initializeFor: anAmount forTransfer: aTransfer 
+	
+	transfer := aTransfer.!
+!TransferWithdraw methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:01:46'!
+initializeForTransfer: aTransfer 
+	
+	transfer := aTransfer.! !
+
+!methodRemoval: TransferWithdraw #initializeFor:forTransfer: stamp: 'GM 10/24/2022 10:01:48'!
+initializeFor: anAmount forTransfer: aTransfer 
+	
+	transfer := aTransfer.!
+!TransferDeposit class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:02:43'!
+registerOn: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+
+!methodRemoval: TransferDeposit class #register:on:forTransfer: stamp: 'GM 10/24/2022 10:02:48'!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction!
+!TransferWithdraw class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:02:56'!
+registerOn: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+
+!methodRemoval: TransferWithdraw class #register:on:forTransfer: stamp: 'GM 10/24/2022 10:02:58'!
+register: anAmount on: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction!
+!Transfer methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:03:42' prior: 50553829!
+initializeRegister: anAmount from: aReceptiveAccountToExtract to: aReceptiveAccountToDeposit 
+	
+	value := anAmount.
+	withdrawLeg := TransferWithdraw registerOn: aReceptiveAccountToExtract forTransfer: self.
+	depositLeg := TransferDeposit registerOn: 	aReceptiveAccountToDeposit forTransfer: self.! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:03:46'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:03:46'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 10:03:46'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:03:46'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:03:46'!
+ERROR!
+!TransferDeposit methodsFor: 'balance' stamp: 'GM 10/24/2022 10:03:58'!
+affectBalance: aSmallInteger 
+	self shouldBeImplemented.! !
+!TransferDeposit methodsFor: 'balance' stamp: 'GM 10/24/2022 10:04:21' prior: 50554045!
+affectBalance: aBalance
+
+	^aBalance + transfer value! !
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:04:23'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:04:27'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:04:27'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 10:04:27'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:04:27'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 10:04:49' prior: 50553390!
+test03
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
+	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:04:50'!
+ERROR!
+!TransferDeposit methodsFor: 'legs' stamp: 'GM 10/24/2022 10:04:58'!
+anotherLeg
+	self shouldBeImplemented.! !
+!TransferDeposit methodsFor: 'legs' stamp: 'GM 10/24/2022 10:05:06' prior: 50554086!
+anotherLeg
+	
+	^transfer withdrawLeg! !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:05:08'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:05:08'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 10:05:08'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:05:08'!
+PASSED!
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:08:37'!
+Object subclass: #TransferTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:08:37'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #TransferTransaction
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:04'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'amount receptiveAccount transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:10'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:17'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferDeposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:37'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferWithdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:50'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:09:50'!
+Object subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTransaction methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:10:06'!
+initializeForTransfer: aTransfer 
+	
+	transfer := aTransfer.! !
+
+!methodRemoval: TransferDeposit #initializeForTransfer: stamp: 'GM 10/24/2022 10:10:06'!
+initializeForTransfer: aTransfer 
+	
+	transfer := aTransfer.!
+
+!methodRemoval: TransferWithdraw #initializeForTransfer: stamp: 'GM 10/24/2022 10:10:09'!
+initializeForTransfer: aTransfer 
+	
+	transfer := aTransfer.!
+!TransferTransaction class methodsFor: 'no messages' stamp: 'GM 10/24/2022 10:10:47'!
+registerOn: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction! !
+!TransferTransaction class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:11:03'!
+forTransfer: aTransfer 
+
+	^self new initializeForTransfer: aTransfer ! !
+
+!methodRemoval: TransferDeposit class #forTransfer: stamp: 'GM 10/24/2022 10:11:03'!
+forTransfer: aTransfer 
+
+	^self new initializeForTransfer: aTransfer !
+
+!methodRemoval: TransferDeposit class #registerOn:forTransfer: stamp: 'GM 10/24/2022 10:11:08'!
+registerOn: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction!
+
+!methodRemoval: TransferWithdraw class #registerOn:forTransfer: stamp: 'GM 10/24/2022 10:11:11'!
+registerOn: aReceptiveAccount forTransfer: aTransfer
+	
+	| transaction |
+	
+	transaction := self forTransfer: aTransfer.
+	aReceptiveAccount register: transaction.
+	^ transaction!
+
+!methodRemoval: TransferWithdraw class #forTransfer: stamp: 'GM 10/24/2022 10:11:13'!
+forTransfer: aTransfer 
+	
+	^self new initializeForTransfer: aTransfer !
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:11:18'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:11:18'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 10:11:18'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:11:18'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:12:26'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 10:12:26'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'GM 10/24/2022 10:12:26'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'GM 10/24/2022 10:12:26'!
+PASSED!
+
+TestCase subclass: #ReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReportTest category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:14:40'!
+TestCase subclass: #ReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummaryTest category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:17:12'!
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReportTest stamp: 'GM 10/24/2022 10:17:19'!
+TestCase subclass: #ReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummaryTest class methodsFor: 'tests' stamp: 'GM 10/24/2022 10:20:04'!
+test01
+
+	! !
+
+!methodRemoval: AccountSummaryTest class #test01 stamp: 'GM 10/24/2022 10:20:28'!
+test01
+
+	!
+!AccountSummaryTest methodsFor: 'no messages' stamp: 'GM 10/24/2022 10:22:09'!
+test01
+
+	self assert: ReceptiveAccount new accountSummary equals: OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:22:25'!
+ERROR!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:24:25'!
+Object subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:24:20' prior: 50554321!
+test01
+
+	self assert: (AccountSummary for: Account) value equals: OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:25:04'!
+ERROR!
+!AccountSummary class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:25:10'!
+for: aClass 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aClass ! !
+!AccountSummary class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 10:25:31' prior: 50554346!
+for: anAccount
+
+	^self new initializeFor: anAccount! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:25:32'!
+ERROR!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 10:25:44'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:25:44'!
+initializeFor: anAccount 
+	self shouldBeImplemented.
+	account := anAccount.! !
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:25:49' prior: 50554369!
+initializeFor: anAccount 
+	
+	account := anAccount.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:25:55'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:26:13' prior: 50554337!
+test01
+
+	self assert: OrderedCollection new value equals: (AccountSummary for: Account).! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:26:14'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:26:25' prior: 50554383!
+test01
+
+	self assert: OrderedCollection new equals: (AccountSummary for: Account) value.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:26:26'!
+FAILURE!
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 10:26:54' overrides: 16902254!
+value
+
+	^OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:27:01'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:27:01'!
+PASSED!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:27:56'!
+test02
+
+	self assert: OrderedCollection new equals: (AccountSummary for: ReceptiveAccount new) value.! !
+
+!methodRemoval: AccountSummaryTest #test01 stamp: 'GM 10/24/2022 10:28:02'!
+test01
+
+	self assert: OrderedCollection new equals: (AccountSummary for: Account) value.!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:28:04'!
+test01
+
+	self assert: OrderedCollection new equals: (AccountSummary for: ReceptiveAccount new) value.! !
+
+!methodRemoval: AccountSummaryTest #test02 stamp: 'GM 10/24/2022 10:28:07'!
+test02
+
+	self assert: OrderedCollection new equals: (AccountSummary for: ReceptiveAccount new) value.!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:29:29'!
+test02
+
+	| account |
+	account := ReceptiveAccount new.
+	self assert: OrderedCollection new equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:29:50' prior: 50554434!
+test02
+
+	| account |
+	account := ReceptiveAccount new.
+	self assert: OrderedCollection new equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:35:41' prior: 50554442!
+test02
+
+	| account anotherAccount|
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on account.
+	Transfer register: 20 from: account to: anotherAccount.
+	Transfer register: 30 from: anotherAccount to: account.
+	self assert: OrderedCollection new equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:35:54' prior: 50554450!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	self assert: OrderedCollection new equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:36:15' prior: 50554466!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	self assert: OrderedCollection new equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:37:47' prior: 50554480!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 50.' with: 'Salida por transferencia de 20.' with: 'Entrada por transferencia de 30.' with:
+'Balance = 60') equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:38:03' prior: 50554494!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	expectedSummary := OrderedCollection with: 'Depósito por 100.' with: 'Extracción por 50.' with: 'Salida por transferencia de 20.' with: 'Entrada por transferencia de 30.' with:
+'Balance = 60'.
+	self assert: (expectedSummary) equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 10:38:59' prior: 50554513!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 10:39:04'!
+FAILURE!
+
+!methodRemoval: AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:16:50'!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.!
+
+----SNAPSHOT----(24 October 2022 11:17:01) CuisUniversity-5481.image priorSource: 7089106!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:17:23' prior: 50554422!
+test01
+
+	self assert: OrderedCollection new equals: ReceptiveAccount new accountSummary.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:17:28'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accountSumary' stamp: 'GM 10/24/2022 11:17:36'!
+accountSummary
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'accountSumary' stamp: 'GM 10/24/2022 11:17:42' prior: 50554590!
+accountSummary
+	
+	^OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:17:44'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:17:44'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 11:18:29'!
+test02AccountsRegisterTransferLegs
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: (accountToExtract hasRegistered: transfer withdrawLeg).
+	self assert: (accountToDeposit hasRegistered: transfer depositLeg).! !
+
+!methodRemoval: TransferTest #test02 stamp: 'GM 10/24/2022 11:18:29'!
+test02
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: (accountToExtract hasRegistered: transfer withdrawLeg).
+	self assert: (accountToDeposit hasRegistered: transfer depositLeg).!
+!TransferTest methodsFor: 'tests' stamp: 'GM 10/24/2022 11:19:17'!
+test03CanMoveBetweenLegs
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
+	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg! !
+
+!methodRemoval: TransferTest #test03 stamp: 'GM 10/24/2022 11:19:17'!
+test03
+
+	| accountToExtract accountToDeposit transfer |
+	
+	accountToExtract := ReceptiveAccount new.
+	accountToDeposit := ReceptiveAccount new.
+	transfer := Transfer register: 100 from: accountToExtract to: accountToDeposit.
+	self assert: transfer withdrawLeg anotherLeg equals: transfer depositLeg.
+	self assert: transfer depositLeg anotherLeg equals: transfer withdrawLeg!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:20:26'!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: account accountSummary.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:20:27'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:22:18' prior: 50554595!
+accountSummary
+	
+	^ transactions inject: OrderedCollection new into: [:accSummary :transaction | transaction messageForAccountSummary]! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:22:27'!
+ERROR!
+!Deposit methodsFor: 'accountSummaryMessages' stamp: 'GM 10/24/2022 11:22:47'!
+messageForAccountSummary
+	self shouldBeImplemented.! !
+
+'Deposito' , 21!
+
+'Deposito' , 21 toString!
+
+'Deposito' , 21 asString!
+!Deposit methodsFor: 'accountSummaryMessages' stamp: 'GM 10/24/2022 11:24:19' prior: 50554696!
+messageForAccountSummary
+	
+	^ 'Depósito por' , value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:24:21'!
+ERROR!
+!Withdraw methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:24:36'!
+messageForAccountSummary
+	self shouldBeImplemented.! !
+!Withdraw methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:24:51' prior: 50554711!
+messageForAccountSummary
+	
+	^ 'Extracción por' , value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:24:55'!
+ERROR!
+!TransferWithdraw methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:25:12'!
+messageForAccountSummary
+	self shouldBeImplemented.! !
+!TransferWithdraw methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:25:35' prior: 50554724!
+messageForAccountSummary
+	
+	^ 'Salida por transferecia de' , transfer value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:25:37'!
+ERROR!
+!TransferDeposit methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:25:49'!
+messageForAccountSummary
+	self shouldBeImplemented.! !
+!TransferDeposit methodsFor: 'accountSummaryMessage' stamp: 'GM 10/24/2022 11:27:05' prior: 50554738!
+messageForAccountSummary
+
+	^ 'Entrada por transferencia de' , transfer value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:27:06'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:30:55' prior: 50554686!
+accountSummary
+	
+	| accSummary |
+	accSummary := transactions inject: OrderedCollection new into: [:summary :transaction | transaction messageForAccountSummary].
+	accSummary add: 'Balance = ' , self balance , '.'.
+	^accSummary! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 11:30:59'!
+PASSED!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:31:20' prior: 50554752!
+accountSummary
+	
+	| accSummary |
+	accSummary := transactions inject: OrderedCollection new into: [:summarsy :transaction | transaction messageForAccountSummary].
+	accSummary add: 'Balance = ' , self balance , '.'.
+	^accSummary! !
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:31:28' prior: 50554789!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:summarsy :transaction | transaction messageForAccountSummary].
+	summary add: 'Balance = ' , self balance , '.'.
+	^summary! !
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:31:36' prior: 50554800!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | transaction messageForAccountSummary].
+	summary add: 'Balance = ' , self balance , '.'.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:31:59'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:32:36'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:32:43' prior: 50554810!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | transaction messageForAccountSummary].
+	summary add: 'Balance = ' , self balance asString , '.'.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:32:45'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:33:02'!
+ERROR!
+
+ self balance!
+
+self balance asString!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:35:20' prior: 50554825!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | accSummary add: transaction messageForAccountSummary].
+	summary add: 'Balance = ' , self balance asString , '.'.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:35:22'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:35:38'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:36:44' prior: 50554842!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | accSummary add: transaction messageForAccountSummary. accSummary].
+	summary add: 'Balance = ' , self balance asString , '.'.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:36:46'!
+FAILURE!
+
+account accountSummary!
+!Withdraw methodsFor: 'report message' stamp: 'GM 10/24/2022 11:37:27' prior: 50554716!
+messageForAccountSummary
+	
+	^ 'Extracción por ' , value asString , '.'! !
+!Deposit methodsFor: 'report message' stamp: 'GM 10/24/2022 11:37:32' prior: 50554703!
+messageForAccountSummary
+	
+	^ 'Depósito por ' , value asString , '.'! !
+!TransferDeposit methodsFor: 'report message' stamp: 'GM 10/24/2022 11:37:36' prior: 50554743!
+messageForAccountSummary
+
+	^ 'Entrada por transferencia de ' , transfer value asString , '.'! !
+!TransferWithdraw methodsFor: 'report message' stamp: 'GM 10/24/2022 11:37:39' prior: 50554729!
+messageForAccountSummary
+	
+	^ 'Salida por transferecia de ' , transfer value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:37:49'!
+FAILURE!
+
+ account accountSummary.!
+
+expectedSummary!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 11:38:49' prior: 50554858!
+accountSummary
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | accSummary add: transaction messageForAccountSummary. accSummary].
+	summary add: 'Balance = ' , self balance asString.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:38:52'!
+FAILURE!
+
+account accountSummary.!
+!TransferWithdraw methodsFor: 'report message' stamp: 'GM 10/24/2022 11:39:33' prior: 50554891!
+messageForAccountSummary
+	
+	^ 'Salida por transferencia de ' , transfer value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:39:37'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:39:37'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:39:37'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:39:37'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:40:22' prior: 50554582!
+test01
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: ReceptiveAccount new accountSummary.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:40:24'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 11:40:24'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 11:40:24'!
+PASSED!
+
+!classRemoval: #AccountSummary stamp: 'GM 10/24/2022 11:42:03'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 11:43:23'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'transactions account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary class methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:43:23'!
+with: aTransactions for: anAccount
+	^self new initializeWith: aTransactions for: anAccount! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:43:23'!
+initializeWith: aTransactions for: anAccount
+	transactions := aTransactions.
+	account := anAccount.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:43:23' overrides: 16902254!
+value
+	
+	| summary |
+	summary := transactions inject: OrderedCollection new into: [:accSummary :transaction | accSummary add: transaction messageForAccountSummary. accSummary].
+	summary add: 'Balance = ' , account balance asString.
+	^summary! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 11:43:23' prior: 50554901!
+accountSummary
+	^(AccountSummary with: transactions for: self) value! !
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 11:43:32' prior: 50554968!
+initializeWith: aTransactions for: anAccount
+
+	transactions := aTransactions.
+	account := anAccount.! !
+!AccountSummary class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 11:43:46' prior: 50554962!
+with: aTransactions for: anAccount
+
+	^self new initializeWith: aTransactions for: anAccount! !
+!AccountSummary class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 11:43:58'!
+for: anAccount
+
+	^self new initializeFor: anAccount! !
+
+!methodRemoval: AccountSummary class #with:for: stamp: 'GM 10/24/2022 11:44:01'!
+with: aTransactions for: anAccount
+
+	^self new initializeWith: aTransactions for: anAccount!
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 11:44:15'!
+initializeFor: anAccount
+
+	account := anAccount.! !
+
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 11:44:24'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!methodRemoval: AccountSummary #initializeWith:for: stamp: 'GM 10/24/2022 11:44:30'!
+initializeWith: aTransactions for: anAccount
+
+	transactions := aTransactions.
+	account := anAccount.!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:00:23'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:00:41'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:00:41'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:14'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accountSummary' stamp: 'GM 10/24/2022 12:01:25' prior: 50554986!
+accountSummary
+	^(AccountSummary for: self) value! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:26'!
+ERROR!
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:01:37' prior: 50554975 overrides: 16902254!
+value
+	
+	| summary |
+	summary := account transactions inject: OrderedCollection new into: [:accSummary :transaction | accSummary add: transaction messageForAccountSummary. accSummary].
+	summary add: 'Balance = ' , account balance asString.
+	^summary! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:01:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:41'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:01:41'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:01:41'!
+PASSED!
+!Deposit methodsFor: 'value' stamp: 'GM 10/24/2022 12:02:45'!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self! !
+!Withdraw methodsFor: 'accept' stamp: 'GM 10/24/2022 12:03:43'!
+accept: aVisitor
+	
+	aVisitor visitWithdraw: self! !
+!TransferDeposit methodsFor: 'accept' stamp: 'GM 10/24/2022 12:04:03'!
+accept: aVisitor
+	
+	aVisitor visitTransferDeposit: self! !
+!TransferWithdraw methodsFor: 'accept' stamp: 'GM 10/24/2022 12:04:30'!
+accept: aVisitor
+	
+	aVisitor visitTransferWithdraw: self! !
+
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account summary'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 12:05:42'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:05:59'!
+visitDeposit: aDeposit! !
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:06:53' prior: 50555056 overrides: 16902254!
+value
+! !
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 12:07:55'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:07:54' prior: 50555116!
+visitDeposit: aDeposit
+
+	value add: 'Depósito por 100.'! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:08:18'!
+visitWithdraw: aWithdraw
+
+	value add: 'Extracción por 100.'! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:08:37' prior: 50555137!
+visitWithdraw: aWithdraw
+
+	value add: 'Extracción por ' , aWithdraw value , '.'! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:08:54' prior: 50555132!
+visitDeposit: aDeposit
+
+	value add: 'Depósito por ' , aDeposit value , '.'.! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:09:10' prior: 50555148!
+visitDeposit: aDeposit
+
+	value add: 'Depósito por ' , aDeposit value , '.'! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:11:07'!
+visitTransferDeposit: aTransferDeposit
+
+	value add: 'Entrada por transferencia de ' , aTransferDeposit value , '.'! !
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:11:38'!
+visitTransferWithdraw: aTransferWithdraw
+
+	value add: 'Salida por transferencia de ' , aTransferWithdraw value , '.'! !
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:13:36' prior: 50555121 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	account accept: self.
+	^value! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 12:14:43'!
+accept: aVisitor
+
+	transactions do: [:transaction | transaction accept: aVisitor]! !
+
+!methodRemoval: ReceptiveAccount #accountSummary stamp: 'GM 10/24/2022 12:15:46'!
+accountSummary
+	^(AccountSummary for: self) value!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:16:04'!
+ERROR!
+!AccountSummaryTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 12:16:24' prior: 50554662!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:16:43'!
+ERROR!
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:50' prior: 50555154!
+visitDeposit: aDeposit
+
+	value add: 'Depósito por ' , aDeposit value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:16:52'!
+ERROR!
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:16:58' prior: 50555142!
+visitWithdraw: aWithdraw
+
+	value add: 'Extracción por ' , aWithdraw value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:16:59'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:17:13'!
+ERROR!
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:17:22' prior: 50555165!
+visitTransferWithdraw: aTransferWithdraw
+
+	value add: 'Salida por transferencia de ' , aTransferWithdraw value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:17:23'!
+ERROR!
+!TransferWithdraw methodsFor: 'legs' stamp: 'GM 10/24/2022 12:17:47' overrides: 16902254!
+value
+
+	^transfer value! !
+!TransferWithdraw methodsFor: 'report message' stamp: 'GM 10/24/2022 12:18:11' prior: 50554916!
+messageForAccountSummary
+	
+	^ 'Salida por transferencia de ' , self value asString , '.'! !
+!TransferWithdraw methodsFor: 'balance' stamp: 'GM 10/24/2022 12:18:23' prior: 50553814!
+affectBalance: aBalance
+
+	^ aBalance - self value
+ 
+	! !
+!TransferDeposit methodsFor: 'balance' stamp: 'GM 10/24/2022 12:18:45' prior: 50554050!
+affectBalance: aBalance
+
+	^aBalance + self value! !
+!TransferDeposit methodsFor: 'evaluation' stamp: 'GM 10/24/2022 12:19:05' overrides: 16902254!
+value
+
+	^transfer value! !
+!TransferDeposit methodsFor: 'report message' stamp: 'GM 10/24/2022 12:19:16' prior: 50554885!
+messageForAccountSummary
+
+	^ 'Entrada por transferencia de ' , self value asString , '.'! !
+
+!methodRemoval: TransferWithdraw #messageForAccountSummary stamp: 'GM 10/24/2022 12:19:26'!
+messageForAccountSummary
+	
+	^ 'Salida por transferencia de ' , self value asString , '.'!
+
+!methodRemoval: TransferDeposit #messageForAccountSummary stamp: 'GM 10/24/2022 12:19:30'!
+messageForAccountSummary
+
+	^ 'Entrada por transferencia de ' , self value asString , '.'!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:20:11'!
+ERROR!
+
+aTransferDeposit value!
+!AccountSummary methodsFor: 'visiting' stamp: 'GM 10/24/2022 12:20:23' prior: 50555159!
+visitTransferDeposit: aTransferDeposit
+
+	value add: 'Entrada por transferencia de ' , aTransferDeposit value asString , '.'! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:20:24'!
+FAILURE!
+
+(AccountSummary for: account) value!
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:21:58' prior: 50555173 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	account accept: self.
+	value add: 'Balance = ' , account balance.
+	^value! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:22:03'!
+ERROR!
+!AccountSummary methodsFor: 'evaluating' stamp: 'GM 10/24/2022 12:22:20' prior: 50555301 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	account accept: self.
+	value add: 'Balance = ' , account balance asString.
+	^value! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:22:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:22:21'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:22:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:22:21'!
+ERROR!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 12:22:58' prior: 50554933!
+test01
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummary for: ReceptiveAccount new) value.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:23:00'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:23:02'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 12:23:02'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 12:23:02'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 12:48:21) CuisUniversity-5481.image priorSource: 7133681!
+
+----SNAPSHOT----(24 October 2022 12:55:03) CuisUniversity-5481.image priorSource: 7158202!
+!AccountSummary methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:14:50' prior: 50555015!
+initializeFor: anAccount
+
+	account := anAccount.
+	value := OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 13:15:37'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 13:15:37'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 13:15:37'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 13:18:11'!
+test03
+
+	| portfolio account anotherAccount expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	portfolio := Portfolio with: account with: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 13:21:30' prior: 50555364!
+test03
+
+	| account anotherAccount expectedSummary |
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Balance = 100'.
+
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 13:23:31' prior: 50555388!
+test03
+
+	| account anotherAccount expectedSummary portfolio |
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	portfolio := Portfolio with: account with: anotherAccount.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.'
+						with: 'Balance = 50'.					
+
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 13:24:00' prior: 50555403!
+test03
+
+	| account anotherAccount expectedSummary portfolio |
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	portfolio := Portfolio with: account with: anotherAccount.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.'
+						with: 'Balance = 50'.					
+
+	self assert: expectedSummary equals: (AccountSummary for: portfolio) value.! !
+
+!testRun: #AccountSummaryTest #test03 stamp: 'GM 10/24/2022 13:24:02'!
+ERROR!
+!Portfolio methodsFor: 'accounts management' stamp: 'GM 10/24/2022 13:24:41'!
+accept: aVisitor
+
+	accounts do: [:account | account accept: aVisitor]! !
+
+!testRun: #AccountSummaryTest #test03 stamp: 'GM 10/24/2022 13:24:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 13:24:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 13:24:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'GM 10/24/2022 13:24:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'GM 10/24/2022 13:24:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'GM 10/24/2022 13:24:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'GM 10/24/2022 13:24:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'GM 10/24/2022 13:24:52'!
+PASSED!
+
+TestCase subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:25:50'!
+TestCase subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRenamed: #TransferNet as: #TransferNetTest stamp: 'GM 10/24/2022 13:26:00'!
+Smalltalk renameClassNamed: #TransferNet as: #TransferNetTest!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:29:43'!
+Object subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNetTest methodsFor: 'no messages' stamp: 'GM 10/24/2022 13:29:40'!
+test01
+
+	self assert: 0 equals: (TransferNet for: ReceptiveAccount new) value.! !
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:29:47'!
+ERROR!
+!TransferNet class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:29:52'!
+for: aReceptiveAccount 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aReceptiveAccount ! !
+!TransferNet class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:30:03' prior: 50555500!
+for: anAccount
+
+	^self new initializeFor: anAccount ! !
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:30:04'!
+ERROR!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:30:21'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:30:21'!
+initializeFor: anAccount 
+	self shouldBeImplemented.
+	account := anAccount.! !
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:30:38'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:30:36' prior: 50555523!
+initializeFor: anAccount 
+
+	account := anAccount.
+	value := 0.! !
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:30:39'!
+FAILURE!
+!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:30:50' overrides: 16902254!
+value
+
+	^value! !
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 13:31:04'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 13:31:04'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 13:31:04'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 13:31:04'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:31:11'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:31:11'!
+PASSED!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:32:11'!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	TransferWithdraw register: 20 on: account.
+	TransferDeposit register: 30 on: account.
+
+	self assert: 10 equals: (TransferNet for: account) value.! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:32:14'!
+ERROR!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:33:17' prior: 50555565!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+
+	self assert: 10 equals: (TransferNet for: account) value.! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:33:18'!
+FAILURE!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:33:23'!
+FAILURE!
+!TransferNet methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:34:29' prior: 50555544 overrides: 16902254!
+value
+
+	value := 0.
+	account accept: self.
+	^value! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:35:01'!
+ERROR!
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:08'!
+visitDeposit: aDeposit 
+	self shouldBeImplemented.! !
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:17' prior: 50555606!
+visitDeposit: aDeposit 
+	! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:35:18'!
+ERROR!
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:23'!
+visitWithdraw: aWithdraw 
+	self shouldBeImplemented.! !
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:24' prior: 50555617!
+visitWithdraw: aWithdraw 
+	! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:35:25'!
+ERROR!
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:32'!
+visitTransferWithdraw: aTransferWithdraw 
+	self shouldBeImplemented.! !
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:53' prior: 50555628!
+visitTransferWithdraw: aTransferWithdraw 
+	
+	value := value - aTransferWithdraw value! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:35:54'!
+ERROR!
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:35:59'!
+visitTransferDeposit: aTransferDeposit 
+	self shouldBeImplemented.! !
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:36:09' prior: 50555641!
+visitTransferDeposit: aTransferDeposit 
+	
+	value := value + aTransferDeposit ! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:12'!
+ERROR!
+!TransferNet methodsFor: 'visiting' stamp: 'GM 10/24/2022 13:36:19' prior: 50555646!
+visitTransferDeposit: aTransferDeposit 
+	
+	value := value + aTransferDeposit value! !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:20'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:36:20'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:20'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:24'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:36:24'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:24'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:27'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:36:27'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:36:27'!
+PASSED!
+
+TestCase subclass: #PortfolioTreeStructureTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioTreeStructureTest category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:40:03'!
+TestCase subclass: #PortfolioTreeStructureTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:41:30'!
+Object subclass: #PortfolioTreeStructure
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!PortfolioTreeStructureTest methodsFor: 'no messages' stamp: 'GM 10/24/2022 13:41:26'!
+test01
+
+	self assert: '' equals: (PortfolioTreeStructure for: Portfolio new)! !
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:41:35'!
+ERROR!
+!PortfolioTreeStructure class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:41:39'!
+for: aPortfolio 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeFor: aPortfolio ! !
+!PortfolioTreeStructure class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:41:56' prior: 50555712!
+for: aPortfolio 
+
+	^self new initializeFor: aPortfolio! !
+!PortfolioTreeStructure class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 13:43:25' prior: 50555721!
+for: aPortfolio 
+
+	^self new initializeFor: aPortfolio! !
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:43:27'!
+ERROR!
+
+!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:43:36'!
+Object subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:43:36'!
+initializeFor: aPortfolio 
+	self shouldBeImplemented.
+	portfolio := aPortfolio.! !
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:43:48' prior: 50555743!
+initializeFor: aPortfolio 
+	
+	portfolio := aPortfolio.! !
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:43:49'!
+FAILURE!
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:44:02' prior: 50555703!
+test01
+
+	self assert: '' equals: (PortfolioTreeStructure for: Portfolio new) value! !
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:44:04'!
+FAILURE!
+
+!classDefinition: #PortfolioTreeStructure category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 13:44:20'!
+Object subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:44:18' overrides: 16902254!
+value
+
+	^value! !
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 13:44:34' prior: 50555749!
+initializeFor: aPortfolio 
+	
+	portfolio := aPortfolio.
+	value := OrderedCollection new.! !
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:44:44'!
+FAILURE!
+
+!testRun: #PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 13:44:44'!
+FAILURE!
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:44:54' prior: 50555758!
+test01
+
+	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value! !
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:48:39'!
+test02
+	
+	| expectedTreeStructure |
+	expectedTreeStructure := OrderedCollection with: 'Portfolio de la familia' with: 'Cuenta Mia' with: 'Portfolio de hijos' with: 'Cuenta de Juan' with: 'Cuenta de Angeles.'.
+	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value! !
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:56:51' prior: 50555799!
+test02
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' with: (ReceptiveAccount named: 'Cuenta Mia') with: (Portfolio named: '	Portfolio de hijos' with: (ReceptiveAccount named: 'Cuenta de Juan') with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: Portfolio new) value! !
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:57:02' prior: 50555813!
+test02
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' with: (ReceptiveAccount named: 'Cuenta Mia') with: (Portfolio named: '	Portfolio de hijos' with: (ReceptiveAccount named: 'Cuenta de Juan') with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 13:57:04'!
+ERROR!
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:57:58' prior: 50555836!
+test02
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 13:58:00'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 13:58:13'!
+ERROR!
+!ReceptiveAccount class methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 13:59:28'!
+named: aString 
+	self shouldBeImplemented.! !
+
+!methodRemoval: ReceptiveAccount class #named: stamp: 'GM 10/24/2022 13:59:47'!
+named: aString 
+	self shouldBeImplemented.!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:59:58'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 13:59:58'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 13:59:58'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:00:04'!
+ERROR!
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:00:08'!
+named: aString 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString ! !
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:00:52' prior: 50555911!
+named: aName
+	
+	name := aName! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:00:58'!
+ERROR!
+!Portfolio class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:01:03'!
+named: aString with: aClass with: aClass3 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeNamed: aString with: aClass with: aClass3 ! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:01:46' prior: 50555927!
+named: aName with: anAccount with: anotherAccount
+
+	^self new initializeNamed: aName with: anAccount with: anotherAccount.! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:01:47'!
+ERROR!
+
+!classDefinition: #Portfolio category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 14:01:53'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:02:03'!
+ERROR!
+
+----SNAPSHOT----(24 October 2022 14:04:18) CuisUniversity-5481.image priorSource: 7158294!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:05:45'!
+PASSED!
+
+ReceptiveAccount new!
+
+----STARTUP---- (24 October 2022 14:08:36) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:08:51'!
+PASSED!
+
+!classRemoval: #TransferWithdraw stamp: 'GM 10/24/2022 14:15:52'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferDeposit stamp: 'GM 10/24/2022 14:15:52'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferTransaction stamp: 'GM 10/24/2022 14:15:53'!
+Object subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferNet stamp: 'GM 10/24/2022 14:15:53'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Transfer stamp: 'GM 10/24/2022 14:15:53'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTreeStructure stamp: 'GM 10/24/2022 14:15:53'!
+Object subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Withdraw stamp: 'GM 10/24/2022 14:15:54'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Deposit stamp: 'GM 10/24/2022 14:15:54'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountTransaction stamp: 'GM 10/24/2022 14:15:54'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountSummary stamp: 'GM 10/24/2022 14:15:54'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Portfolio stamp: 'GM 10/24/2022 14:15:55'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: 'Cuenta de Angeles' stamp: 'GM 10/24/2022 14:15:55'!
+Account subclass: 'Cuenta de Angeles'
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'nil'!
+
+!classRemoval: #Account stamp: 'GM 10/24/2022 14:15:55'!
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferTest stamp: 'GM 10/24/2022 14:15:55'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferNetTest stamp: 'GM 10/24/2022 14:15:56'!
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccountTest stamp: 'GM 10/24/2022 14:15:56'!
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTreeStructureTest stamp: 'GM 10/24/2022 14:15:56'!
+TestCase subclass: #PortfolioTreeStructureTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTest stamp: 'GM 10/24/2022 14:15:56'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountSummaryTest stamp: 'GM 10/24/2022 14:15:57'!
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+self withSubCategoriesOf: category!
+
+(self superclassOrderIn: categoryToRemove)!
+
+----STARTUP---- (24 October 2022 14:20:13) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 14:20:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'GM 10/24/2022 14:20:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 14:20:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:21:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 14:21:06'!
+PASSED!
+
+----SNAPSHOT----(24 October 2022 14:21:11) CuisUniversity-5481.image priorSource: 7059698!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 14:21:18'!
+PASSED!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:21:28'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:21:51) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:22:15'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:22:15'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:22:24) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+!Portfolio methodsFor: 'testing' stamp: 'GM 10/24/2022 14:24:56'!
+initializedNamed: aName with: anAccount with: anotherAccount
+
+	name := aName.
+	self add: anAccount.
+	self add: anotherAccount.! !
+!Portfolio class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:25:12' prior: 50556768!
+named: aName with: anAccount with: anotherAccount
+
+	^self new initializedNamed: aName with: anAccount with: anotherAccount.! !
+
+----SNAPSHOT----(24 October 2022 14:25:18) CuisUniversity-5481.image priorSource: 7221781!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:25:47'!
+ERROR!
+
+(ReceptiveAccount named: 'Cuenta de Juan')!
+
+(ReceptiveAccount named: 'Cuenta de Angeles')!
+
+ReceptiveAccount named: 'Cuenta de Juan'!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:27:29'!
+ERROR!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:27:45'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:29:23) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:34:38'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:36:21) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+
+ReceptiveAccount new!
+
+(self listAtCategoryNamed: category asSymbol) !
+
+----STARTUP---- (24 October 2022 14:39:35) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+
+!classRemoval: #TransferWithdraw stamp: 'GM 10/24/2022 14:40:04'!
+TransferTransaction subclass: #TransferWithdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferDeposit stamp: 'GM 10/24/2022 14:40:04'!
+TransferTransaction subclass: #TransferDeposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferTransaction stamp: 'GM 10/24/2022 14:40:05'!
+Object subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferNet stamp: 'GM 10/24/2022 14:40:05'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Transfer stamp: 'GM 10/24/2022 14:40:05'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount receptiveAccountToExtract receptiveAccountToDeposit withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTreeStructure stamp: 'GM 10/24/2022 14:40:05'!
+Object subclass: #PortfolioTreeStructure
+	instanceVariableNames: 'portfolio value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Withdraw stamp: 'GM 10/24/2022 14:40:06'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Deposit stamp: 'GM 10/24/2022 14:40:06'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountTransaction stamp: 'GM 10/24/2022 14:40:06'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountSummary stamp: 'GM 10/24/2022 14:40:06'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccount stamp: 'GM 10/24/2022 14:40:06'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Portfolio stamp: 'GM 10/24/2022 14:40:07'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Account stamp: 'GM 10/24/2022 14:40:07'!
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferTest stamp: 'GM 10/24/2022 14:40:07'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #TransferNetTest stamp: 'GM 10/24/2022 14:40:08'!
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccountTest stamp: 'GM 10/24/2022 14:40:08'!
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTreeStructureTest stamp: 'GM 10/24/2022 14:40:08'!
+TestCase subclass: #PortfolioTreeStructureTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTest stamp: 'GM 10/24/2022 14:40:08'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountSummaryTest stamp: 'GM 10/24/2022 14:40:09'!
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+----STARTUP---- (24 October 2022 14:40:13) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+!Portfolio methodsFor: 'transactions' stamp: 'GM 10/24/2022 14:41:39'!
+initializeNamed: aName with: anAccount with: anotherAccount
+
+	name := aName.
+	self add: anAccount.
+	self add: anotherAccount.
+
+	! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:41:44'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:42:38) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:43:37'!
+withName: aName
+	
+	name := aName! !
+
+!methodRemoval: ReceptiveAccount class #named: stamp: 'GM 10/24/2022 14:43:37'!
+named: aName
+	
+	name := aName!
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 14:44:18' prior: 50562956!
+test02
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount withName: 'Cuenta Mia') 
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount withName: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount withName: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:44:19'!
+ERROR!
+
+----STARTUP---- (24 October 2022 14:45:52) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+
+ReceptiveAccountTest named: 'ja'!
+
+OrderedCollection named: 'ja'!
+!PortfolioTreeStructureTest methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 14:47:46' prior: 50564265!
+test02
+	
+	| expectedTreeStructure portfolio cuentamaria |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+	cuentamaria := (ReceptiveAccount named: 'Cuenta Mia').
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: cuentamaria
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+----STARTUP---- (24 October 2022 14:48:38) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/Portfolio-2/linux64/Portfolio-Solucion.st----!
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 14:49:37' prior: 50565869!
+named: aName
+	
+	^self new initializeNamed: aName.! !
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 14:49:52'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'GM 10/24/2022 14:49:49'!
+initializedNamed: aName
+
+	name := aName.! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:50:05'!
+ERROR!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'GM 10/24/2022 14:50:20'!
+initializeNamed: aName 
+	self shouldBeImplemented.
+	name := aName.! !
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'GM 10/24/2022 14:50:24' prior: 50566493!
+initializeNamed: aName 
+
+	name := aName.! !
+
+!methodRemoval: ReceptiveAccount #initializedNamed: stamp: 'GM 10/24/2022 14:50:34'!
+initializedNamed: aName
+
+	name := aName.!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:50:38'!
+ERROR!
+!Portfolio methodsFor: 'account management - private' stamp: 'GM 10/24/2022 14:51:44'!
+initializeNamed: aName with: anAccount with: anotherAccount.
+
+	name := aName.
+	self add: anAccount.
+	self add: anotherAccount.! !
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 14:51:50'!
+FAILURE!
+
+----SNAPSHOT----(24 October 2022 15:04:29) CuisUniversity-5481.image priorSource: 7059698!
+
+----QUIT----(24 October 2022 15:07:24) CuisUniversity-5481.image priorSource: 7515802!
+
+----STARTUP---- (24 October 2022 16:26:49) as /home/gonzalo/Desktop/Portfolio-2/linux64/CuisUniversity-5481.image!
+
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 16:26:53'!
+FAILURE!
+
+!classDefinition: #ReportGenerator category: 'Object' stamp: 'GM 10/24/2022 16:28:45'!
+Object subclass: #ReportGenerator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Object'!
+
+ReportGenerator subclass: #TransferNet
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:28:45'!
+ReportGenerator subclass: #TransferNet
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+ReportGenerator subclass: #AccountSummary
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:28:55'!
+ReportGenerator subclass: #AccountSummary
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:29'!
+ReportGenerator subclass: #TransferNet
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:29'!
+ReportGenerator subclass: #AccountSummary
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReportGenerator category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:29'!
+Object subclass: #ReportGenerator
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:33'!
+ReportGenerator subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:33'!
+ReportGenerator subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReportGenerator category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:29:33'!
+Object subclass: #ReportGenerator
+	instanceVariableNames: 'account value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReportGenerator class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 16:29:52'!
+for: anAccount
+
+	^self new initializeFor: anAccount ! !
+
+!methodRemoval: TransferNet class #for: stamp: 'GM 10/24/2022 16:29:52'!
+for: anAccount
+
+	^self new initializeFor: anAccount !
+
+!methodRemoval: AccountSummary class #for: stamp: 'GM 10/24/2022 16:29:56'!
+for: anAccount
+
+	^self new initializeFor: anAccount!
+!ReportGenerator methodsFor: 'no messages' stamp: 'GM 10/24/2022 16:30:43'!
+initializeFor: anAccount
+
+	self subclassResponsibility ! !
+!ReportGenerator methodsFor: 'as yet unclassified' stamp: 'GM 10/24/2022 16:30:44' prior: 50566624!
+initializeFor: anAccount
+
+	self subclassResponsibility! !
+!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:31'!
+visitDeposit: aDeposit
+
+	self subclassResponsibility.! !
+!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:37'!
+visitWithdraw: aWithdraw
+
+	self subclassResponsibility.! !
+!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:45'!
+visitTransferWithdraw: aTransferWithdraw
+
+	self subclassResponsibility.! !
+!ReportGenerator methodsFor: 'visiting' stamp: 'GM 10/24/2022 16:31:53'!
+visitTransferDeposit: aTransferDeposit
+
+	self subclassResponsibility.! !
+!ReportGenerator methodsFor: 'evaluating' stamp: 'GM 10/24/2022 16:32:27' overrides: 16902254!
+value
+
+	self subclassResponsibility! !
+
+!methodRemoval: Deposit #messageForAccountSummary stamp: 'GM 10/24/2022 16:33:11'!
+messageForAccountSummary
+	
+	^ 'Depósito por ' , value asString , '.'!
+
+!methodRemoval: Withdraw #messageForAccountSummary stamp: 'GM 10/24/2022 16:33:14'!
+messageForAccountSummary
+	
+	^ 'Extracción por ' , value asString , '.'!
+
+!classDefinition: #Transaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:35:32'!
+Object subclass: #Transaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Transaction subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTransaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:35:32'!
+Transaction subclass: #TransferTransaction
+	instanceVariableNames: 'transfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Transaction subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:35:42'!
+Transaction subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transaction methodsFor: 'accept' stamp: 'GM 10/24/2022 16:36:34'!
+accept: aVisitor
+
+	self subclassResponsibility! !
+!Transaction methodsFor: 'balance' stamp: 'GM 10/24/2022 16:36:55'!
+balance
+	
+	self subclassResponsibility! !
+!Transaction methodsFor: 'evaluating' stamp: 'GM 10/24/2022 16:37:17' overrides: 16902254!
+value
+
+	self subclassResponsibility ! !
+!AccountTransaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:38:03'!
+accept
+
+	self subclassResponsibility! !
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:39:03'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:39:03'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:39:03'!
+Transaction subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountTransaction methodsFor: 'initialization' stamp: 'GM 10/24/2022 16:39:11'!
+initializeFor: aValue
+
+	value := aValue ! !
+
+!methodRemoval: Deposit #initializeFor: stamp: 'GM 10/24/2022 16:39:11'!
+initializeFor: aValue
+
+	value := aValue !
+!AccountTransaction methodsFor: 'evaluating' stamp: 'GM 10/24/2022 16:39:27' prior: 50566102 overrides: 50566710!
+value
+
+	^ value! !
+
+!methodRemoval: Deposit #value stamp: 'GM 10/24/2022 16:39:27'!
+value
+
+	^ value!
+
+!methodRemoval: Withdraw #value stamp: 'GM 10/24/2022 16:39:34'!
+value
+
+	^ value!
+
+!methodRemoval: Withdraw #initializeFor: stamp: 'GM 10/24/2022 16:39:42'!
+initializeFor: aValue
+
+	value := aValue !
+!AccountTransaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:40:00' overrides: 50566701!
+accept: aVisitor
+
+	self subclassResponsibility! !
+
+!methodRemoval: AccountTransaction #accept stamp: 'GM 10/24/2022 16:40:02'!
+accept
+
+	self subclassResponsibility!
+!AccountTransaction class methodsFor: 'instance creation' stamp: 'GM 10/24/2022 16:40:16'!
+for: aValue
+
+	^ self new initializeFor: aValue ! !
+
+!methodRemoval: Deposit class #for: stamp: 'GM 10/24/2022 16:40:16'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+
+!methodRemoval: Withdraw class #for: stamp: 'GM 10/24/2022 16:40:20'!
+for: aValue
+
+	^ self new initializeFor: aValue !
+!TransferTransaction methodsFor: 'evaluating' stamp: 'GM 10/24/2022 16:40:39' overrides: 50566710!
+value
+
+	^transfer value! !
+
+!methodRemoval: TransferWithdraw #value stamp: 'GM 10/24/2022 16:40:39'!
+value
+
+	^transfer value!
+
+!methodRemoval: TransferDeposit #value stamp: 'GM 10/24/2022 16:40:44'!
+value
+
+	^transfer value!
+!AccountTransaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:41:42' prior: 50566763 overrides: 50566701!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self! !
+
+!methodRemoval: Deposit #accept: stamp: 'GM 10/24/2022 16:41:42'!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self!
+!Deposit methodsFor: 'balance' stamp: 'GM 10/24/2022 16:41:55' overrides: 50566795!
+accept: aVisitor
+	
+	aVisitor visitDeposit: self! !
+!AccountTransaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:42:10' prior: 50566795 overrides: 50566701!
+accept: aVisitor
+	
+	self subclassResponsibility ! !
+!AccountTransaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:42:10' prior: 50566809 overrides: 50566701!
+accept: aVisitor
+	
+	self subclassResponsibility! !
+!Transaction methodsFor: 'accepting' stamp: 'GM 10/24/2022 16:42:19' prior: 50566701!
+accept: aVisitor
+	
+	self subclassResponsibility! !
+
+!methodRemoval: AccountTransaction #accept: stamp: 'GM 10/24/2022 16:42:19'!
+accept: aVisitor
+	
+	self subclassResponsibility!
+!Transaction methodsFor: 'balance' stamp: 'GM 10/24/2022 16:42:50'!
+affectBalance
+
+	self subclassResponsibility ! !
+
+!methodRemoval: Transaction #balance stamp: 'GM 10/24/2022 16:43:12'!
+balance
+	
+	self subclassResponsibility!
+!Transaction methodsFor: 'balance' stamp: 'GM 10/24/2022 16:43:20'!
+affectBalance: aBalance
+
+	self subclassResponsibility ! !
+
+!methodRemoval: Transaction #affectBalance stamp: 'GM 10/24/2022 16:43:22'!
+affectBalance
+
+	self subclassResponsibility !
+
+!methodRemoval: AccountTransaction #affectBalance: stamp: 'GM 10/24/2022 16:43:54'!
+affectBalance: aBalance
+
+	self subclassResponsibility !
+
+!testRun: #TransferNetTest #test02 stamp: 'GM 10/24/2022 16:44:04'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GM 10/24/2022 16:44:09'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:45:18'!
+test01EmptyAccountAccountSummaryReturnsBalanceEqualsZero
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummary for: ReceptiveAccount new) value.! !
+
+!methodRemoval: AccountSummaryTest #test01 stamp: 'GM 10/24/2022 16:45:18'!
+test01
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummary for: ReceptiveAccount new) value.!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:45:32'!
+test01AccountSummaryOnNewAccountReturnsBalanceEqualsZero
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummary for: ReceptiveAccount new) value.! !
+
+!methodRemoval: AccountSummaryTest #test01EmptyAccountAccountSummaryReturnsBalanceEqualsZero stamp: 'GM 10/24/2022 16:45:32'!
+test01EmptyAccountAccountSummaryReturnsBalanceEqualsZero
+
+	self assert: (OrderedCollection with: 'Balance = 0') equals: (AccountSummary for: ReceptiveAccount new) value.!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:46:07'!
+test02AccountSummaryOnReceptiveAccountWithMultipleTransactions
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.! !
+
+!methodRemoval: AccountSummaryTest #test02 stamp: 'GM 10/24/2022 16:46:07'!
+test02
+
+	| account expectedSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.' 
+						with: 'Salida por transferencia de 20.' 
+						with: 'Entrada por transferencia de 30.' 
+						with: 'Balance = 60'.
+						
+	self assert: expectedSummary equals: (AccountSummary for: account) value.!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:46:28'!
+test03AccountSummaryOnPortfolioWithMultipleAccounts
+
+	| account anotherAccount expectedSummary portfolio |
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	portfolio := Portfolio with: account with: anotherAccount.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.'
+						with: 'Balance = 50'.					
+
+	self assert: expectedSummary equals: (AccountSummary for: portfolio) value.! !
+
+!methodRemoval: AccountSummaryTest #test03 stamp: 'GM 10/24/2022 16:46:28'!
+test03
+
+	| account anotherAccount expectedSummary portfolio |
+	
+	account := ReceptiveAccount new.
+	anotherAccount := ReceptiveAccount new.
+	portfolio := Portfolio with: account with: anotherAccount.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: anotherAccount.
+	
+	expectedSummary := OrderedCollection 
+						with: 'Depósito por 100.' 
+						with: 'Extracción por 50.'
+						with: 'Balance = 50'.					
+
+	self assert: expectedSummary equals: (AccountSummary for: portfolio) value.!
+!TransferNetTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:47:12'!
+test01EmptyAccountTransferNetIsZero
+
+	self assert: 0 equals: (TransferNet for: ReceptiveAccount new) value.! !
+
+!methodRemoval: TransferNetTest #test01 stamp: 'GM 10/24/2022 16:47:12'!
+test01
+
+	self assert: 0 equals: (TransferNet for: ReceptiveAccount new) value.!
+!TransferNetTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:48:08'!
+test02TransferNetOnAccountWithMultipleTransactions
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+
+	self assert: 10 equals: (TransferNet for: account) value.! !
+
+!methodRemoval: TransferNetTest #test02 stamp: 'GM 10/24/2022 16:48:08'!
+test02
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	Withdraw register: 50 on: account.
+	Transfer register: 20 from: account to: ReceptiveAccount new.
+	Transfer register: 30 from: ReceptiveAccount new to: account.
+
+	self assert: 10 equals: (TransferNet for: account) value.!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'amount withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:49:52'!
+Object subclass: #Transfer
+	instanceVariableNames: 'amount withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:50:09'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 16:50:12'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 16:50:20'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 16:50:20'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 16:50:20'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 16:50:20'!
+PASSED!
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:50:53'!
+test01EmptyPortfolioStructureIsNewOrderedCollection
+
+	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value! !
+
+!methodRemoval: PortfolioTreeStructureTest #test01 stamp: 'GM 10/24/2022 16:50:53'!
+test01
+
+	self assert: OrderedCollection new equals: (PortfolioTreeStructure for: Portfolio new) value!
+
+!testRun: #PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 16:51:00'!
+FAILURE!
+!PortfolioTreeStructureTest methodsFor: 'tests' stamp: 'GM 10/24/2022 16:51:23'!
+test02PortfolioTreeStructureOnPortfolioWithManyLevels
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value! !
+
+!methodRemoval: PortfolioTreeStructureTest #test02 stamp: 'GM 10/24/2022 16:51:23'!
+test02
+	
+	| expectedTreeStructure portfolio |
+	expectedTreeStructure := OrderedCollection 
+							with: 'Portfolio de la familia' 
+							with: '	Cuenta Mia' 
+							with: '	Portfolio de hijos' 
+							with: '		Cuenta de Juan' 
+							with: '		Cuenta de Angeles'.
+							
+			
+	portfolio := Portfolio named: 'Portfolio de la familia' 
+					   with: (ReceptiveAccount named: 'Cuenta Mia') 
+					   with: (Portfolio named: '	Portfolio de hijos' 
+								     with: (ReceptiveAccount named: 'Cuenta de Juan') 
+								     with: (ReceptiveAccount named: 'Cuenta de Angeles')).
+								
+	self assert: expectedTreeStructure equals: (PortfolioTreeStructure for: portfolio) value!
+!PortfolioTreeStructure methodsFor: 'initialization' stamp: 'GM 10/24/2022 16:52:37' prior: 50566241 overrides: 16902254!
+value
+
+	value := OrderedCollection new.
+	portfolio accept: self.	
+	^value! !
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 16:52:59'!
+FAILURE!
+
+!testRun: #PortfolioTreeStructureTest #test02PortfolioTreeStructureOnPortfolioWithManyLevels stamp: 'GM 10/24/2022 16:52:59'!
+FAILURE!
+!Portfolio methodsFor: 'accounts management' stamp: 'GM 10/24/2022 16:54:54' prior: 50565886!
+accept: aVisitor
+
+	accounts do: [:account | account accept: aVisitor]! !
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 16:54:59'!
+PASSED!
+
+!testRun: #TransferNetTest #test01EmptyAccountTransferNetIsZero stamp: 'GM 10/24/2022 16:54:59'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 16:54:59'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 16:55:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test01EmptyAccountTransferNetIsZero stamp: 'GM 10/24/2022 16:55:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetOnAccountWithMultipleTransactions stamp: 'GM 10/24/2022 16:55:12'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 16:55:17'!
+PASSED!
+
+!testRun: #TransferTest #test01TransferBetweenAccountsModifiesBalance stamp: 'GM 10/24/2022 16:55:17'!
+PASSED!
+
+!testRun: #TransferTest #test02AccountsRegisterTransferLegs stamp: 'GM 10/24/2022 16:55:17'!
+PASSED!
+
+!testRun: #TransferTest #test03CanMoveBetweenLegs stamp: 'GM 10/24/2022 16:55:17'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GM 10/24/2022 16:55:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GM 10/24/2022 16:55:26'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 16:55:32'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01AccountSummaryOnNewAccountReturnsBalanceEqualsZero stamp: 'GM 10/24/2022 16:55:32'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02AccountSummaryOnReceptiveAccountWithMultipleTransactions stamp: 'GM 10/24/2022 16:55:32'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03AccountSummaryOnPortfolioWithMultipleAccounts stamp: 'GM 10/24/2022 16:55:32'!
+PASSED!
+
+!classDefinition: #Portfolio category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:56:03'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReceptiveAccount category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:56:03'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Account category: 'Portfolio-Solucion' stamp: 'GM 10/24/2022 16:56:03'!
+Object subclass: #Account
+	instanceVariableNames: 'name'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Account methodsFor: 'transactions' stamp: 'GM 10/24/2022 16:56:20'!
+accept: aVisitor
+
+	self subclassResponsibility ! !
