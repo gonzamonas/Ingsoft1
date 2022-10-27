@@ -1,0 +1,1996 @@
+
+
+----QUIT----(11 September 2022 19:10:09) CuisUniversity-5481.image priorSource: 2810882!
+
+----STARTUP---- (11 September 2022 19:10:10) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5481.image!
+
+
+----QUIT----(11 September 2022 19:10:10) CuisUniversity-5481.image priorSource: 7059465!
+
+----STARTUP---- (25 October 2022 17:40:31) as /home/gonzalo/Desktop/MarsRoverElRegreso/linux64/CuisUniversity-5481.image!
+
+
+----End fileIn of /home/gonzalo/Desktop/MarsRoverElRegreso/linux64/MarsRover-WithHeading.st----!
+
+TestCase subclass: #LoggerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #LoggerTest category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 17:45:18'!
+TestCase subclass: #LoggerTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----End fileIn of /home/gonzalo/Desktop/MarsRoverElRegreso/linux64/Packages/TerseGuide.pck.st----!
+!LoggerTest methodsFor: 'no messages' stamp: 'GM 10/25/2022 17:54:24'!
+test01! !
+
+!classDefinition: #Logger category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 17:55:47'!
+Object subclass: #Logger
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 17:55:41' prior: 50555692!
+test01
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 17:56:49' prior: 50555703!
+test01
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: ''.
+	self assert: stream isEmpty.! !
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:56:54'!
+ERROR!
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 17:57:01'!
+logPositionFor: aMarsRover in: aReadWriteStream 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogPositionFor: aMarsRover in: aReadWriteStream ! !
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 17:57:10' prior: 50555726!
+logPositionFor: aMarsRover in: aReadWriteStream 
+	
+	^self new initializeLogPositionFor: aMarsRover in: aReadWriteStream ! !
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:57:12'!
+ERROR!
+
+!classDefinition: #Logger category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 17:57:24'!
+Object subclass: #Logger
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #Logger category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 17:57:24'!
+Object subclass: #Logger
+	instanceVariableNames: 'marsRover readWriteStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 17:57:24'!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.
+	readWriteStream := aReadWriteStream.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 17:58:51' prior: 50555760!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	marsRover subscribeToPositionChanges: [ :position | self logPosition: position].
+	readWriteStream := aReadWriteStream.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 17:59:04' prior: 50555768!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	marsRover subscribeToPositionChanges: [ :position | self logPosition: position].
+	readWriteStream := aReadWriteStream
+	.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 17:59:07' prior: 50555777!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	marsRover subscribeToPositionChanges: [ :position | self logPosition: position].
+	readWriteStream := aReadWriteStream.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 17:59:35' prior: 50555786!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	! !
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:59:37'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:59:37'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:59:41'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 17:59:41'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:02:07'!
+test02
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: stream contents equals: '0@1'.! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:02:10'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:02:26' prior: 50555809!
+test02
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: '0@1' equals: stream contents.! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:02:29'!
+FAILURE!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:04:22' prior: 50555795!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	| stream |
+	stream := aReadWriteStream.
+	aMarsRover subscribeToPositionUpdates: [:position | self logPosition: position].! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:04:36'!
+ERROR!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:04:56'!
+subscribeToPositionUpdates: aBlockClosure 
+	self shouldBeImplemented.! !
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 18:05:56'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdatesSubscriptions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:05:54' prior: 50555848!
+subscribeToPositionUpdates: aBlockClosure 
+	
+	positionUpdatesSubscriptions add: aBlockClosure! !
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:06:27' prior: 50555862!
+subscribeToPositionUpdates: aHandlerForAPositionUpdate 
+	
+	positionUpdatesSubscriptions add: aHandlerForAPositionUpdate! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:06:31'!
+ERROR!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:07:07'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:07:33' prior: 50552462!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdatesSubscriptions := OrderedCollection new.! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:07:45'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'GM 10/25/2022 18:08:50' prior: 50552522!
+moveForward
+	
+	head moveForward.
+	self notifyPositionUpdate.! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:08:54'!
+ERROR!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:09:02'!
+notifyPositionUpdate
+	self shouldBeImplemented.! !
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:09:45' prior: 50555897!
+notifyPositionUpdate
+	
+	positionUpdatesSubscriptions do: [:aPositionUpdateHandler | aPositionUpdateHandler value: position]! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:09:47'!
+ERROR!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:09:59'!
+logPosition: aPoint 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Logger category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 18:10:44'!
+Object subclass: #Logger
+	instanceVariableNames: 'marsRover log'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:13:41' prior: 50555911!
+logPosition: aPosition
+
+	log nextPutAll: aPosition asString! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:13:42'!
+ERROR!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:14:07' prior: 50555837!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	aMarsRover subscribeToPositionUpdates: [:position | self logPosition: position].! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:14:11'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:14:11'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:14:11'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:15:00'!
+test03
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@-1' equals: stream contents.! !
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:15:03'!
+FAILURE!
+!MarsRover methodsFor: 'moving' stamp: 'GM 10/25/2022 18:15:34' prior: 50552514!
+moveBackward
+	
+	head moveBackward.
+	self notifyPositionUpdate! !
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:15:41'!
+FAILURE!
+
+0@-1 asString!
+
+(0@-1) asString!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:16:17' prior: 50555945!
+test03
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1' equals: stream contents.! !
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:16:20'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:16:20'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:16:20'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:16:20'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:18:29'!
+test04
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'r'.
+	self assert: 'East' equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:18:34'!
+ERROR!
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 18:18:41'!
+logHeadingFor: aMarsRover in: aReadWriteStream 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogHeadingFor: aMarsRover in: aReadWriteStream ! !
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 18:18:48' prior: 50556002!
+logHeadingFor: aMarsRover in: aReadWriteStream 
+	
+	^self new initializeLogHeadingFor: aMarsRover in: aReadWriteStream ! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:18:49'!
+ERROR!
+
+!classDefinition: #Logger category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 18:18:58'!
+Object subclass: #Logger
+	instanceVariableNames: 'marsRover log readWriteStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:18:58'!
+initializeLogHeadingFor: aMarsRover in: aReadWriteStream 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.
+	readWriteStream := aReadWriteStream.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:19:59' prior: 50556029!
+initializeLogHeadingFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	aMarsRover logHeading: [:heading | self logHeading: heading]! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:20:04'!
+ERROR!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:20:58'!
+subscribeToHeadingUpdates: aHandlerForAHeadingUpdate 
+	
+	positionUpdatesSubscriptions add: aHandlerForAHeadingUpdate! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:21:21' prior: 50556037!
+initializeLogHeadingFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	aMarsRover subscribeToHeadingUpdates: [:heading | self logHeading: heading]! !
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:21:27'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:21:27'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:21:27'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:21:27'!
+FAILURE!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:21:27'!
+FAILURE!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:21:36'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'GM 10/25/2022 18:24:46' prior: 50552488!
+rotateRight
+	
+	head rotateRight! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:25:39' prior: 50555988!
+test04
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	self assert: 'East' equals: stream contents.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:25:46' prior: 50556080!
+test04
+
+	|marsRover stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	self assert: 'East' equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:25:51'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'GM 10/25/2022 18:28:26' prior: 50552468!
+headEast
+	
+	head := MarsRoverHeadingEast for: self.
+	self notifyHeadingUpdate: 'East'.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:29:11' prior: 50556092!
+test04
+
+	|marsRover stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	self assert: 'East' equals: stream nextLine.
+	self assert: 'South' equals: stream nextLine.
+	self assert: 'West' equals: stream nextLine.
+	self assert: 'North' equals: stream nextLine.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:29:12'!
+ERROR!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:29:20'!
+notifyHeadingUpdate: aString 
+	self shouldBeImplemented.! !
+
+!classDefinition: #MarsRover category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 18:30:23'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head positionUpdatesSubscriptions headingUpdatesSubscriptions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:30:08' prior: 50556128!
+notifyHeadingUpdate: aHeadingString
+	
+	headingUpdatesSubscriptions do: [:aHeadingUpdateHandler | aHeadingUpdateHandler value: aHeadingString] 
+	
+	! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:30:41'!
+ERROR!
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:31:03' prior: 50555880!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdatesSubscriptions := OrderedCollection new.
+	headingUpdatesSubscriptions := OrderedCollection new.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:31:08'!
+FAILURE!
+!MarsRover methodsFor: 'logging' stamp: 'GM 10/25/2022 18:32:57' prior: 50556046!
+subscribeToHeadingUpdates: aHandlerForAHeadingUpdate 
+	
+	headingUpdatesSubscriptions add: aHandlerForAHeadingUpdate! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:32:59'!
+ERROR!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:33:07'!
+logHeading: aString 
+	self shouldBeImplemented.! !
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:33:40' prior: 50556172!
+logHeading: aHeadingPosition
+
+	log nextPutAll: aHeadingPosition.
+	! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:33:41'!
+FAILURE!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:34:13'!
+FAILURE!
+
+stream nextLine.!
+
+stream!
+
+	self assert: 'East' equals: stream content.!
+
+stream contents!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:35:02' prior: 50556111!
+test04
+
+	|marsRover stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	self assert: 'East' equals: stream contents.
+	self assert: 'South' equals: stream nextLine.
+	self assert: 'West' equals: stream nextLine.
+	self assert: 'North' equals: stream nextLine.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:35:04'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:35:32' prior: 50556190!
+test04
+
+	|marsRover stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	self assert: 'East' equals: stream contents.
+	self assert: 'South' equals: stream nextLine.
+	self assert: 'West' equals: stream nextLine.
+	self assert: 'North' equals: stream nextLine.! !
+!MarsRover methodsFor: 'heading' stamp: 'GM 10/25/2022 18:36:09' prior: 50552476!
+headSouth
+	
+	head := MarsRoverHeadingSouth for: self.
+	self notifyHeadingUpdate: 'South'.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:36:18'!
+FAILURE!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:38:43' prior: 50556177!
+logHeading: aHeadingPosition
+
+	log nextPutAll: aHeadingPosition; newLine.
+	! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:38:53'!
+FAILURE!
+
+stream contents!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:40:45' prior: 50556208!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog :=
+	self assert: 'East' equals: stream contents.
+	self assert: 'South' equals: stream nextLine.
+	self assert: 'West' equals: stream nextLine.
+	self assert: 'North' equals: stream nextLine.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:41:19' prior: 50556240!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+	South
+	West
+	North'
+	self assert: expectedLog equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:41:22'!
+ERROR!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:41:29' prior: 50556257!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+	South
+	West
+	North'.
+	self assert: expectedLog equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:41:30'!
+FAILURE!
+!MarsRover methodsFor: 'heading' stamp: 'GM 10/25/2022 18:41:58' prior: 50552480!
+headWest
+	
+	head := MarsRoverHeadingWest for: self.
+	self notifyHeadingUpdate: 'West'.! !
+
+	self notifyHeadingUpdate: 'North'.!
+!MarsRover methodsFor: 'heading' stamp: 'GM 10/25/2022 18:42:13' prior: 50552472!
+headNorth
+	
+	head := MarsRoverHeadingNorth for: self.
+	self notifyHeadingUpdate: 'North'.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:42:17'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:42:28' prior: 50556272!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+	South
+	West
+	North
+	'.
+	self assert: expectedLog equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:42:29'!
+FAILURE!
+
+stream contents!
+
+expectedLog!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:43:10'!
+FAILURE!
+
+stream contents.!
+
+expectedLog!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:43:45' prior: 50556303!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+	'.
+	self assert: expectedLog equals: stream contents.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:43:49' prior: 50556323!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:43:54'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:43:54'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:43:54'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:43:54'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:43:54'!
+PASSED!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:44:43'!
+log: aHeadingPosition
+
+	log nextPutAll: aHeadingPosition; newLine.
+	! !
+!Logger methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:44:43' prior: 50556053!
+initializeLogHeadingFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	aMarsRover subscribeToHeadingUpdates: [:heading | self log: heading]! !
+
+!methodRemoval: Logger #logHeading: stamp: 'GM 10/25/2022 18:44:43'!
+logHeading: aHeadingPosition
+
+	log nextPutAll: aHeadingPosition; newLine.
+	!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:45:06' prior: 50556359!
+log: aStringToLog
+
+	log nextPutAll: aStringToLog; newLine.
+	! !
+
+!methodRemoval: Logger #logPosition: stamp: 'GM 10/25/2022 18:45:08'!
+logPosition: aPosition
+
+	log nextPutAll: aPosition asString!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:45:22'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:45:22'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:45:22'!
+ERROR!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:45:22'!
+ERROR!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:45:22'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:45:24'!
+ERROR!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:45:42'!
+ERROR!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:45:47'!
+ERROR!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:46:40' prior: 50555930!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	aMarsRover subscribeToPositionUpdates: [:position | self log: position].! !
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:46:50'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:46:50'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:46:50'!
+ERROR!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:46:50'!
+ERROR!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:46:50'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:46:52'!
+ERROR!
+!Logger methodsFor: 'logging' stamp: 'GM 10/25/2022 18:47:27' prior: 50556378!
+log: aStringToLog
+
+	log nextPutAll: aStringToLog asString; newLine.
+	! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:47:28'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:47:47' prior: 50555823!
+test02
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: '0@1
+' equals: stream contents.! !
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:47:50'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:47:51'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:47:58' prior: 50555968!
+test03
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.! !
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:48:01'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:48:05'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:48:05'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:48:05'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:48:05'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:48:05'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 18:49:31'!
+test05
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 18:49:33'!
+ERROR!
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 18:49:51'!
+logPositionAndHeadingFor: aMarsRover in: aReadWriteStream 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogPositionAndHeadingFor: aMarsRover in: aReadWriteStream ! !
+!Logger class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 18:50:07' prior: 50556490!
+logPositionAndHeadingFor: aMarsRover in: aLog 
+	
+	^self new initializeLogPositionAndHeadingFor: aMarsRover in: aLog ! !
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 18:50:08'!
+ERROR!
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:50:16'!
+initializeLogPositionAndHeadingFor: aMarsRover in: aLog 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.
+	log := aLog.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:50:33' prior: 50556510!
+initializeLogPositionAndHeadingFor: aMarsRover in: aLog 
+	
+	log := aLog.
+	! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:51:55'!
+subscribeToHeadingUpdates: aMarsRover
+
+	^ aMarsRover subscribeToHeadingUpdates: [:heading | self log: heading]! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:51:55' prior: 50556365!
+initializeLogHeadingFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	self subscribeToHeadingUpdates: aMarsRover! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:52:25'!
+subscribeToPositionUpdates: aMarsRover
+
+	^ aMarsRover subscribeToPositionUpdates: [:position | self log: position]! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:52:25' prior: 50556405!
+initializeLogPositionFor: aMarsRover in: aReadWriteStream 
+	
+	log := aReadWriteStream.
+	self subscribeToPositionUpdates: aMarsRover.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:53:08' prior: 50556517!
+initializeLogPositionAndHeadingFor: aMarsRover in: aLog 
+	
+	log := aLog.
+	self subscribeToPositionUpdates: aMarsRover; subscribeToHeadingUpdates: aMarsRover ! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:53:31' prior: 50556550!
+initializeLogPositionAndHeadingFor: aMarsRover in: aLog 
+	
+	log := aLog.
+	self subscribeToPositionUpdates: aMarsRover.
+	self subscribeToHeadingUpdates: aMarsRover.! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:53:43' prior: 50556529!
+initializeLogHeadingFor: aMarsRover in: aLog 
+	
+	log := aLog.
+	self subscribeToHeadingUpdates: aMarsRover! !
+!Logger methodsFor: 'initialization' stamp: 'GM 10/25/2022 18:53:56' prior: 50556543!
+initializeLogPositionFor: aMarsRover in: aLog 
+	
+	log := aLog.
+	self subscribeToPositionUpdates: aMarsRover.! !
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 18:54:13'!
+PASSED!
+
+TestCase subclass: #WindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #WindowTest category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 18:55:02'!
+TestCase subclass: #WindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #WindowTest stamp: 'GM 10/25/2022 18:55:34'!
+TestCase subclass: #WindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 19:01:29'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:01:25'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:02:05'!
+ERROR!
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:02:17'!
+logPositionFor: aMarsRover 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogPositionFor: aMarsRover ! !
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:02:24' prior: 50556631!
+logPositionFor: aMarsRover 
+	
+	^self new initializeLogPositionFor: aMarsRover ! !
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:02:26'!
+ERROR!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 19:02:36'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:02:36'!
+initializeLogPositionFor: aMarsRover 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:02:49' prior: 50556656!
+initializeLogPositionFor: aMarsRover 
+	
+! !
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:02:50'!
+ERROR!
+!MarsRoverWindow methodsFor: 'position' stamp: 'GM 10/25/2022 19:03:00'!
+position
+	self shouldBeImplemented.! !
+!MarsRoverWindow methodsFor: 'position' stamp: 'GM 10/25/2022 19:03:11' prior: 50556668!
+position
+
+	^''! !
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:03:12'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:04:21'!
+test07
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: window position equals: '0@0'.! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:04:27'!
+FAILURE!
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 19:05:00'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: 'marsRover position'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:04:58' prior: 50556662!
+initializeLogPositionFor: aMarsRover 
+	
+	position := ''.! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:05:03'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:05:19' prior: 50556691!
+test07
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:05:20'!
+FAILURE!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:07:04' prior: 50556712!
+initializeLogPositionFor: aMarsRover 
+	
+	position := ''.
+	aMarsRover subscribeToPositionUpdates: [:aPosition | self updatePosition: aPosition]! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:07:30' prior: 50556733!
+initializeLogPositionFor: aMarsRover 
+	
+	position := ''.
+	aMarsRover subscribeToPositionUpdates: [:aPosition | position := aPosition]! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:07:32'!
+FAILURE!
+!MarsRoverWindow methodsFor: 'position' stamp: 'GM 10/25/2022 19:07:54' prior: 50556672!
+position
+
+	^position! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:07:56'!
+FAILURE!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:08:23' prior: 50556741!
+initializeLogPositionFor: aMarsRover 
+	
+	position := ''.
+	aMarsRover subscribeToPositionUpdates: [:aPosition | position := aPosition asString]! !
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:08:25'!
+ERROR!
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:08:34'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:08:59'!
+test08
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:09:01'!
+ERROR!
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:09:15'!
+logHeadingFor: aMarsRover 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogHeadingFor: aMarsRover ! !
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:09:21' prior: 50556797!
+logHeadingFor: aMarsRover 
+	
+	^self new initializeLogHeadingFor: aMarsRover ! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:09:23'!
+ERROR!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:09:29'!
+initializeLogHeadingFor: aMarsRover 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.! !
+
+!classDefinition: #MarsRoverWindow category: 'MarsRover-WithHeading' stamp: 'GM 10/25/2022 19:10:12'!
+Object subclass: #MarsRoverWindow
+	instanceVariableNames: 'marsRover position heading'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:10:07' prior: 50556814!
+initializeLogHeadingFor: aMarsRover 
+	
+	heading := ''.
+	aMarsRover subscribeToHeadingUpdates: [:aHeading | heading := aHeading asString]! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:10:14'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:10:45' prior: 50556785!
+test08
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window position.! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:10:45'!
+FAILURE!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:10:57' prior: 50556839!
+test08
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window heading.! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:10:59'!
+ERROR!
+!MarsRoverWindow methodsFor: 'heading' stamp: 'GM 10/25/2022 19:11:06'!
+heading
+	self shouldBeImplemented.
+	^heading! !
+!MarsRoverWindow methodsFor: 'heading' stamp: 'GM 10/25/2022 19:11:09' prior: 50556864!
+heading
+	
+	^heading! !
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:11:10'!
+PASSED!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:12:26'!
+test09
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionAndHeadingFor: marsRover.
+	marsRover process: 'ffrr'.
+	self assert: '0@2' equals: window position.
+	self assert: 'South' equals: window heading.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/25/2022 19:12:48' prior: 50556893!
+test09
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionAndHeadingFor: marsRover.
+	marsRover process: 'bbll'.
+	self assert: '0@ -2' equals: window position.
+	self assert: 'South' equals: window heading.! !
+
+!testRun: #LoggerTest #test09 stamp: 'GM 10/25/2022 19:12:49'!
+ERROR!
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:13:07'!
+logPositionAndHeadingFor: aMarsRover 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeLogPositionAndHeadingFor: aMarsRover ! !
+!MarsRoverWindow class methodsFor: 'instance creation' stamp: 'GM 10/25/2022 19:13:11' prior: 50556919!
+logPositionAndHeadingFor: aMarsRover 
+	
+	^self new initializeLogPositionAndHeadingFor: aMarsRover ! !
+
+!testRun: #LoggerTest #test09 stamp: 'GM 10/25/2022 19:13:12'!
+ERROR!
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:13:18'!
+initializeLogPositionAndHeadingFor: aMarsRover 
+	self shouldBeImplemented.
+	marsRover := aMarsRover.! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:13:56' prior: 50556937!
+initializeLogPositionAndHeadingFor: aMarsRover 
+	
+	position := ''.
+	heading := ''.! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:14:41'!
+subscribeToPositionUpdates: aMarsRover
+
+	^ aMarsRover subscribeToPositionUpdates: [:aPosition | position := aPosition asString]! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:14:41' prior: 50556757!
+initializeLogPositionFor: aMarsRover 
+	
+	position := ''.
+	self subscribeToPositionUpdates: aMarsRover! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:15:04' prior: 50556829!
+initializeLogHeadingFor: aMarsRover 
+	
+	heading := ''.
+	aMarsRover subscribeToHeadingUpdates: [:aHeading | heading := aHeading asString]! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:15:18'!
+subscribeToHeadingUpdates: aMarsRover
+
+	^ aMarsRover subscribeToHeadingUpdates: [:aHeading | heading := aHeading asString]! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:15:18' prior: 50556965!
+initializeLogHeadingFor: aMarsRover 
+	
+	heading := ''.
+	self subscribeToHeadingUpdates: aMarsRover! !
+!MarsRoverWindow methodsFor: 'initialization' stamp: 'GM 10/25/2022 19:15:47' prior: 50556944!
+initializeLogPositionAndHeadingFor: aMarsRover 
+	
+	position := ''.
+	heading := ''.
+	self subscribeToPositionUpdates: aMarsRover.
+	self subscribeToHeadingUpdates: aMarsRover.! !
+
+!testRun: #LoggerTest #test09 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test01 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test02 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test03 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test04 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test05 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test06 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test07 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test08 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+!testRun: #LoggerTest #test09 stamp: 'GM 10/25/2022 19:15:56'!
+PASSED!
+
+----QUIT----(26 October 2022 00:40:45) CuisUniversity-5481.image priorSource: 7059698!
+
+----STARTUP---- (27 October 2022 14:17:57) as /home/gonzalo/Desktop/MarsRoverElRegreso/linux64/CuisUniversity-5481.image!
+
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:18:59'!
+test01NoLoggingWhenProcessingEmptyCommand
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: ''.
+	self assert: stream isEmpty.! !
+
+!methodRemoval: LoggerTest #test01 stamp: 'GM 10/27/2022 14:18:59'!
+test01
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: ''.
+	self assert: stream isEmpty.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:19:47'!
+test02PositionLoggerLogsPositionWhenMovingForward
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: '0@1
+' equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test02 stamp: 'GM 10/27/2022 14:19:47'!
+test02
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: '0@1
+' equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:20:11'!
+PositionLoggerLogsPositingWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test03 stamp: 'GM 10/27/2022 14:20:11'!
+test03
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:20:16'!
+test03PositionLoggerLogsPositingWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.! !
+
+!methodRemoval: LoggerTest #PositionLoggerLogsPositingWhenMovingBackwards stamp: 'GM 10/27/2022 14:20:16'!
+PositionLoggerLogsPositingWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:21:30'!
+test03PositionLoggerLogsPositionWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test03PositionLoggerLogsPositingWhenMovingBackwards stamp: 'GM 10/27/2022 14:21:30'!
+test03PositionLoggerLogsPositingWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := Logger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:21:52'!
+test04HeadingLoggerLogsAllPossibleHeadersWhenRotating
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test04 stamp: 'GM 10/27/2022 14:21:53'!
+test04
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:22:03'!
+test04HeadingLoggerLogsAllPossibleHeadingsWhenRotating
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test04HeadingLoggerLogsAllPossibleHeadersWhenRotating stamp: 'GM 10/27/2022 14:22:03'!
+test04HeadingLoggerLogsAllPossibleHeadersWhenRotating
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:22:31'!
+test05PsitionAndHeadigLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test05 stamp: 'GM 10/27/2022 14:22:31'!
+test05
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:22:35'!
+test05PositionAndHeadigLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test05PsitionAndHeadigLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:22:35'!
+test05PsitionAndHeadigLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:22:43'!
+test05PositionAndHeadingLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.! !
+
+!methodRemoval: LoggerTest #test05PositionAndHeadigLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:22:43'!
+test05PositionAndHeadigLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	Logger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.!
+
+!classRenamed: #Logger as: #MarsRoverLogger stamp: 'GM 10/27/2022 14:23:04'!
+Smalltalk renameClassNamed: #Logger as: #MarsRoverLogger!
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:23:05' prior: 50557118!
+test03PositionLoggerLogsPositionWhenMovingBackwards
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := MarsRoverLogger logPositionFor: marsRover in: stream.
+	marsRover process: 'b'.
+	self assert: '0@ -1
+' equals: stream contents.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:23:05' prior: 50557170!
+test04HeadingLoggerLogsAllPossibleHeadingsWhenRotating
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	MarsRoverLogger logHeadingFor: marsRover in: stream.
+	marsRover process: 'rrrr'.
+	expectedLog := 'East
+South
+West
+North
+'.
+	self assert: expectedLog equals: stream contents.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:23:05' prior: 50557024!
+test01NoLoggingWhenProcessingEmptyCommand
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := MarsRoverLogger logPositionFor: marsRover in: stream.
+	marsRover process: ''.
+	self assert: stream isEmpty.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:23:05' prior: 50557255!
+test05PositionAndHeadingLoggerLogsPositionsAndHeadings
+
+	|marsRover stream expectedLog |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	MarsRoverLogger logPositionAndHeadingFor: marsRover in: stream.
+	marsRover process: 'frrb'.
+	expectedLog := '0@1
+East
+South
+0@2
+'.
+	self assert: expectedLog equals: stream contents.! !
+!LoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:23:05' prior: 50557046!
+test02PositionLoggerLogsPositionWhenMovingForward
+
+	|marsRover logger stream |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	stream := ReadWriteStream with: ''.
+	logger := MarsRoverLogger logPositionFor: marsRover in: stream.
+	marsRover process: 'f'.
+	self assert: '0@1
+' equals: stream contents.! !
+
+!classRenamed: #LoggerTest as: #MarsRoverLoggerTest stamp: 'GM 10/27/2022 14:23:18'!
+Smalltalk renameClassNamed: #LoggerTest as: #MarsRoverLoggerTest!
+
+TestCase subclass: #MarsRoverWindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classDefinition: #MarsRoverWindowTest category: 'MarsRover-WithHeading' stamp: 'GM 10/27/2022 14:23:40'!
+TestCase subclass: #MarsRoverWindowTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+!MarsRoverLoggerTest class methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:24:38'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverLoggerTest #test06 stamp: 'GM 10/27/2022 14:24:38'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverLoggerTest methodsFor: 'as yet unclassified' stamp: 'GM 10/27/2022 14:24:48'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverLoggerTest class #test06 stamp: 'GM 10/27/2022 14:24:48'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:25:53'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:25:55'!
+test01
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverWindowTest #test06 stamp: 'GM 10/27/2022 14:25:58'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:27:04'!
+test01WindowShowsPositionEmptyWhenProcessigNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverWindowTest #test01 stamp: 'GM 10/27/2022 14:27:08'!
+test01
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:27:13'!
+test01WindowShowsPositionEmptyWhenProcessingNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessigNoCommands stamp: 'GM 10/27/2022 14:27:13'!
+test01WindowShowsPositionEmptyWhenProcessigNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+
+!methodRemoval: MarsRoverLoggerTest #test06 stamp: 'GM 10/27/2022 14:27:22'!
+test06
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:27:57'!
+test02WindowShowsFinalPositionWhenMovingMultipleTimes
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.! !
+
+!methodRemoval: MarsRoverLoggerTest #test07 stamp: 'GM 10/27/2022 14:28:04'!
+test07
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:28:29'!
+test03WindowShowsFinalHeadingWhenRotatingTwice
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window heading.! !
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:28:53'!
+test02PositionWindowShowsFinalPositionWhenMovingMultipleTimes
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.! !
+
+!methodRemoval: MarsRoverWindowTest #test02WindowShowsFinalPositionWhenMovingMultipleTimes stamp: 'GM 10/27/2022 14:28:53'!
+test02WindowShowsFinalPositionWhenMovingMultipleTimes
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: 'fb'.
+	self assert: '0@0' equals: window position.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:29:00'!
+test01PositionWindowShowsPositionEmptyWhenProcessingNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 14:29:00'!
+test01WindowShowsPositionEmptyWhenProcessingNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:29:06'!
+test01WindowShowsPositionEmptyWhenProcessingNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.! !
+
+!methodRemoval: MarsRoverWindowTest #test01PositionWindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 14:29:06'!
+test01PositionWindowShowsPositionEmptyWhenProcessingNoCommands
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionFor: marsRover.
+	marsRover process: ''.
+	self assert: window position isEmpty.!
+
+!methodRemoval: MarsRoverLoggerTest #test08 stamp: 'GM 10/27/2022 14:29:17'!
+test08
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window heading.!
+
+!methodRemoval: MarsRoverLoggerTest #test09 stamp: 'GM 10/27/2022 14:29:25'!
+test09
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionAndHeadingFor: marsRover.
+	marsRover process: 'bbll'.
+	self assert: '0@ -2' equals: window position.
+	self assert: 'South' equals: window heading.!
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:29:54'!
+test04PositionAndHeadingWindowShowsFinalPositionAndHeading
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logPositionAndHeadingFor: marsRover.
+	marsRover process: 'bbll'.
+	self assert: '0@ -2' equals: window position.
+	self assert: 'South' equals: window heading.! !
+!MarsRoverWindowTest methodsFor: 'tests' stamp: 'GM 10/27/2022 14:30:05'!
+test03HeadingWindowShowsFinalHeadingWhenRotatingTwice
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window heading.! !
+
+!methodRemoval: MarsRoverWindowTest #test03WindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 14:30:05'!
+test03WindowShowsFinalHeadingWhenRotatingTwice
+
+	|marsRover window |
+	
+	marsRover := MarsRover at: 0@0 heading: MarsRoverHeadingNorth.
+	window := MarsRoverWindow logHeadingFor: marsRover.
+	marsRover process: 'rr'.
+	self assert: 'South' equals: window heading.!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:31:08'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 14:31:08'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test02PositionWindowShowsFinalPositionWhenMovingMultipleTimes stamp: 'GM 10/27/2022 14:31:08'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test03HeadingWindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 14:31:08'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:31:08'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test01NoLoggingWhenProcessingEmptyCommand stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test02PositionLoggerLogsPositionWhenMovingForward stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test03PositionLoggerLogsPositionWhenMovingBackwards stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test04HeadingLoggerLogsAllPossibleHeadingsWhenRotating stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:31:13'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 14:31:33) CuisUniversity-5481.image priorSource: 7211712!
+!MarsRover methodsFor: 'initialization' stamp: 'GM 10/27/2022 14:34:15' prior: 50556152!
+initializeAt: aPosition heading: aHeadingType
+
+	position := aPosition.
+	head := aHeadingType for: self.
+	positionUpdatesSubscriptions := Bag new.
+	headingUpdatesSubscriptions := Bag new.! !
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test01NoLoggingWhenProcessingEmptyCommand stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test02PositionLoggerLogsPositionWhenMovingForward stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test03PositionLoggerLogsPositionWhenMovingBackwards stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test04HeadingLoggerLogsAllPossibleHeadingsWhenRotating stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:34:20'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:34:24'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 14:34:24'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test02PositionWindowShowsFinalPositionWhenMovingMultipleTimes stamp: 'GM 10/27/2022 14:34:24'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test03HeadingWindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 14:34:24'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:34:24'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 14:34:30) CuisUniversity-5481.image priorSource: 7233548!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 14:37:25'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:37:29'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 14:37:29'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test02PositionWindowShowsFinalPositionWhenMovingMultipleTimes stamp: 'GM 10/27/2022 14:37:29'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test03HeadingWindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 14:37:29'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 14:37:29'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test03HeadingWindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 15:03:16'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test01WindowShowsPositionEmptyWhenProcessingNoCommands stamp: 'GM 10/27/2022 15:03:16'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test02PositionWindowShowsFinalPositionWhenMovingMultipleTimes stamp: 'GM 10/27/2022 15:03:16'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test03HeadingWindowShowsFinalHeadingWhenRotatingTwice stamp: 'GM 10/27/2022 15:03:16'!
+PASSED!
+
+!testRun: #MarsRoverWindowTest #test04PositionAndHeadingWindowShowsFinalPositionAndHeading stamp: 'GM 10/27/2022 15:03:16'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test01NoLoggingWhenProcessingEmptyCommand stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test02PositionLoggerLogsPositionWhenMovingForward stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test03PositionLoggerLogsPositionWhenMovingBackwards stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test04HeadingLoggerLogsAllPossibleHeadingsWhenRotating stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+!testRun: #MarsRoverLoggerTest #test05PositionAndHeadingLoggerLogsPositionsAndHeadings stamp: 'GM 10/27/2022 15:03:22'!
+PASSED!
+
+----SNAPSHOT----(27 October 2022 15:03:26) CuisUniversity-5481.image priorSource: 7235361!
