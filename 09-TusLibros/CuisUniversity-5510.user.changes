@@ -1,0 +1,464 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (27 October 2022 17:24:09) as /Users/main/Downloads/macos64/CuisUniversity-5510.image!
+
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'MA 10/27/2022 20:43:19'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CartTest category: 'TusLibros' stamp: 'MA 10/27/2022 20:43:42'!
+TestCase subclass: #CartTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTest methodsFor: 'no messages' stamp: 'MA 10/27/2022 20:45:08'!
+test01NewCartIsEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	self assert: cart isEmpty! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:45:11'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:45:38'!
+ERROR!
+!Cart methodsFor: 'testjg ]' stamp: 'MA 10/27/2022 20:45:55'!
+isEmpty
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'testjg ]' stamp: 'MA 10/27/2022 20:46:03' prior: 50555286!
+isEmpty
+	^true.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:46:06'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:46:06'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:48:53'!
+test01CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:49:02'!
+test02CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty! !
+
+!methodRemoval: CartTest #test01CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:49:02'!
+test01CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:49:04'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:49:23'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:49:31'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 20:49:39'!
+add: aString 
+	self shouldBeImplemented.! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'MA 10/27/2022 20:50:13'!
+Object subclass: #Cart
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 20:50:09' prior: 50555326!
+add: anISBN 
+	books add: anISBN.! !
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:50:15'!
+ERROR!
+!Cart methodsFor: 'nil' stamp: 'MA 10/27/2022 20:50:38' overrides: 16920235!
+initialize
+
+	books = OrderedCollection new.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:52:52' prior: 50555305!
+test02CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books equals: (OrderedCollection with: 'book1').! !
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:52:59'!
+ERROR!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:54:49' prior: 50555349!
+test02CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:54:56'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:54:56'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:54:56'!
+ERROR!
+!Cart methodsFor: 'initialization' stamp: 'MA 10/27/2022 20:55:03' prior: 50555344 overrides: 16920235!
+initialize
+
+	books := OrderedCollection new.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:55:04'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:04'!
+FAILURE!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:04'!
+FAILURE!
+!Cart methodsFor: 'testing' stamp: 'MA 10/27/2022 20:55:23' prior: 50555290!
+isEmpty
+	^books isEmpty.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:55:24'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:24'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:24'!
+ERROR!
+!Cart methodsFor: 'accessing' stamp: 'MA 10/27/2022 20:55:37'!
+books
+	self shouldBeImplemented.
+	^books! !
+!Cart methodsFor: 'accessing' stamp: 'MA 10/27/2022 20:55:46' prior: 50555405!
+books
+	^books! !
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:49'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 20:55:50'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:55:50'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:57:52'!
+test02CartWithAddedBookHasIt
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!methodRemoval: CartTest #test02CartWithAddedBookIsNotEmpty stamp: 'MA 10/27/2022 20:58:05'!
+test02CartWithAddedBookIsNotEmpty
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:58:53'!
+test02AddBookFromAnotherEditorialToCartFails
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:59:12'!
+test02CannotAddCartFromAnotherEditorialToCart
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!methodRemoval: CartTest #test02AddBookFromAnotherEditorialToCartFails stamp: 'MA 10/27/2022 20:59:12'!
+test02AddBookFromAnotherEditorialToCartFails
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 20:59:23'!
+test02CannotAddBookFromAnotherEditorialToCart
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!methodRemoval: CartTest #test02CannotAddCartFromAnotherEditorialToCart stamp: 'MA 10/27/2022 20:59:23'!
+test02CannotAddCartFromAnotherEditorialToCart
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:01:59' prior: 50555467!
+test02CannotAddBookFromAnotherEditorialToCart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: (cart add: 'bookFromExternalEditorial') 
+		raise: Error 
+		withMessageText: Cart cannotAddExternalBookErrorMessage. ! !
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:02:02'!
+ERROR!
+!Cart class methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:02:15'!
+with: catalog 
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:02:38' prior: 50555502!
+with: aCatalog 
+	self initializeWith: aCatalog! !
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:02:39'!
+ERROR!
+!Cart class methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:03:06' prior: 50555507!
+with: aCatalog 
+	self new initializeWith: aCatalog! !
+!Cart class methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:03:09' prior: 50555515!
+with: aCatalog 
+	^self new initializeWith: aCatalog! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:03:11'!
+PASSED!
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:03:11'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:03:11'!
+PASSED!
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:03:11'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'MA 10/27/2022 21:03:15'!
+Object subclass: #Cart
+	instanceVariableNames: 'books catalog'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:03:15'!
+initializeWith: aCatalog 
+	self shouldBeImplemented.
+	catalog := aCatalog.! !
+!Cart methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:03:19' prior: 50555543!
+initializeWith: aCatalog 
+
+	catalog := aCatalog.! !
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:03:22'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/27/2022 21:03:39'!
+cannotAddExternalBookErrorMessage
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/27/2022 21:03:53' prior: 50555557!
+cannotAddExternalBookErrorMessage
+	^'cannot add external book'.! !
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:03:54'!
+FAILURE!
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:05:04' prior: 50555337!
+add: anISBN
+
+	(catalog includes: anISBN) ifFalse: (self error: self class cannotAddExternalBookErrorMessage).	
+	books add: anISBN.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:05:16' prior: 50555570!
+add: anISBN
+
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].	
+	books add: anISBN.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:05:19'!
+PASSED!
+
+!testRun: #CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:05:19'!
+ERROR!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:05:19'!
+ERROR!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:05:29'!
+test03CartWithAddedBookHasIt
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!methodRemoval: CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:05:29'!
+test02CartWithAddedBookHasIt
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.!
+
+!testRun: #CartTest #test03CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:05:30'!
+ERROR!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:05:50'!
+test02CartWithAddedBookHasIt
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!methodRemoval: CartTest #test03CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:05:50'!
+test03CartWithAddedBookHasIt
+
+	|cart|
+	
+	cart := Cart new.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:05:55'!
+test03CannotAddBookFromAnotherEditorialToCart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: (cart add: 'bookFromExternalEditorial') 
+		raise: Error 
+		withMessageText: Cart cannotAddExternalBookErrorMessage. ! !
+
+!methodRemoval: CartTest #test02CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:05:55'!
+test02CannotAddBookFromAnotherEditorialToCart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: (cart add: 'bookFromExternalEditorial') 
+		raise: Error 
+		withMessageText: Cart cannotAddExternalBookErrorMessage. !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:06:10' prior: 50555614!
+test02CartWithAddedBookHasIt
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includes: 'book1'.
+	self assert: cart books size equals: 1.! !
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:06:11'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:06:11'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:06:11'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:06:11'!
+ERROR!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:06:11'!
+ERROR!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:06:26' prior: 50555632!
+test03CannotAddBookFromAnotherEditorialToCart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'bookFromExternalEditorial'] 
+		raise: Error 
+		withMessageText: Cart cannotAddExternalBookErrorMessage. ! !
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:06:27'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:06:28'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:06:28'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:06:28'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:06:28'!
+PASSED!
