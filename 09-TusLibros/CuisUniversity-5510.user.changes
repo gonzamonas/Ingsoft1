@@ -462,3 +462,626 @@ PASSED!
 
 !testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:06:28'!
 PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:44:18'!
+test04AddABookMultiplesTimeToCartIncreasesItsQuantity
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'bookFromExternalEditorial' times: 2.
+	self assert: (cart books at: 'book1') equals: 2. ! !
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:44:24'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:44:59'!
+add: aString times: aString2 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:49:04' prior: 50555724!
+add: anISBN times: aQuantity 
+	
+	| currentQuantity |
+	currentQuantity := books at: anISBN ifAbsent: [ 0 ].
+	books at: anISBN put: currentQuantity + aQuantity! !
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:49:11' prior: 50555729!
+add: anISBN times: aQuantity 	
+	| currentQuantity |
+
+	currentQuantity := books at: anISBN ifAbsent: [ 0 ].
+	books at: anISBN put: currentQuantity + aQuantity! !
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:49:51'!
+ERROR!
+!Cart methodsFor: 'initialization' stamp: 'MA 10/27/2022 21:50:26' prior: 50555380 overrides: 16920235!
+initialize
+
+	books := Dictionary new.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:50:28'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:50:28'!
+ERROR!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:50:28'!
+PASSED!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:50:28'!
+ERROR!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:50:32'!
+ERROR!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:50:55'!
+ERROR!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:51:07'!
+ERROR!
+
+cart books!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:51:48' prior: 50555710!
+test04AddABookMultiplesTimeToCartIncreasesItsQuantity
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books at: 'book1') equals: 2. ! !
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:52:09' prior: 50555737!
+add: anISBN times: aQuantity 	
+	| currentQuantity |
+
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].
+	
+	currentQuantity := books at: anISBN ifAbsent: [ 0 ].
+	books at: anISBN put: currentQuantity + aQuantity! !
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:52:10' prior: 50555787!
+add: anISBN times: aQuantity 	
+	| currentQuantity |
+
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].
+
+	currentQuantity := books at: anISBN ifAbsent: [ 0 ].
+	books at: anISBN put: currentQuantity + aQuantity! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:52:13'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:52:13'!
+ERROR!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:52:13'!
+PASSED!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:52:13'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:52:13'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'MA 10/27/2022 21:52:54' prior: 50555577!
+add: anISBN
+
+	self add: anISBN times: 1.! !
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:52:56'!
+FAILURE!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:53:20' prior: 50555656!
+test02CartWithAddedBookHasIt
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: cart books includesKey: 'book1'.
+	self assert: cart books size equals: 1.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/27/2022 21:53:33' prior: 50555832!
+test02CartWithAddedBookHasIt
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1'. 
+	self deny: cart isEmpty.
+	self assert: (cart books includesKey: 'book1').
+	self assert: cart books size equals: 1.! !
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:53:34'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/27/2022 21:53:36'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/27/2022 21:53:36'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/27/2022 21:53:36'!
+PASSED!
+
+!testRun: #CartTest #test04AddABookMultiplesTimeToCartIncreasesItsQuantity stamp: 'MA 10/27/2022 21:53:36'!
+PASSED!
+
+----STARTUP---- (29 October 2022 19:09:19) as /Users/main/Downloads/macos64/CuisUniversity-5510.image!
+
+
+----End fileIn of /Users/main/Downloads/macos64/TusLibros.st----!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:10:39'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:10:53'!
+PASSED!
+
+----End fileIn of /Users/main/Downloads/macos64/Packages/TerseGuide.pck.st----!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:16:12'!
+test04CanAddMultipleItemsAtTheSameTimeToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 2)! !
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:16:14'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:16:21'!
+add: aString times: aString2 
+	self shouldBeImplemented.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:16:39' prior: 50558283!
+add: anISBN times: aQuantity 
+	self shouldBeImplemented.! !
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:16:40'!
+ERROR!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:17:39' prior: 50558288!
+add: anISBN times: aQuantity 
+
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].	
+	books add: anISBN withOcurrences: aQuantity.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:17:46' prior: 50558296!
+add: anISBN times: aQuantity 
+
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].	
+	books add: anISBN withOccurrences: aQuantity.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:17:48'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:17:48'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:17:48'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:17:48'!
+ERROR!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:17:48'!
+ERROR!
+!Cart methodsFor: 'initialization' stamp: 'MA 10/29/2022 19:18:13' prior: 50555314 overrides: 16920235!
+initialize
+
+	books := Bag new.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:18:15'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:18:15'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:18:15'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:18:15'!
+ERROR!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:18:15'!
+ERROR!
+
+cart books occurrencesOf: 2!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:18:47' prior: 50558271!
+test04CanAddMultipleItemsAtTheSameTimeToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 2) equals: 2! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:18:59' prior: 50558350!
+test04CanAddMultipleItemsAtTheSameTimeToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2! !
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:19:00'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:19:02'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:19:05'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:19:05'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:19:05'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:19:05'!
+PASSED!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:19:27' prior: 50555307!
+add: anISBN
+
+	self add: anISBN times: 1.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:19:31'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:19:31'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:19:31'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:19:31'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:19:58'!
+test04CannotAddZeroBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:20:04'!
+test05CannotAddZeroBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2! !
+
+!methodRemoval: CartTest #test04CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:20:04'!
+test04CannotAddZeroBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:20:21'!
+test04CanAddMultipleBooksAtTheSameTimeToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2! !
+
+!methodRemoval: CartTest #test04CanAddMultipleItemsAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:20:21'!
+test04CanAddMultipleItemsAtTheSameTimeToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	cart add: 'book1' times: 2.
+	self assert: (cart books occurrencesOf: 'book1') equals: 2!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:21:05' prior: 50558416!
+test05CannotAddZeroBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'book1' times: 0] 
+		raise: Error 
+		withMessageText: Cart cannotAddZeroBooksErrorMessage. ! !
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:21:10'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:21:17'!
+cannotAddZeroBooksErrorMessage
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:21:31' prior: 50558469!
+cannotAddZeroBooksErrorMessage
+	
+	^'cannot add zero books'.! !
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:21:32'!
+FAILURE!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:22:14' prior: 50558304!
+add: anISBN times: aQuantity 
+
+	(aQuantity = 0) ifTrue: [self error: self class cannotAddZeroBooksErrorMessage].
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].	
+	books add: anISBN withOccurrences: aQuantity.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:22:16'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:22:16'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:22:16'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:22:16'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:22:16'!
+PASSED!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:22:40' prior: 50558482!
+add: anISBN times: aQuantity 
+
+	(aQuantity = 0) ifTrue: [self error: self class cannotAddZeroBooksErrorMessage].
+	(catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage].	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:23:03'!
+assertBooksIsInCatalog: anISBN
+
+	^ (catalog includes: anISBN) ifFalse: [self error: self class cannotAddExternalBookErrorMessage]! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:23:03' prior: 50558508!
+add: anISBN times: aQuantity 
+
+	(aQuantity = 0) ifTrue: [self error: self class cannotAddZeroBooksErrorMessage].
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:23:15'!
+assertQuantityIsNotZero: aQuantity
+
+	^ (aQuantity = 0) ifTrue: [self error: self class cannotAddZeroBooksErrorMessage]! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:23:15' prior: 50558525!
+add: anISBN times: aQuantity 
+
+	self assertQuantityIsNotZero: aQuantity.
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:23:56'!
+test06CannotAddNegativeBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'book1' times: -1] 
+		raise: Error 
+		withMessageText: Cart cannotAddZeroBooksErrorMessage. ! !
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:24:17' prior: 50558549!
+test06CannotAddNegativeBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'book1' times: -1] 
+		raise: Error 
+		withMessageText: Cart cannotAddNegativeBooksErrorMessage. ! !
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:24:19'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:24:30'!
+cannotAddNegativeBooksErrorMessage
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:24:37' prior: 50558574!
+cannotAddNegativeBooksErrorMessage
+	^'cannot add negative books'.! !
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:24:40'!
+FAILURE!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:25:11' prior: 50558541!
+add: anISBN times: aQuantity 
+
+	(aQuantity < 0) ifTrue: [self error: self class cannotAddNegativeBooksErrorMessage].
+	self assertQuantityIsNotZero: aQuantity.
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:25:12'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:26:14' prior: 50558560!
+test06CannotAddNegativeBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'book1' times: -1] 
+		raise: Error 
+		withMessageText: Cart cannotAddNonPositiveBooksErrorMessage. ! !
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:26:17'!
+ERROR!
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:26:24'!
+cannotAddNonPositiveBooksErrorMessage
+	self shouldBeImplemented.! !
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:26:34' prior: 50558631!
+cannotAddNonPositiveBooksErrorMessage
+	^'cannot add non positive books'.! !
+!Cart class methodsFor: 'error messages' stamp: 'MA 10/29/2022 19:26:36' prior: 50558636!
+cannotAddNonPositiveBooksErrorMessage
+	
+	^'cannot add non positive books'.! !
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:26:38'!
+FAILURE!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:26:51' prior: 50558587!
+add: anISBN times: aQuantity 
+
+	(aQuantity < 0) ifTrue: [self error: self class cannotAddNonPositiveBooksErrorMessage].
+	self assertQuantityIsNotZero: aQuantity.
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:26:51'!
+PASSED!
+!CartTest methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:27:00' prior: 50558456!
+test05CannotAddZeroBooksToACart
+
+	| cart catalog |
+	
+	catalog := OrderedCollection with: 'book1'.
+	cart := Cart with: catalog.
+	self should: [cart add: 'book1' times: 0] 
+		raise: Error 
+		withMessageText: Cart cannotAddNonPositiveBooksErrorMessage. ! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:27:03'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:27:03'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:27:03'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:27:03'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:27:03'!
+FAILURE!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:27:03'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:27:03'!
+FAILURE!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:27:19' prior: 50558534!
+assertQuantityIsNotZero: aQuantity
+
+	^ (aQuantity = 0) ifTrue: [self error: self class cannotAddNonPositiveBooksErrorMessage]! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:27:21'!
+PASSED!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:27:32' prior: 50558650!
+add: anISBN times: aQuantity 
+
+	self assertQuantityIsNotZero: aQuantity.
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:27:45' prior: 50558712!
+assertQuantityIsNotZero: aQuantity
+
+	^ (aQuantity < 1) ifTrue: [self error: self class cannotAddNonPositiveBooksErrorMessage]! !
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:27:46'!
+PASSED!
+!Cart methodsFor: 'add' stamp: 'MA 10/29/2022 19:28:00'!
+assertQuantityIsPositive: aQuantity
+
+	^ (aQuantity < 1) ifTrue: [self error: self class cannotAddNonPositiveBooksErrorMessage]! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'MA 10/29/2022 19:28:00' prior: 50558737!
+add: anISBN times: aQuantity 
+
+	self assertQuantityIsPositive: aQuantity.
+	self assertBooksIsInCatalog: anISBN.	
+	
+	books add: anISBN withOccurrences: aQuantity.! !
+
+!methodRemoval: Cart #assertQuantityIsNotZero: stamp: 'MA 10/29/2022 19:28:01'!
+assertQuantityIsNotZero: aQuantity
+
+	^ (aQuantity < 1) ifTrue: [self error: self class cannotAddNonPositiveBooksErrorMessage]!
+
+!testRun: #CartTest #test01NewCartIsEmpty stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+!testRun: #CartTest #test02CartWithAddedBookHasIt stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+!testRun: #CartTest #test03CannotAddBookFromAnotherEditorialToCart stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+!testRun: #CartTest #test04CanAddMultipleBooksAtTheSameTimeToACart stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+!testRun: #CartTest #test05CannotAddZeroBooksToACart stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+!testRun: #CartTest #test06CannotAddNegativeBooksToACart stamp: 'MA 10/29/2022 19:28:04'!
+PASSED!
+
+----SNAPSHOT----(29 October 2022 19:29:48) CuisUniversity-5510.image priorSource: 7155150!
+
+----QUIT----(29 October 2022 19:29:54) CuisUniversity-5510.image priorSource: 7269088!
