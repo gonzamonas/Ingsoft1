@@ -1,0 +1,2000 @@
+
+
+----QUIT----(26 October 2022 08:07:27) CuisUniversity-5510.image priorSource: 2900072!
+
+----STARTUP---- (26 October 2022 08:07:28) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5510.image!
+
+
+----QUIT----(26 October 2022 08:07:28) CuisUniversity-5510.image priorSource: 7154921!
+
+----STARTUP---- (14 November 2022 18:05:35) as /home/gonzalo/Desktop/linux64/linux64/CuisUniversity-5510.image!
+
+
+----End fileIn of /home/gonzalo/Facultad/ISW/2022-2c/10-CustomerImporter/Step1/CustomerImporter-35.st----!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:07:51' prior: 50555518 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'GM 11/14/2022 18:07:51'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:08:14'!
+isCustomerRecord
+
+	^ line beginsWith: 'C'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:08:14' prior: 50555671 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		(self isCustomerRecord) ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:08:35' prior: 50555716 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self isCustomerRecord ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:09:08'!
+isAddressRecord
+
+	^ line beginsWith: 'A'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:09:08' prior: 50555749 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self isCustomerRecord ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(self isAddressRecord) ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:09:12' prior: 50555786 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self isCustomerRecord ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:12:36' prior: 50555819 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self isCustomerRecord ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:13:46' prior: 50555852 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [
+		self isCustomerRecord ifTrue: [ | customerData record |
+			record := line findTokens: $,.
+	customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:14:44' prior: 50555885 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		self isCustomerRecord ifTrue: [ | customerData |
+			record := line findTokens: $,.
+			customerData := record.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:14:55' prior: 50555919 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		self isCustomerRecord ifTrue: [ record := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:15:26' prior: 50555953 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:15:42' prior: 50555985 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | addressData newAddress |
+			addressData := record.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:15:51' prior: 50556017 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	| newCustomer  |
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:17:06' prior: 50556048 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [ |record|
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'GM 11/14/2022 18:17:06'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:19:48' prior: 50556078 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'GM 11/14/2022 18:19:48'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session readStream line newCustomer record'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:04'!
+importCustomer
+
+	newCustomer := Customer new.
+			newCustomer firstName: record second.
+			newCustomer lastName: record third.
+			newCustomer identificationType: record fourth.
+			newCustomer identificationNumber: record fifth.
+			session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:04' prior: 50556116 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:22' prior: 50556164 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+
+		self isAddressRecord ifTrue: [ | newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:36'!
+importAddress
+
+	| newAddress |
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: record second.
+			newAddress streetNumber: record third asNumber .
+			newAddress town: record fourth.
+			newAddress zipCode: record fifth asNumber .
+			newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:36' prior: 50556186 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+
+		self isAddressRecord ifTrue: [ self importAddress ].
+
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:20:44' prior: 50556221 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		record := line findTokens: $,.
+		self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+		self isAddressRecord ifTrue: [ self importAddress ].
+		line := readStream nextLine. ].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:20:45'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:20:55'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:21:28'!
+createRecord
+
+	^ record := line findTokens: $,! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:21:28' prior: 50556234 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		self createRecord.
+		self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+		self isAddressRecord ifTrue: [ self importAddress ].
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:21:45'!
+importRecord
+
+	self isCustomerRecord ifTrue: [ 
+			self importCustomer ].
+		self isAddressRecord ifTrue: [ self importAddress ]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:21:45' prior: 50556257 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		self createRecord.
+		self importRecord.
+		line := readStream nextLine. ].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:21:59' prior: 50556277 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 
+
+	line := readStream nextLine.
+	[ line notNil ] whileTrue: [  
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:22:09' prior: 50556287 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 [line := readStream nextLine. line notNil ] whileTrue: [  
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:22:15'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:22:32'!
+hasLineToImport
+
+	line := readStream nextLine. line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:22:32' prior: 50556296 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 [self hasLineToImport ] whileTrue: [  
+		self createRecord.
+		self importRecord.
+		].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:22:37'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:22:37'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:22:50' prior: 50556306!
+hasLineToImport
+
+	line := readStream nextLine. 
+	^line notNil! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:23:01' prior: 50556312 overrides: 16902254!
+value
+
+	"
+	self importCustomers
+	"
+	 [self hasLineToImport ] whileTrue: [  
+		self createRecord.
+		self importRecord.	].
+
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:23:03'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:24:03' prior: 50556269!
+importRecord
+
+	self isCustomerRecord ifTrue: [self importCustomer].
+	self isAddressRecord ifTrue: [self importAddress]! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:24:05'!
+PASSED!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:24:56' prior: 50556152!
+importCustomer
+
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:25:07' prior: 50556207!
+importAddress
+
+	| newAddress |
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber .
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber .
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:25:15' prior: 50556361!
+importAddress
+
+	| newAddress |
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:25:21'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:28:11'!
+test02
+
+	CustomerImporter valueFrom: (ReadStream on: 'X,') into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:28:41' prior: 50556388!
+test02
+
+	CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session..
+
+	self assertImportedRightNumberOfCustomers.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:32:04' prior: 50556398!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter.
+						self assert: self]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:33:32' prior: 50556408!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter.
+						self assert: 0 equals: (session selectAllOfType: Customer) size]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:33:57'!
+assertNumberOfImportedCustomersIs
+
+	^ self assert: 0 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:33:57' prior: 50556419!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter.
+						self assertNumberOfImportedCustomersIs]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:34:22'!
+assertNumberOfImportedCustomersIs: aNumberOfCustomers
+
+	^ self assert: 0 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:34:22' prior: 50556437!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #assertNumberOfImportedCustomersIs stamp: 'GM 11/14/2022 18:34:22'!
+assertNumberOfImportedCustomersIs
+
+	^ self assert: 0 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:34:22' prior: 50556448!
+assertNumberOfImportedCustomersIs: aNumberOfCustomers
+
+	^ self assert: aNumberOfCustomers equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'assertions' stamp: 'GM 11/14/2022 18:35:05' prior: 50555314!
+assertImportedRightNumberOfCustomers
+
+	^ self assertNumberOfImportedCustomersIs: 2.! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:35:10'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:35:10'!
+FAILURE!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:35:10'!
+FAILURE!
+
+!methodRemoval: ImportTest #assertImportedRightNumberOfCustomers stamp: 'GM 11/14/2022 18:35:39'!
+assertImportedRightNumberOfCustomers
+
+	^ self assertNumberOfImportedCustomersIs: 2.!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:35:39' prior: 50555267!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session..
+
+	 self assertNumberOfImportedCustomersIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:35:49'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:38:44' prior: 50556340!
+importRecord
+
+	self isCustomerRecord ifTrue: [^self importCustomer].
+	self isAddressRecord ifTrue: [^self importAddress].
+	
+	self error: self class invalidIdentificationTypeErrorMessage! !
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:38:48'!
+ERROR!
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:38:56'!
+invalidIdentificationTypeErrorMessage
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:39:06' prior: 50556523!
+invalidIdentificationTypeErrorMessage
+	
+	'Invalid identification type'! !
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:39:09' prior: 50556529!
+invalidIdentificationTypeErrorMessage
+	
+	^'Invalid identification type'! !
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:39:10'!
+FAILURE!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:39:26' prior: 50556455!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:39:27'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:39:28'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:39:28'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:39:31'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:39:32'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:39:32'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:39:49'!
+test03
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'CC,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:39:52'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:40:26' prior: 50555711!
+isCustomerRecord
+
+	^ record first = 'C'! !
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:40:42'!
+FAILURE!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:40:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:40:47'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:40:47'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:40:47'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:41:06'!
+test04
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'AA,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:42:06' prior: 50556601!
+test04
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D,22333444.') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:43:28' prior: 50556614!
+test04
+
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+	AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:43:37' prior: 50556627!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:43:56' prior: 50556643!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidIdentificationTypeErrorMessage.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:44:00'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:44:54' prior: 50555781!
+isAddressRecord
+
+	^ record first = 'A'! !
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:44:56'!
+ERROR!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:45:01'!
+ERROR!
+!ImportTest methodsFor: 'assertions' stamp: 'GM 11/14/2022 18:45:07'!
+assertNumberOfImportedAddressesIs: aString 
+	self shouldBeImplemented.! !
+!ImportTest methodsFor: 'assertions' stamp: 'GM 11/14/2022 18:45:13' prior: 50556686!
+assertNumberOfImportedAddressesIs: aString 
+	self! !
+!ImportTest methodsFor: 'assertions' stamp: 'GM 11/14/2022 18:45:20' prior: 50556691!
+assertNumberOfImportedAddressesIs: aNumberOfAddresses 
+	self! !
+!ImportTest methodsFor: 'assertions' stamp: 'GM 11/14/2022 18:45:54' prior: 50556696!
+assertNumberOfImportedAddressesIs: aNumberOfAddresses 
+	
+	^ self assert: aNumberOfAddresses equals: (session selectAllOfType: Address) size! !
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:46:00'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:46:00'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:46:01'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:46:01'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:46:01'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:47:25' prior: 50556543!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidRecordTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:47:25' prior: 50556570!
+test03
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'CC,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidRecordTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 18:47:25' prior: 50556659!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidRecordTypeErrorMessage.
+						self assertNumberOfImportedAddressesIs: 0]! !
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:48:07'!
+invalidRecordTypeErrorMessage
+	
+	^'Invalid identification type'! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:48:33' prior: 50556512!
+importRecord
+
+	self isCustomerRecord ifTrue: [^self importCustomer].
+	self isAddressRecord ifTrue: [^self importAddress].
+	
+	self error: self class invalidRecordTypeErrorMessage! !
+
+!methodRemoval: CustomerImporter class #invalidIdentificationTypeErrorMessage stamp: 'GM 11/14/2022 18:48:41'!
+invalidIdentificationTypeErrorMessage
+	
+	^'Invalid identification type'!
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:48:45' prior: 50556762!
+invalidRecordTypeErrorMessage
+	
+	^'Invalid record type'! !
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:48:51'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:48:52'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:48:52'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:48:52'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:48:52'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:49:40'!
+test05
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidRecordTypeErrorMessage.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:50:54' prior: 50556798!
+test05
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: error messageText equals: CustomerImporter invalidNumberOfParameters.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:50:55'!
+ERROR!
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:51:08'!
+invalidNumberOfParameters
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:51:19' prior: 50556826!
+invalidNumberOfParameters
+	
+	'Invalid number of parameters'! !
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:51:21'!
+FAILURE!
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 18:52:12' prior: 50556831!
+invalidNumberOfParameters
+	
+	^'Invalid number of parameters'! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:52:48' prior: 50556720!
+test02
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'X,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:53:05' prior: 50556733!
+test03
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'CC,Pepe,Sanchez,D,22333444') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:53:29' prior: 50556746!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:53:57' prior: 50556811!
+test05
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:53:58'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 18:57:17' prior: 50556350!
+importCustomer
+
+	record size = 5 ifFalse: [self error: self class invalidNumberOfParameters].
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:57:20'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:57:23'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 18:57:23'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 18:57:24'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 18:57:24'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 18:57:24'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 18:57:24'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:57:42'!
+test06
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'A,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 18:57:45'!
+ERROR!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:58:23' prior: 50556930!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'A,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:58:35' prior: 50556945!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'A,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:58:46' prior: 50556961!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 18:59:02' prior: 50556977!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 18:59:08'!
+FAILURE!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:00:08' prior: 50556374!
+importAddress
+
+	| newAddress |
+	record size = 6 ifFalse: [self error: self class invalidNumberOfParameters].
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:00:39'!
+assertNumberOfParametersIs
+
+	^ record size = 6 ifFalse: [self error: self class invalidNumberOfParameters]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:00:39' prior: 50557011!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:01:02'!
+assertNumberOfParametersIs: aNumberOfParameters
+
+	^ record size = 6 ifFalse: [self error: self class invalidNumberOfParameters]! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 19:01:02' prior: 50557033!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs: 6.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+
+!methodRemoval: CustomerImporter #assertNumberOfParametersIs stamp: 'GM 11/14/2022 19:01:02'!
+assertNumberOfParametersIs
+
+	^ record size = 6 ifFalse: [self error: self class invalidNumberOfParameters]!
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 19:01:02' prior: 50557046!
+assertNumberOfParametersIs: aNumberOfParameters
+
+	^ record size = aNumberOfParameters ifFalse: [self error: self class invalidNumberOfParameters]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:01:32' prior: 50556901!
+importCustomer
+
+	self assertNumberOfParametersIs: 5.
+	newCustomer := Customer new.
+	newCustomer firstName: record second.
+	newCustomer lastName: record third.
+	newCustomer identificationType: record fourth.
+	newCustomer identificationNumber: record fifth.
+	session persist: newCustomer! !
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:02:21'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:02:21'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:02:22'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:02:22'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:02:22'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:02:22'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:02:22'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:04:31'!
+test07
+
+	| invalidAddressData |
+	invalidAddressData := 'A,San Martin,3322,Olivos,1636'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:05:09' prior: 50557109!
+test07
+
+	| invalidAddressData |
+	invalidAddressData := 'A,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:05:13'!
+ERROR!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:07:25' prior: 50557054!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs: 6.
+	self assertACustomerWasAlreadyWasAlreadyImported.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:07:51' prior: 50557124!
+test07
+
+	| invalidAddressData |
+	invalidAddressData := 'A,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:08:07'!
+ERROR!
+!CustomerImporter methodsFor: 'assertion' stamp: 'GM 11/14/2022 19:08:35'!
+assertACustomerWasAlreadyWasAlreadyImported
+	self shouldBeImplemented.! !
+!CustomerImporter methodsFor: 'assertion' stamp: 'GM 11/14/2022 19:10:23' prior: 50557175!
+assertACustomerWasAlreadyWasAlreadyImported
+	
+	newCustomer ifNil: [self error: self class cannotImportAddressWhenCustomerWasNotImported] ! !
+!CustomerImporter methodsFor: 'assertion' stamp: 'GM 11/14/2022 19:10:35'!
+assertACustomerWasAlreadyImported
+	
+	newCustomer ifNil: [self error: self class cannotImportAddressWhenCustomerWasNotImported] ! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'GM 11/14/2022 19:10:35' prior: 50557142!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs: 6.
+	self assertACustomerWasAlreadyImported.
+	newAddress := Address new.
+	newCustomer addAddress: newAddress.
+	newAddress streetName: record second.
+	newAddress streetNumber: record third asNumber.
+	newAddress town: record fourth.
+	newAddress zipCode: record fifth asNumber.
+	newAddress province: record sixth! !
+
+!methodRemoval: CustomerImporter #assertACustomerWasAlreadyWasAlreadyImported stamp: 'GM 11/14/2022 19:10:35'!
+assertACustomerWasAlreadyWasAlreadyImported
+	
+	newCustomer ifNil: [self error: self class cannotImportAddressWhenCustomerWasNotImported] !
+!CustomerImporter methodsFor: 'assertion' stamp: 'GM 11/14/2022 19:10:52' prior: 50557188!
+assertACustomerWasAlreadyImported
+	
+	newCustomer ifNil: [self error: self class cannotImportAddressWhenCustomerWasNotImported] ! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:10:59'!
+ERROR!
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 19:11:06'!
+cannotImportAddressWhenCustomerWasNotImported
+	self shouldBeImplemented.! !
+!CustomerImporter class methodsFor: 'error' stamp: 'GM 11/14/2022 19:11:21' prior: 50557228!
+cannotImportAddressWhenCustomerWasNotImported
+	
+	^ 'Cannot import address when customer was not imported'! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:11:22'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:11:23'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:11:23'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:11:23'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:11:24'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:11:24'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:11:24'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:11:24'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:13:40'!
+importData: invalidAddressData
+
+	^ CustomerImporter valueFrom: (ReadStream on: invalidAddressData) into: session! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:13:40' prior: 50557157!
+test07
+
+	| invalidAddressData |
+	invalidAddressData := 'A,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:13:40' prior: 50556870!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:13:40' prior: 50556993!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:13:57' prior: 50557258!
+importData: data
+
+	^ CustomerImporter valueFrom: (ReadStream on: data) into: session! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:14:30' prior: 50556857!
+test03
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:14:46' prior: 50556844!
+test02
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:15:33' prior: 50557265!
+test07
+
+	self should: [self importData: 'A,San Martin,3322,Olivos,1636,BsAs'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:29:30' prior: 50557196!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs: 6.
+	self assertACustomerWasAlreadyImported.
+	newAddress := Address withStreetName: record second streetNumber: record third asNumber town: record fourth zipCode: record fifth asNumber province: record sixth.
+	newCustomer addAddress: newAddress.! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:29:59' prior: 50557352!
+importAddress
+
+	| newAddress |
+	self assertNumberOfParametersIs: 6.
+	self assertACustomerWasAlreadyImported.
+	newAddress := Address withStreetName: record second 
+						streetNumber: record third asNumber 
+						town: record fourth 
+						zipCode: record fifth asNumber 
+						province: record sixth.
+	newCustomer addAddress: newAddress.! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:30:33'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:30:33'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:30:34'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:30:34'!
+ERROR!
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:30:40'!
+withStreetName: aString streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithStreetName: aString streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:30:45' prior: 50557399!
+withStreetName: aString streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 
+
+	^self new initializeWithStreetName: aString streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:30:50' prior: 50557413!
+withStreetName: aStreetName streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 
+
+	^self new initializeWithStreetName: aStreetName streetNumber: aSmallInteger town: aString3 zipCode: aSmallInteger4 province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:31:01' prior: 50557424!
+withStreetName: aStreetName streetNumber: aStreetNumber town: aString3 zipCode: aSmallInteger4 province: aString5 
+
+	^self new initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aString3 zipCode: aSmallInteger4 province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:31:07' prior: 50557435!
+withStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aSmallInteger4 province: aString5 
+
+	^self new initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aSmallInteger4 province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:31:16' prior: 50557446!
+withStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aString5 
+
+	^self new initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aString5 ! !
+!Address class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:31:23' prior: 50557457!
+withStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aProvince 
+
+	^self new initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aProvince ! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:31:26'!
+ERROR!
+!Address methodsFor: 'initialization' stamp: 'GM 11/14/2022 19:31:34'!
+initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aProvince 
+	self shouldBeImplemented.
+	streetName := aStreetName.
+	streetNumber := aStreetNumber.
+	town := aTown.
+	zipCode := aZipCode.
+	province := aProvince.! !
+!Address methodsFor: 'initialization' stamp: 'GM 11/14/2022 19:31:39' prior: 50557481!
+initializeWithStreetName: aStreetName streetNumber: aStreetNumber town: aTown zipCode: aZipCode province: aProvince 
+	
+	streetName := aStreetName.
+	streetNumber := aStreetNumber.
+	town := aTown.
+	zipCode := aZipCode.
+	province := aProvince.! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:31:41'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:31:43'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:31:44'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:31:44'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:31:44'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:31:45'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:31:45'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:31:45'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:31:45'!
+PASSED!
+
+!methodRemoval: Address #streetNumber: stamp: 'GM 11/14/2022 19:32:08'!
+streetNumber: aStreetNumber
+
+	streetNumber := aStreetNumber !
+
+!methodRemoval: Address #province: stamp: 'GM 11/14/2022 19:32:12'!
+province: aProvince
+
+	province := aProvince
+	!
+
+!methodRemoval: Address #streetName: stamp: 'GM 11/14/2022 19:32:16'!
+streetName: aStreetName
+
+	streetName := aStreetName !
+
+!methodRemoval: Address #zipCode: stamp: 'GM 11/14/2022 19:32:18'!
+zipCode: aZipCode
+
+	zipCode := aZipCode!
+
+!methodRemoval: Address #town: stamp: 'GM 11/14/2022 19:32:31'!
+town: aTown
+
+	town := aTown!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:32:38'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:32:38'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:32:39'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:32:39'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:32:39'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:32:39'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:32:39'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:32:40'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:33:02' prior: 50556500!
+test01Import
+
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertNumberOfImportedCustomersIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+!CustomerImporter methodsFor: 'evaluating' stamp: 'GM 11/14/2022 19:34:41' prior: 50557082!
+importCustomer
+
+	self assertNumberOfParametersIs: 5.
+	newCustomer := Customer withFirstName: record second lastName: record third identificationType: record fourth identificationNumber: record fifth.
+	session persist: newCustomer! !
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:34:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:34:46'!
+ERROR!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:34:46'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:34:46'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:34:46'!
+ERROR!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:34:46'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:34:46'!
+ERROR!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:34:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:34:49'!
+ERROR!
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:34:54'!
+withFirstName: aString lastName: aString2 identificationType: aString3 identificationNumber: aString4 
+	"DO NOT FORGET TO RENAME COLLABORATORS AND REMOVE THIS COMMENT!!!!"
+	self shouldBeImplemented.
+	^self new initializeWithFirstName: aString lastName: aString2 identificationType: aString3 identificationNumber: aString4 ! !
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:35:07' prior: 50557602!
+withFirstName: aString lastName: aString2 identificationType: aString3 identificationNumber: aString4 
+	
+	^self new initializeWithFirstName: aString lastName: aString2 identificationType: aString3 identificationNumber: aString4 ! !
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:35:10' prior: 50557616!
+withFirstName: aFirstName lastName: aString2 identificationType: aString3 identificationNumber: aString4 
+	
+	^self new initializeWithFirstName: aFirstName lastName: aString2 identificationType: aString3 identificationNumber: aString4 ! !
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:35:13' prior: 50557627!
+withFirstName: aFirstName lastName: aLastName identificationType: aString3 identificationNumber: aString4 
+	
+	^self new initializeWithFirstName: aFirstName lastName: aLastName identificationType: aString3 identificationNumber: aString4 ! !
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:35:21' prior: 50557638!
+withFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: aString4 
+	
+	^self new initializeWithFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: aString4 ! !
+!Customer class methodsFor: 'instance creation' stamp: 'GM 11/14/2022 19:35:27' prior: 50557649!
+withFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: anIdentificationNumber 
+	
+	^self new initializeWithFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: anIdentificationNumber ! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:35:30'!
+ERROR!
+!Customer methodsFor: 'initialization' stamp: 'GM 11/14/2022 19:35:37'!
+initializeWithFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: anIdentificationNumber 
+	self shouldBeImplemented.
+	firstName := aFirstName.
+	lastName := aLastName.
+	identificationType := anIdentificationType.
+	identificationNumber := anIdentificationNumber.! !
+!Customer methodsFor: 'initialization' stamp: 'GM 11/14/2022 19:35:39' prior: 50557675!
+initializeWithFirstName: aFirstName lastName: aLastName identificationType: anIdentificationType identificationNumber: anIdentificationNumber 
+	
+	firstName := aFirstName.
+	lastName := aLastName.
+	identificationType := anIdentificationType.
+	identificationNumber := anIdentificationNumber.! !
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:35:41'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:35:43'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:35:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:35:47'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:35:47'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:35:47'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:35:48'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:35:48'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:35:48'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:35:48'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:35:51' prior: 50557339!
+test07
+
+	self should: [self importData: 'A,San Martin,3322,Olivos,1636,BsAs'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!methodRemoval: Customer #firstName: stamp: 'GM 11/14/2022 19:36:31'!
+firstName: aName
+
+	firstName := aName!
+
+!methodRemoval: Customer #identificationNumber: stamp: 'GM 11/14/2022 19:36:33'!
+identificationNumber: anIdentificationNumber
+
+	identificationNumber := anIdentificationNumber!
+
+!methodRemoval: Customer #identificationType: stamp: 'GM 11/14/2022 19:36:35'!
+identificationType: anIdentificationType
+
+	identificationType := anIdentificationType!
+
+!methodRemoval: Customer #lastName: stamp: 'GM 11/14/2022 19:36:38'!
+lastName: aLastName
+
+	lastName := aLastName
+!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:37:01'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'GM 11/14/2022 19:37:02'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'GM 11/14/2022 19:37:02'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'GM 11/14/2022 19:37:02'!
+PASSED!
+
+!testRun: #ImportTest #test04 stamp: 'GM 11/14/2022 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test05 stamp: 'GM 11/14/2022 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test06 stamp: 'GM 11/14/2022 19:37:03'!
+PASSED!
+
+!testRun: #ImportTest #test07 stamp: 'GM 11/14/2022 19:37:03'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:38:14'!
+test02FailsWithInvalidRecordType
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test02 stamp: 'GM 11/14/2022 19:38:14'!
+test02
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:38:34'!
+FailsWithInvalidCustomerRecordType
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test03 stamp: 'GM 11/14/2022 19:38:34'!
+test03
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:38:40'!
+test03FailsWithInvalidCustomerRecordType
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #FailsWithInvalidCustomerRecordType stamp: 'GM 11/14/2022 19:38:40'!
+FailsWithInvalidCustomerRecordType
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:38:52'!
+test04FailsWithInvalidAddressRecordType
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!methodRemoval: ImportTest #test04 stamp: 'GM 11/14/2022 19:38:52'!
+test04
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:39:23'!
+test05CannotImportCustomerWithInvalidNumberOfParameters
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test05 stamp: 'GM 11/14/2022 19:39:23'!
+test05
+
+	self should: [CustomerImporter valueFrom: (ReadStream on: 'C,Pepe,Sanchez,D') into: session] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:39:44'!
+test06CannotImportAddressWithInvalidNumberOfParameters
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!methodRemoval: ImportTest #test06 stamp: 'GM 11/14/2022 19:39:44'!
+test06
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidNumberOfParameters equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:39:56'!
+test07CannotImportAddressWhenCustomerWasNotImported
+
+	self should: [self importData: 'A,San Martin,3322,Olivos,1636,BsAs'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!methodRemoval: ImportTest #test07 stamp: 'GM 11/14/2022 19:39:56'!
+test07
+
+	self should: [self importData: 'A,San Martin,3322,Olivos,1636,BsAs'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter cannotImportAddressWhenCustomerWasNotImported equals: error messageText.
+						self assertNumberOfImportedAddressesIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:40:09'!
+test02ImportFailsWithInvalidRecordType
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test02FailsWithInvalidRecordType stamp: 'GM 11/14/2022 19:40:09'!
+test02FailsWithInvalidRecordType
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:40:17'!
+test02ImportFailsWhenInvalidRecordType
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test02ImportFailsWithInvalidRecordType stamp: 'GM 11/14/2022 19:40:17'!
+test02ImportFailsWithInvalidRecordType
+
+	self should: [self importData: 'X,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:40:31'!
+test03ImportFailsWhenInvalidCustomerRecordType
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]! !
+
+!methodRemoval: ImportTest #test03FailsWithInvalidCustomerRecordType stamp: 'GM 11/14/2022 19:40:31'!
+test03FailsWithInvalidCustomerRecordType
+
+	self should: [self importData: 'CC,Pepe,Sanchez,D,22333444'] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText.
+						self assertNumberOfImportedCustomersIs: 0]!
+!ImportTest methodsFor: 'tests' stamp: 'GM 11/14/2022 19:40:40'!
+test04ImportFailsWhenInvalidAddressRecordType
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]! !
+
+!methodRemoval: ImportTest #test04FailsWithInvalidAddressRecordType stamp: 'GM 11/14/2022 19:40:40'!
+test04FailsWithInvalidAddressRecordType
+
+	| invalidAddressData |
+	invalidAddressData := 'C,Pepe,Sanchez,D,22333444
+AA,San Martin,3322,Olivos,1636,BsAs'.
+	self should: [self importData: invalidAddressData] 
+	raise: Error - MessageNotUnderstood 
+	withExceptionDo: [:error | self assert: CustomerImporter invalidRecordTypeErrorMessage equals: error messageText .
+						self assertNumberOfImportedAddressesIs: 0]!
+
+!testRun: #ImportTest #test07CannotImportAddressWhenCustomerWasNotImported stamp: 'GM 11/14/2022 19:40:43'!
+PASSED!
